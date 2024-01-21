@@ -61,8 +61,9 @@ if !el!==1 (
 	echo 1.Use
 	choice /C 1X /N
 	if !el!==1 (
+		curl -k -o jp.reg https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/jp.reg
 		regedit /s jp.reg
-		::If you doubt this, reddit.com/r/computers/s/Pa11pjBory
+		::If you doubt the line below this, reddit.com/r/computers/s/Pa11pjBory
 		sc start "SysMain">nul & sc config "SysMain" start=auto>nul
 	)
 	goto home
