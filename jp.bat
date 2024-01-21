@@ -251,6 +251,7 @@ ipconfig /registerdns>nul
 ipconfig /release>nul
 ipconfig /renew>nul
 net start wuauserv>nul
+del jp.reg>nul
 del jp.lnk>nul
 del jp.bat>nul
 endlocal
