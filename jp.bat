@@ -1,5 +1,5 @@
 @echo off
-cd C:\
+cd C:\JustPerformance\
 setlocal enabledelayedexpansion
 title JustPerformance
 net session
@@ -12,7 +12,7 @@ echo Press any key to exit...
 pause>nul
 exit
 )
-set spr=echo ______________________________________________________________________________________________________________________________________________________________________________________________________
+set spr=echo _________________________________________________________________________________________________________________________________________________________________________________________________
 set svcopt="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto)"
 set dsoren="%spr% ^& echo Options: ^& echo X.Return ^& echo 1.Disable ^& echo 2.Enable ^& choice /C 12X /N"
 color 07
@@ -234,9 +234,9 @@ if !el!==13 (
 	echo 1.Import
 	choice /C 1X /N
 	if !el!==1 (
-		powercfg.exe -import "C:\JPNormal.pow">nul
-		powercfg.exe -import "C:\JPIntensive.pow">nul
-		powercfg.exe -import "C:\JPAutomatic.pow">nul
+		powercfg.exe -import "C:\JustPerformance\JPNormal.pow">nul
+		powercfg.exe -import "C:\JustPerformance\JPIntensive.pow">nul
+		powercfg.exe -import "C:\JustPerformance\JPAutomatic.pow">nul
 	)
 	goto home
 )
@@ -249,6 +249,6 @@ ipconfig /flushdns>nul
 ipconfig /registerdns>nul
 ipconfig /release>nul
 ipconfig /renew>nul
-net start wuauserv>nul
-endlocal
+net start wuauserv>nul
 exit
+endlocal
