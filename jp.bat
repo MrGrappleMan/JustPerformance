@@ -3,6 +3,7 @@ cd C:\
 setlocal enabledelayedexpansion
 title JustPerformance
 net session
+set el=!errorlevel!
 if !el!==2 (
 color 04
 cls
@@ -11,10 +12,9 @@ echo Press any key to exit...
 pause>nul
 exit
 )
-set spr=echo _________________________________________________________________________________________________________________________________________________________________________________________________________
-set el=!errorlevel!
-set svcopt=if !el!==1 (sc stop "!svcnme!" & sc config "!svcnme!" start=disabled) & if !el!==2 (sc start "!svcnme!" & sc config "!svcnme!" start=auto)
-set svcgnr=%spr% & echo Options: & echo X.Return & echo 1.Disable & echo 2.Enable & choice /C 12X /N
+set spr=echo _________________________________________________________________________________________________________________________________________________________________________________________________________
+set svcopt="if !el!==1 (sc stop "!svcnme!" & sc config "!svcnme!" start=disabled) & if !el!==2 (sc start "!svcnme!" & sc config "!svcnme!" start=auto"
+set svcgnr="%spr% & echo Options: & echo X.Return & echo 1.Disable & echo 2.Enable & choice /C 12X /N"
 color 07
 :home
 cls
