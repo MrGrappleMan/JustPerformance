@@ -12,9 +12,9 @@ echo Press any key to exit...
 pause>nul
 exit
 )
-set spr=echo _________________________________________________________________________________________________________________________________________________________________________________________________________
+set spr=echo ______________________________________________________________________________________________________________________________________________________________________________________________________
 set svcopt="if !el!==1 (sc stop "!svcnme!" & sc config "!svcnme!" start=disabled) & if !el!==2 (sc start "!svcnme!" & sc config "!svcnme!" start=auto"
-set svcgnr="%spr% & echo Options: & echo X.Return & echo 1.Disable & echo 2.Enable & choice /C 12X /N"
+set dsoren="%spr% & echo Options: & echo X.Return & echo 1.Disable & echo 2.Enable & choice /C 12X /N"
 color 07
 :home
 cls
