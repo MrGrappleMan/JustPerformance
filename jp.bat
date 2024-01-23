@@ -15,6 +15,7 @@ set spr=echo ___________________________________________________________________
 set svcopt="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto)"
 set dsoren="%spr% ^& echo Options: ^& echo X.Return ^& echo 1.Disable ^& echo 2.Enable ^& choice /C 12X /N"
 color 07
+powercfg -h off
 ::If you doubt the line below this, reddit.com/r/computers/s/Pa11pjBory
 sc start "SysMain">nul & sc config "SysMain" start=auto>nul
 regedit /s jp.reg
@@ -49,7 +50,6 @@ echo A.Hypervisor
 echo B.Pagedisk Creator
 echo C.Audio
 echo D.Import Dedicated Power Plans
-echo E.Recommended Browser flags
 choice /C 123456789ABCDX /N
 cls
 if !el!==1 (
@@ -201,7 +201,7 @@ if !el!==11 (
 	)
 )
 if !el!==12 (
-	echo Name: Audio(Audiosrv,AudioEndpointBuilder)
+	echo Name: Audio (Audiosrv,AudioEndpointBuilder)
 	echo Controls and enables functionality of audio on Windows.
 	!dsoren!
 	set svcnme=Audiosrv
@@ -215,7 +215,7 @@ if !el!==13 (
 	echo Overheating is the cause of how your system handles heavy load, which is modified by this.
 	echo Use your UEFI/BIOS setup utility if it has any options or SpeedFan for boosting fan speed. Laptop manufacturers may keep it locked.
 	echo It is recommended to switch the Power Plan from JPIntensive to JPNormal once your resource intensive task(s) has been completed.
-	echo Imports 2 power plans to powercfg.cpl. Use each power plan according to your needs only. Use the Intensive variant at your own risk.
+	echo Imports 3 power plans. Use each power plan according to your needs only. Use the Intensive variant at your own risk.
 	echo The automatic variant is the best variant for portable devices with a battery.
 	echo JPNormal: Maximizes all options except for processor to use resources in a performant manner.
 	echo JPIntensive: Device is forced to achieve the best possible performance.
@@ -241,6 +241,7 @@ ipconfig /flushdns>nul
 ipconfig /registerdns>nul
 ipconfig /release>nul
 ipconfig /renew>nul
+wuauclt.exe /updatenow
 net start wuauserv>nul
 exit
 endlocal
