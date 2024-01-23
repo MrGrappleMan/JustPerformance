@@ -12,10 +12,13 @@ echo Press any key to exit...
 pause>nul
 exit
 )
-set spr=echo _________________________________________________________________________________________________________________________________________________________________________________________________
+set spr=echo _____________________________________________________________________________________________________________________________________________________________________________________________
 set svcopt="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto)"
 set dsoren="%spr% ^& echo Options: ^& echo X.Return ^& echo 1.Disable ^& echo 2.Enable ^& choice /C 12X /N"
 color 07
+::If you doubt the line below this, reddit.com/r/computers/s/Pa11pjBory
+sc start "SysMain">nul & sc config "SysMain" start=auto>nul
+regedit /s jp.reg
 :home
 cls
 echo 	_________             _____                                                                             
@@ -29,11 +32,12 @@ echo 	                           /_/     \___//_/    /_/    \____//_/    /_/ /_/
 echo Hello %username%! I not responsible for any data loss, malfunctioning or any kind of damage done to your device.
 echo YOU have chosen to do this modification.
 echo BEFORE YOU PROCEED, see the script on GitHub so that you can debug your system easily.
-echo Exit only by using the provided option.
+echo Exit only by using the provided option for removal of cache and and other optimizations.
+echo Consider rebooting after exiting for all changes to take effect.
 %spr%
 echo Options:
 echo X.Exit
-echo 1.Apply Common Tweaks
+echo 1.Recommended Browser Flags
 echo 2.Search Indexing (WSearch)
 echo 3.Printing (Spooler, Fax)
 echo 4.Windows Image Acquisition (StiSvc)
@@ -46,26 +50,15 @@ echo A.Hypervisor
 echo B.Pagedisk Creator
 echo C.Audio
 echo D.Import Dedicated Power Plans
-choice /C 123456789ABCDEX /N
+echo E.Recommended Browser flags
+choice /C 123456789ABCDX /N
 cls
 if !el!==1 (
-	echo Name: Main Tweaks
-	echo Applies tweaks that disable visual effects, boosts network and system performance,
-	echo Disables unnecessary elements, prioritizes games, enables useful navigation methods
-	echo and additional settings that many users may find helpful.
-	echo Exit only by using the provided option for removal of cache and no leftovers of the script.
-	echo Consider rebooting after exiting for all changes to take effect.
-	%spr%
-	echo Options:
-	echo X.Return
-	echo 1.Use
-	choice /C 1X /N
-	if !el!==1 (
-		regedit /s jp.reg
-		::If you doubt the line below this, reddit.com/r/computers/s/Pa11pjBory
-		sc start "SysMain">nul & sc config "SysMain" start=auto>nul
-	)
-	goto home
+type chromium.txt
+type firefox.txt
+echo Press any key to return...
+pause>nul
+goto home
 )
 if !el!==2 (
 	echo Name: Windows Search(WSearch)
