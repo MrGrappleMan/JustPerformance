@@ -1,5 +1,4 @@
 @echo off
-cd C:\JustPerformance\
 setlocal enabledelayedexpansion
 title JustPerformance
 net session
@@ -227,9 +226,9 @@ if !el!==13 (
 	echo 1.Import
 	choice /C 1X /N
 	if !el!==1 (
-		powercfg.exe -import "C:\JustPerformance\JPNormal.pow">nul
-		powercfg.exe -import "C:\JustPerformance\JPIntensive.pow">nul
-		powercfg.exe -import "C:\JustPerformance\JPAutomatic.pow">nul
+		powercfg.exe -import "!cd!\JPNormal.pow">nul
+		powercfg.exe -import "!cd!\JPIntensive.pow">nul
+		powercfg.exe -import "!cd!\JPAuto.pow">nul
 	)
 	goto home
 )
