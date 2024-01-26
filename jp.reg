@@ -74,6 +74,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
 "LongPathsEnabled"=dword:00000001
+"HiberbootEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
 "MinAnimate"="0"
@@ -118,6 +119,9 @@ Windows Registry Editor Version 5.00
 ; --------------------------------------------
 ; Other System Tweaks
 ; --------------------------------------------
+
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseHoverTime"="0"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
@@ -199,7 +203,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "DisableAcrylicBackgroundOnLogon"=dword:00000001
 
-
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"DisplayParameters"=dword:00000001
 
 ; --------------------------------------------
 ; Take Ownership
