@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get install software-properties-common curl -y
+sudo apt-get install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
 sudo add-apt-repository universe -y
