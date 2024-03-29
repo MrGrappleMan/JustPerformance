@@ -7,7 +7,7 @@ sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
 sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main
-sudo apt-fast install preload redshift-gtk snowflake-proxy tor obfs4proxy util-linux zram-config package-update-indicator system-monitoring-center boinc-client-nvidia-cuda boinc-client-opencl nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
+sudo apt-fast install preload redshift-gtk snowflake-proxy tor obfs4proxy util-linux zram-config package-update-indicator system-monitoring-center nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge thunderbird compiz-core -y
 sudo systemctl enable --now preload
 sudo swapoff /swapfile
