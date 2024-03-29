@@ -6,7 +6,6 @@ sudo add-apt-repository restricted -y
 sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y
 sudo add-apt-repository ppa:alessandro-strada/google-drive-ocamlfuse-beta -y
-sudo add-apt-repository ppa:costamagnagianfranco/boinc -y
 sudo add-apt-repository ppa:gezakovacs/ppa -y
 sudo apt-fast install preload redshift-gtk snowflake-proxy tor obfs4proxy util-linux zram-config package-update-indicator system-monitoring-center unetbootin nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge thunderbird compiz-core -y
