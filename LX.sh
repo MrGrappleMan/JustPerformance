@@ -2,7 +2,7 @@
 sudo apt-get update
 sudo apt-get install curl -y
 sudo bash -c "$(curl -sLK https://git.io/vokNn)"
-sudo curl -sL
+sudo bash -c "$(curl -sLK )"
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
