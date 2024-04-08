@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt-get 
+sudo apt-get update
+sudo apt-get install curl -y
 sudo bash -c "$(curl -sL https://git.io/vokNn)"
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
