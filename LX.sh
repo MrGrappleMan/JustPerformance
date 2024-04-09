@@ -1,8 +1,8 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install curl -y
-sudo bash -c "$(curl -sLK https://git.io/vokNn)"
-sudo bash -c "$(curl -sLK https://brightdata.com/static/earnapp/install.sh) -y"
+sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
+sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh) -y"
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
