@@ -33,7 +33,7 @@ sudo echo "Documentation=https://snowflake.torproject.org/" >>  snowflake-proxy.
 sudo echo "After=network-online.target docker.socket firewalld.service" >>  snowflake-proxy.service
 sudo echo "Wants=network-online.target" >>  snowflake-proxy.service
 sudo echo "[Service]" >>  snowflake-proxy.service
-sudo echo "ExecStart=/usr/bin/snowflake-proxy -capacity 128" >>  snowflake-proxy.service
+sudo echo "ExecStart=/usr/bin/snowflake-proxy -capacity 65536" >>  snowflake-proxy.service
 sudo echo "Restart=always" >>  snowflake-proxy.service
 sudo echo "RestartSec=5" >>  snowflake-proxy.service
 sudo echo "[Install]" >>  snowflake-proxy.service
