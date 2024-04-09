@@ -1,7 +1,7 @@
 #!/bin/bash
 apt-get update
 apt-get upgrade -y
-apt-get ins
+apt-get install sudo -y
 sudo apt-get update
 sudo apt-get install curl -y
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
