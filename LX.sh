@@ -4,7 +4,7 @@ apt-get upgrade -y
 apt-get install sudo -y
 sudo apt-get install curl wget -y
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
-sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y
+sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y > nul
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
@@ -16,6 +16,7 @@ sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mi
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
+sudo apt-fast update
 sudo apt-fast install preload snowflake-proxy unattended-upgrades apt-listchanges tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge firefox thunderbird compiz-core package-update-indicator chrome -y
 sudo systemctl enable --now preload
