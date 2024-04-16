@@ -19,6 +19,7 @@ sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mi
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
+echo Installing other packages...
 sudo apt-fast update
 sudo apt-fast install microsoft-edge-dev preload snowflake-proxy unattended-upgrades apt-listchanges tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge firefox thunderbird compiz-core package-update-indicator chrome -y
