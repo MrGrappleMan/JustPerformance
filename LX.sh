@@ -2,11 +2,12 @@
 apt-get update
 apt-get upgrade -y
 apt-get install sudo -y
-echo cURL and w
+echo cURL and WGet...
 sudo apt-get install curl wget -y
 echo APT-Fast...
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)" > nul
 sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y > nul
+ech
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
