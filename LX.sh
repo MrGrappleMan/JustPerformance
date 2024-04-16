@@ -47,8 +47,8 @@ sudo systemctl enable --now snowflake-proxy
 cd /etc/apt/apt.conf.d/
 sudo echo Unattended-Upgrade::Allowed-Origins {
 sudo echo "\"${distro_id}:${distro_codename}-security\"";
-    "TorProject:${distro_codename}";
-};
+sudo echo "\"TorProject:${distro_codename}\"";
+sudo echo };
 Unattended-Upgrade::Package-Blacklist {
 };
 cd /etc/tor/
