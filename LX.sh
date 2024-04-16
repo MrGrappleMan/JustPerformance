@@ -45,8 +45,8 @@ sudo echo "[Install]" >>  snowflake-proxy.service
 sudo echo "WantedBy=multi-user.target" >>  snowflake-proxy.service
 sudo systemctl enable --now snowflake-proxy
 cd /etc/apt/apt.conf.d/
-Unattended-Upgrade::Allowed-Origins {
-    "${distro_id}:${distro_codename}-security";
+sudo echo Unattended-Upgrade::Allowed-Origins {
+sudo echo ""${distro_id}:${distro_codename}-security";
     "TorProject:${distro_codename}";
 };
 Unattended-Upgrade::Package-Blacklist {
