@@ -2,7 +2,7 @@
 apt-get update
 apt-get upgrade -y
 apt-get install sudo -y
-echo C
+echo cURL and w
 sudo apt-get install curl wget -y
 echo APT-Fast...
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)" > nul
