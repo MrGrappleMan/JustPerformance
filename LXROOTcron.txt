@@ -1,3 +1,1 @@
 */20 * * * * boinccmd --acct_mgr sync
-@hourly sudo apt-fast update
-@hourly sudo apt-fast dist-upgrade -y
