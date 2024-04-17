@@ -2,6 +2,7 @@
 apt-get update
 apt-get upgrade -y
 apt-get install sudo -y
+sudo apt-get update
 sudo apt-get install curl wget -y
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
 sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y > nul
