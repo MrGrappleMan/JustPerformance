@@ -51,6 +51,10 @@ sudo echo "\"TorProject:${distro_codename}\""; > 50unattended-upgrades
 sudo echo }; > 50unattended-upgrades
 sudo echo Unattended-Upgrade::Package-Blacklist { > 50unattended-upgrades
 sudo echo }; > 50unattended-upgrades
+sudo echo APT::Periodic::Update-Package-Lists "1";
+sudo echo APT::Periodic::AutocleanInterval "5";
+sudo echo APT::Periodic::Unattended-Upgrade "1";
+sudo echo APT::Periodic::Verbose "1";
 cd /etc/tor/
 sudo echo "BridgeRelay 1" > torrc
 sudo echo "ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy" >> torrc
