@@ -99,4 +99,9 @@ echo "[Time]\nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.con
 sudo apt-fast dist-upgrade -y
 cd ~/
 clear
-echo sc
+echo "  _____                   _ ";
+echo " |  __ \                 | |";
+echo " | |  | | ___  _ __   ___| |";
+echo " | |  | |/ _ \| '_ \ / _ \ |";
+echo " | |__| | (_) | | | |  __/_|";
+echo " |_____/ \___/|_| |_|\___(_)";
