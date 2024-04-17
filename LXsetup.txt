@@ -1,4 +1,4 @@
-# Quick access from bit.ly/LXsetup
+# Quick access: bit.ly/LXsetup
 
 # Main script
 sudo bash -c "$(curl -sL https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
