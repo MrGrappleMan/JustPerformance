@@ -1,0 +1,65 @@
+# Quick access from 
+
+# Main script
+sudo bash -c "$(curl -sL https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
+
+# CPU Governor
+sudo apt install cpufrequtils -y
+[For Performance]:
+sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
+[For OnDemand(default)]:
+sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
+
+# BOINC
+EMAIL=
+PASSWORD=
+sudo apt install boinc-client boinc-virtualbox -y
+sudo systemctl enable --now boinc-client
+sudo usermod -aG boinc $USER
+boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
+
+# Google Drive OCamlFUSE
+sudo apt install google-drive-ocamlfuse -y
+
+# rtl88x2bu WiFi Driver
+cd ~/
+git clone https://github.com/cilynx/rtl88x2bu.git
+cd rtl88x2bu
+VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)
+sudo rsync -rvhP ./ /usr/src/rtl88x2bu-${VER}
+sudo dkms add -m  -v ${VER}
+sudo dkms build -m rtl88x2bu -v ${VER}
+sudo dkms install -m rtl88x2bu -v ${VER}
+sudo modprobe 88x2bu
+
+# Proxy Sharing
+# !`Setup----------
+cd /tmp/
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+curl -fsSL https://test.docker.com -o dck.sh
+sudo sh dck.sh
+sudo systemctl enable --now docker
+# `EarnFM----------
+APIKEY=
+sudo docker run -d --name earnfm-client -e EARNFM_TOKEN="$APIKEY" earnfm/earnfm-client:latest
+# `Honeygain----------
+EMAIL=
+PASSWORD=
+DEVICENAME=
+sudo docker run -d --name honeygain honeygain/honeygain -tou-accept -email $EMAIL -pass $PASSWORD -device $DEVICENAME
+# `PawnsApp----------
+EMAIL=
+PASSWORD=
+DEVICENAME=
+DEVICEID=
+sudo docker run -d --name pawns-cli iproyal/pawns-cli:latest -email=$EMAIL -password=$PASSWORD -device-name=$DEVICENAME -device-id=$DEVICEID -accept-tos
+# `Repocket----------
+EMAIL=
+APIKEY=
+sudo docker run -d --name repocket repocket/repocket -RP_EMAIL=$EMAIL -RP_API_KEY=$APIKEY
+# `EarnApp----------
+earnapp register
+# !`Final----------
+CONTAINERS='honeygain repocket earnfm-client pawns-cli'
+sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --include-stopped --include-restarting --revive-stopped --interval 300 $CONTAINERS
+sudo docker update --restart=always --memory-swap=-1 --cpus=0.000 --cpu-quota=0 --pids-limit=-1 --cpu-rt-period=2000000 $(docker ps -q)
