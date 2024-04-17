@@ -54,7 +54,6 @@ sudo echo }; >> 50unattended-upgrades
 sudo echo APT::Periodic::Update-Package-Lists "1"; > 20auto-upgrades
 sudo echo APT::Periodic::AutocleanInterval "5"; >> 20auto-upgrades
 sudo echo APT::Periodic::Unattended-Upgrade "1"; >> 20auto-upgrades
-sudo echo APT::Periodic::Verbose "1"; >> 20auto-upgrades
 cd /etc/tor/
 sudo echo "BridgeRelay 1" > torrc
 sudo echo "ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy" >> torrc
