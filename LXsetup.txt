@@ -2,7 +2,7 @@
 
 # Main script
 wget -qO- https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh > /tmp/LX.sh && sudo bash /tmp/LX.sh
-sudo bash -c "$(curl -sL )"
+### sudo bash -c "$(curl -sL )"
 
 # CPU Governor
 sudo apt install cpufrequtils -y
