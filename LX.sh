@@ -3,7 +3,7 @@ apt upgrade -y
 apt install sudo -y
 sudo apt update
 sudo apt install curl wget -y
-sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
+sudo bash -c "$(curl -sL -k https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
 sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
