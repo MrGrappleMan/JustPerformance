@@ -1,7 +1,7 @@
 # Quick access: bit.ly/LXsetup
 
 # Main script
-sudo bash -c "$(curl -sL -k https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
+sudo bash -c "$(curl -sL https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
 
 # CPU Governor
 sudo apt install cpufrequtils -y
