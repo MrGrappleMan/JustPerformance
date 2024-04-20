@@ -1,6 +1,7 @@
 sudo apt update
 sudo apt install curl zsh wget -y
 sudo /bin/bash -c "$(curl -sL https://git.io/vokNn)"
+sudo apt-fast update
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
