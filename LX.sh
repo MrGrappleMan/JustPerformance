@@ -1,8 +1,8 @@
 apt update
 apt upgrade -y
 apt install sudo -y
-sudo apt-get update
-sudo apt-get install curl wget -y
+sudo apt update
+sudo apt install curl wget -y
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
 sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y
 sudo apt-fast install software-properties-common -y
