@@ -1,5 +1,5 @@
 apt-get update
-apt-get upgrade -y
+apt-get upgrade
 apt-get install sudo -y
 sudo apt-get update
 sudo apt-get install curl wget -y
