@@ -1,7 +1,5 @@
-apt update
-apt upgrade -y
-apt install sudo -y
 sudo apt update
+su
 sudo apt install curl wget -y
 sudo bash -c "$(curl -sL -k https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
 sudo bash -c "$(curl -sL -k https://brightdata.com/static/earnapp/install.sh)" -y
