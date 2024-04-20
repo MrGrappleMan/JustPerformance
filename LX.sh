@@ -1,6 +1,6 @@
-apt-get update
-apt-get upgrade
-apt-get install sudo -y
+apt update
+apt upgrade -y
+apt install sudo -y
 sudo apt-get update
 sudo apt-get install curl wget -y
 sudo bash -c "$(curl -sL -k https://git.io/vokNn)"
