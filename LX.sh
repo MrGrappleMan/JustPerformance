@@ -1,6 +1,6 @@
 sudo apt update
 sudo apt install curl zsh wget -y
-sudo /bin/bash -c "$(curl -sL https://git.io/vokNn)" 
+sudo /bin/bash -c "$(sudo curl -sL https://git.io/vokNn)" 
 sudo apt-fast update
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
@@ -9,7 +9,10 @@ sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
 sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
-
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+sudo rm microsoft.gpg
 sudo apt-fast update
 sudo apt-fast install microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge firefox thunderbird compiz-core package-update-indicator chrome -y
