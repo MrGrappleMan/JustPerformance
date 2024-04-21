@@ -73,10 +73,10 @@ sudo echo "DoSRefuseSingleHopClientRendezvous auto" >> torrc
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 mkdir -p tor@.service.d/ tor@default.service.d/
-echo -e '[Service]' > tor@.service.d/override.conf
-echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
-echo -e '[Service]' > tor@default.service.d/override.conf
-echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
+sudo echo -e '[Service]' > tor@.service.d/override.conf
+sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
+sudo echo -e '[Service]' > tor@default.service.d/override.conf
+sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
 sudo systemctl enable --now tor
 sudo mkdir -v /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
@@ -84,7 +84,7 @@ sudo echo "[Timer]\nOnCalendar=\nOnCalendar=daily" > override.conf
 sudo systemctl enable --now fstrim.timer
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/t/
-echo "[Time]\nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.conf
+sudo echo "[Time]\nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.conf
 sudo apt-fast dist-upgrade -y
 cd ~/
 clear
