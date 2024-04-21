@@ -28,17 +28,17 @@ sudo echo "mkswap /dev/zram0" >> init-zram-swapping
 sudo echo "swapon -p 5 /dev/zram0" >> init-zram-swapping
 sudo systemctl enable --now zram-config
 cd /lib/systemd/system/
-sudo echo "[Unit]" >  snowflake-proxy.service
+sudo echo '[Unit]' >  snowflake-proxy.service
 sudo echo "Description=snowflake-proxy" >>  snowflake-proxy.service
 sudo echo "Documentation=man:snowflake-proxy" >>  snowflake-proxy.service
 sudo echo "Documentation=https://snowflake.torproject.org/" >>  snowflake-proxy.service
 sudo echo "After=network-online.target docker.socket firewalld.service" >>  snowflake-proxy.service
 sudo echo "Wants=network-online.target" >>  snowflake-proxy.service
-sudo echo "[Service]" >>  snowflake-proxy.service
+sudo echo '[Service]' >>  snowflake-proxy.service
 sudo echo "ExecStart=/usr/bin/snowflake-proxy -capacity 65536" >>  snowflake-proxy.service
 sudo echo "Restart=always" >>  snowflake-proxy.service
 sudo echo "RestartSec=5" >>  snowflake-proxy.service
-sudo echo "[Install]" >>  snowflake-proxy.service
+sudo echo '[Install]' >>  snowflake-proxy.service
 sudo echo "WantedBy=multi-user.target" >>  snowflake-proxy.service
 sudo systemctl enable --now snowflake-proxy
 cd /etc/tor/
