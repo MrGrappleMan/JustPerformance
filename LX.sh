@@ -15,7 +15,7 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] h
 sudo rm microsoft.gpg
 sudo apt-fast update
 sudo apt-fast install microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
-sudo apt-fast purge firefox thunderbird compiz-core package-update-indicator chrome -y
+sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
 sudo swapoff /swapfile
 cd /usr/bin/
