@@ -74,7 +74,9 @@ sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 mkdir -p tor@.service.d/ tor@default.service.d/
 echo -e "[Service]\nNoNewPrivileges=no" > tor@.service.d/override.conf
-echo -e "[Service]\nNoNewPrivileges=no" > tor@default.service.d/override.conf
+echo -e "[Service]\nNoNewPrivileges=no" > tor@.service.d/override.conf
+echo -e "[Service]" > tor@default.service.d/override.conf
+echo -e NoNewPrivileges=no" > tor@default.service.d/override.conf
 sudo systemctl enable --now tor
 sudo mkdir -v /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
