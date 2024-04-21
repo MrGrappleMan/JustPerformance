@@ -4,7 +4,6 @@
 sudo bash -c "$(curl -sL https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh)"
 
 # CPU Governor
-sudo apt install cpufrequtils -y
 [For Performance]:
 sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
 [For OnDemand(default)]:
