@@ -85,9 +85,7 @@ sudo systemctl enable --now fstrim.timer
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/t/
 sudo echo "[Time]" > timesyncd.conf
-sudo echo "nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.conf
-sudo echo "[Time]\nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.conf
-sudo echo "[Time]\nNTP=time.google.com\nFallbackNTP=time.windows.com" > timesyncd.conf
+sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 sudo apt-fast dist-upgrade -y
 cd ~/
 clear
