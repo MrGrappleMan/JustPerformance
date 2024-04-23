@@ -42,6 +42,7 @@ sudo echo '[Install]' >>  snowflake-proxy.service
 sudo echo "WantedBy=multi-user.target" >>  snowflake-proxy.service
 sudo systemctl enable --now snowflake-proxy
 cd /etc/tor/
+sudo systemctl enable --now tor
 sudo echo "BridgeRelay 1" > torrc
 sudo echo "ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy" >> torrc
 sudo echo "ServerTransportListenAddr obfs4 0.0.0.0:9001" >> torrc
