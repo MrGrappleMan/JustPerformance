@@ -19,6 +19,7 @@ sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
 sudo swapoff /swapfile
 cd /usr/bin/
+sudo systemctl enable --now zram-config
 sudo echo '#!/bin/sh' > init-zram-swapping
 sudo echo "modprobe zram" >> init-zram-swapping
 sudo echo "totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`" >> init-zram-swapping
@@ -26,7 +27,6 @@ sudo echo "mem=$((totalmem * 1024))" >> init-zram-swapping
 sudo echo "echo $mem > /sys/block/zram0/disksize" >> init-zram-swapping
 sudo echo "mkswap /dev/zram0" >> init-zram-swapping
 sudo echo "swapon -p 5 /dev/zram0" >> init-zram-swapping
-sudo systemctl enable --now zram-config
 cd /lib/systemd/system/
 sudo echo '[Unit]' >  snowflake-proxy.service
 sudo echo "Description=snowflake-proxy" >>  snowflake-proxy.service
