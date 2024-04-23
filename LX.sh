@@ -19,7 +19,7 @@ sudo apt-fast install zsh microsoft-edge-dev cpufrequtils preload snowflake-prox
 sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
 sudo swapoff /swapfile
-sudo swapon /swapfile 
+sudo swapon -p 1 /swapfile
 cd /usr/bin/
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
