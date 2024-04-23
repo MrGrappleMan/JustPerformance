@@ -29,7 +29,7 @@ sudo echo "totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e '
 sudo echo "mem=$((totalmem * 1024))" >> init-zram-swapping
 sudo echo "echo $mem > /sys/block/zram0/disksize" >> init-zram-swapping
 sudo echo "mkswap /dev/zram0" >> init-zram-swapping
-sudo echo "swapon -p  /dev/zram0" >> init-zram-swapping
+sudo echo "swapon -p 1 /dev/zram0" >> init-zram-swapping
 cd /lib/systemd/system/
 sudo echo '[Unit]' >  snowflake-proxy.service
 sudo echo "Description=snowflake-proxy" >>  snowflake-proxy.service
