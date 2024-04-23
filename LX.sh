@@ -91,6 +91,7 @@ cd /etc/systemd/t/
 sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 sudo apt-fast dist-upgrade -y
+sudo
 cd ~/
 clear
 echo Done!
