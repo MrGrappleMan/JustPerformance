@@ -18,8 +18,6 @@ sudo apt-fast update
 sudo apt-fast install zsh microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
-sudo swapoff /swapfile
-sudo swapon -p 1 /swapfile
 cd /usr/bin/
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
