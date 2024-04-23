@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install curl zsh wget -y
+sudo apt install curl wget -y
 sudo /bin/bash -c "$(sudo curl -sL https://git.io/vokNn)" 
 sudo apt-fast update
 sudo apt-fast install software-properties-common -y
@@ -14,7 +14,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt-fast update
-sudo apt-fast install microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
+sudo apt-fast install zsh microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd -y
 sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
 sudo swapoff /swapfile
