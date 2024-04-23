@@ -20,6 +20,7 @@ sudo systemctl enable --now preload
 sudo swapoff /swapfile
 cd /usr/bin/
 sudo systemctl enable --now zram-config
+
 sudo echo '#!/bin/sh' > init-zram-swapping
 sudo echo "modprobe zram" >> init-zram-swapping
 sudo echo "totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`" >> init-zram-swapping
