@@ -17,13 +17,43 @@ sudo rm microsoft.gpg
 sudo apt-fast update
 sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutiles preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
 sudo apt-fast purge firefox thunderbird -y
+# ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now preload
+# ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades
+sudo systemctl stop unattended-upgrades
+cd /etc/apt/apt.conf.d/
+cat > 50unattended-upgrades << 'EOL'
+Unattended-Upgrade::Allowed-Origins {
+	"${distro_id}:${distro_codename}";
+	"${distro_id}:${distro_codename}-security";
+	"${distro_id}ESMApps:${distro_codename}-apps-security";
+	"${distro_id}ESM:${distro_codename}-infra-security";
+	"${distro_id}:${distro_codename}-updates";
+	"${distro_id}:${distro_codename}-proposed";
+	"${distro_id}:${distro_codename}-backports";
+	Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+	Unattended-Upgrade::DevRelease "auto";
+	Unattended-Upgrade::MinimalSteps "false";
+	Unattended-Upgrade::InstallOnShutdown "false";
+	Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+	Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+	Unattended-Upgrade::Remove-Unused-Dependencies "true";
+	Unattended-Upgrade::Automatic-Reboot "false";
+	Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+	Unattended-Upgrade::SyslogEnable "false";
+	Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";
+	Unattended-Upgrade::Allow-downgrade "false";
+	Unattended-Upgrade::Verbose "false";
+	Unattended-Upgrade::Debug "false";
+};
+EOL
+sudo systemctl enable --now unattended-upgrades
+# ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
-sudo systemctl enable --now tor
 sudo systemctl stop zram-config
 cd /usr/bin/
-cat > file << 'EOL'
+cat > init-zram-swapping << 'EOL'
 #!/bin/sh
 modprobe zram
 totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
@@ -32,6 +62,8 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 16 /dev/zram0
 EOL
+sudo systemctl enable --now zram-config
+# ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
 cat > snowflake-proxy.service << 'EOL'
 [Unit]
@@ -48,8 +80,10 @@ RestartSec=5
 WantedBy=multi-user.target
 EOL
 sudo systemctl enable --now snowflake-proxy
-cd /etc/tor/
+# ----------------------------------------------------------------------------------------------------
+sudo systemctl enable --now tor
 sudo systemctl stop tor
+cd /etc/tor/
 cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -88,11 +122,13 @@ sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
 sudo echo -e '[Service]' > tor@default.service.d/override.conf
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
 sudo systemctl enable --now tor
+# ----------------------------------------------------------------------------------------------------
 sudo mkdir -v /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
 sudo echo '[Timer]' > override.conf
 sudo echo "OnCalendar=\nOnCalendar=daily" >> override.conf
 sudo systemctl enable --now fstrim.timer
+# ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/t/
 sudo echo '[Time]' > timesyncd.conf
