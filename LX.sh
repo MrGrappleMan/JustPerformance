@@ -15,7 +15,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt-fast update
-sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutiles preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
+sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutiles preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades apt-listchanges -y
 sudo apt-fast purge firefox thunderbird -y
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now preload
@@ -32,21 +32,29 @@ Unattended-Upgrade::Allowed-Origins {
 	"${distro_id}:${distro_codename}-updates";
 	"${distro_id}:${distro_codename}-proposed";
 	"${distro_id}:${distro_codename}-backports";
-	Unattended-Upgrade::AutoFixInterruptedDpkg "true";
-	Unattended-Upgrade::DevRelease "auto";
-	Unattended-Upgrade::MinimalSteps "false";
-	Unattended-Upgrade::InstallOnShutdown "false";
-	Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
-	Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
-	Unattended-Upgrade::Remove-Unused-Dependencies "true";
-	Unattended-Upgrade::Automatic-Reboot "false";
-	Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
-	Unattended-Upgrade::SyslogEnable "false";
-	Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";
-	Unattended-Upgrade::Allow-downgrade "false";
-	Unattended-Upgrade::Verbose "false";
-	Unattended-Upgrade::Debug "false";
+ 	"TorProject:${distro_codename}";
 };
+Unattended-Upgrade::Package-Blacklist {
+};
+Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+Unattended-Upgrade::DevRelease "auto";
+Unattended-Upgrade::MinimalSteps "false";
+Unattended-Upgrade::InstallOnShutdown "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+Unattended-Upgrade::SyslogEnable "false";
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";
+Unattended-Upgrade::Allow-downgrade "false";
+Unattended-Upgrade::Verbose "false";
+Unattended-Upgrade::Debug "false";
+EOL
+cat > 20auto-upgrades << 'EOL'
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::AutocleanInterval "1";
+APT::Periodic::Unattended-Upgrade "1";
 EOL
 sudo systemctl enable --now unattended-upgrades
 # ----------------------------------------------------------------------------------------------------
@@ -60,7 +68,7 @@ totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
 mem=$((totalmem * 1024))
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
-swapon -p 16 /dev/zram0
+swapon -p 64 /dev/zram0
 EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
