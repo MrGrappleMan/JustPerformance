@@ -10,13 +10,63 @@ sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo sy
 [For OnDemand(default)]:
 sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
 
-# BOINC
+# Science United
 EMAIL=
 PASSWORD=
-sudo apt install boinc-client boinc-virtualbox -y
+sudo apt install boinc-client nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y
 sudo systemctl enable --now boinc-client
 sudo usermod -aG boinc $USER
 boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
+cd /etc/boinc-client/
+cat > cc-config.xml << 'EOL'
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc_config>
+    <log_flags>
+		<task>0</task>
+		<file_xfer>0</file_xfer>
+    	<sched_ops>0</sched_ops>
+    </log_flags>
+    <options>
+	<abort_jobs_on_exit>1</abort_jobs_on_exit>
+	<allow_multiple_clients>0</allow_multiple_clients>
+	<allow_remote_gui_rpc>0</allow_remote_gui_rpc>
+	<disallow_attach>0</disallow_attach>
+	<dont_check_file_sizes>0</dont_check_file_sizes>
+	<dont_contact_ref_site>0</dont_contact_ref_site>
+	<dont_suspend_nci>0</dont_suspend_nci>
+	<dont_use_vbox>0</dont_use_vbox>
+	<exit_before_start>0</exit_before_start>
+	<exit_when_idle>0</exit_when_idle>
+	<fetch_minimal_work>0</fetch_minimal_work>
+	<fetch_on_update>1</fetch_on_update>
+	<lower_client_priority>0</lower_client_priority>
+	<max_event_log_lines>1</max_event_log_lines>
+	<max_file_xfers>262144</max_file_xfers>
+	<max_file_xfers_per_project>262144</max_file_xfers_per_project>
+	<max_tasks_reported>262144</max_tasks_reported>
+	<no_alt_platform>0</no_alt_platform>
+	<no_gpus>0</no_gpus>
+	<no_info_fetch>0</no_info_fetch>
+	<no_opencl>0</no_opencl>
+	<no_priority_change>0</no_priority_change>
+	<no_rdp_check>1</no_rdp_check>
+	<os_random_only>0</os_random_only>
+	<process_priority>4</process_priority>
+	<process_priority_special>4</process_priority_special>
+	<rec_half_life_days>30</rec_half_life_days>
+	<report_results_immediately>1</report_results_immediately>
+	<run_apps_manually>0</run_apps_manually>
+	<save_stats_days>0</save_stats_days>
+	<simple_gui_only>0</simple_gui_only>
+	<skip_cpu_benchmarks>0</skip_cpu_benchmarks>
+	<suppress_net_info>0</suppress_net_info>
+	<use_all_gpus>1</use_all_gpus>
+	<use_certs>1</use_certs>
+	<use_certs_only>0</use_certs_only>
+	<vbox_window>0</vbox_window>
+    </options>
+</cc_config>
+EOL
 
 # rtl88x2bu WiFi Driver
 cd ~/
