@@ -124,7 +124,8 @@ DoSRefuseSingleHopClientRendezvous auto
 EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
-sudo mkdir -p tor@.service.d/ tor@default.service.d/
+sudo mkdir tor@.service.d
+sudo mkdir tor@default.service.d
 sudo echo -e '[Service]' > tor@.service.d/override.conf
 sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
 sudo echo -e '[Service]' > tor@default.service.d/override.conf
