@@ -23,7 +23,7 @@ sudo systemctl enable --now preload
 sudo systemctl enable --now unattended-upgrades
 sudo systemctl stop unattended-upgrades
 cd /etc/apt/apt.conf.d/
-cat > 50unattended-upgrades << 'EOL'
+sudo cat > 50unattended-upgrades << 'EOL'
 Unattended-Upgrade::Allowed-Origins {
 	"${distro_id}:${distro_codename}";
 	"${distro_id}:${distro_codename}-security";
@@ -51,7 +51,7 @@ Unattended-Upgrade::Allow-downgrade "false";
 Unattended-Upgrade::Verbose "false";
 Unattended-Upgrade::Debug "false";
 EOL
-cat > 20auto-upgrades << 'EOL'
+sudo cat > 20auto-upgrades << 'EOL'
 APT::Periodic::Update-Package-Lists "1";
 APT::Periodic::AutocleanInterval "1";
 APT::Periodic::Unattended-Upgrade "1";
@@ -61,7 +61,7 @@ sudo systemctl enable --now unattended-upgrades
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 cd /usr/bin/
-cat > init-zram-swapping << 'EOL'
+sudo cat > init-zram-swapping << 'EOL'
 #!/bin/sh
 modprobe zram
 totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
@@ -73,7 +73,7 @@ EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
-cat > snowflake-proxy.service << 'EOL'
+sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
 Description=snowflake-proxy
 Documentation=man:snowflake-proxy
@@ -92,7 +92,7 @@ sudo systemctl enable --now snowflake-proxy
 sudo systemctl enable --now tor
 sudo systemctl stop tor
 cd /etc/tor/
-cat > torrc << 'EOL'
+sudo cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 ServerTransportListenAddr obfs4 0.0.0.0:9001
@@ -124,14 +124,14 @@ DoSRefuseSingleHopClientRendezvous auto
 EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
-mkdir -p tor@.service.d/ tor@default.service.d/
+sudo mkdir -p tor@.service.d/ tor@default.service.d/
 sudo echo -e '[Service]' > tor@.service.d/override.conf
 sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
 sudo echo -e '[Service]' > tor@default.service.d/override.conf
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
 sudo systemctl enable --now tor
 # ----------------------------------------------------------------------------------------------------
-sudo mkdir -v /etc/systemd/system/fstrim.timer.d/
+sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
 sudo echo '[Timer]' > override.conf
 sudo echo "OnCalendar=\nOnCalendar=daily" >> override.conf
@@ -143,7 +143,7 @@ sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
-cat > sysctl.conf << 'EOL'
+sudo cat > sysctl.conf << 'EOL'
 fs.file-max = 999999999999999999
 vm.swappiness = 200
 vm.max_map_count = 999999999
