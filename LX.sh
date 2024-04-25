@@ -15,65 +15,71 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt-fast update
-sudo apt-fast install zsh microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
+sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutiles preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
 sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
 sudo systemctl enable --now unattended-upgrades
 sudo systemctl enable --now zram-config
 sudo systemctl enable --now tor
-cd /usr/bin/
 sudo systemctl stop zram-config
-sudo echo '#!/bin/sh' > init-zram-swapping
-sudo echo "modprobe zram" >> init-zram-swapping
-sudo echo "totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`" >> init-zram-swapping
-sudo echo "mem=$((totalmem * 1024))" >> init-zram-swapping
-sudo echo "echo $mem > /sys/block/zram0/disksize" >> init-zram-swapping
-sudo echo "mkswap /dev/zram0" >> init-zram-swapping
-sudo echo "swapon -p 16 /dev/zram0" >> init-zram-swapping
+cd /usr/bin/
+cat > file << 'EOL'
+#!/bin/sh
+modprobe zram
+totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
+mem=$((totalmem * 1024))
+echo $mem > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon -p 16 /dev/zram0
+EOL
 cd /lib/systemd/system/
-sudo echo '[Unit]' >  snowflake-proxy.service
-sudo echo "Description=snowflake-proxy" >>  snowflake-proxy.service
-sudo echo "Documentation=man:snowflake-proxy" >>  snowflake-proxy.service
-sudo echo "Documentation=https://snowflake.torproject.org/" >>  snowflake-proxy.service
-sudo echo "After=network-online.target docker.socket firewalld.service" >>  snowflake-proxy.service
-sudo echo "Wants=network-online.target" >>  snowflake-proxy.service
-sudo echo '[Service]' >>  snowflake-proxy.service
-sudo echo "ExecStart=/usr/bin/snowflake-proxy -capacity 65536" >>  snowflake-proxy.service
-sudo echo "Restart=always" >>  snowflake-proxy.service
-sudo echo "RestartSec=5" >>  snowflake-proxy.service
-sudo echo '[Install]' >>  snowflake-proxy.service
-sudo echo "WantedBy=multi-user.target" >>  snowflake-proxy.service
+cat > snowflake-proxy.service << 'EOL'
+[Unit]
+Description=snowflake-proxy
+Documentation=man:snowflake-proxy
+Documentation=https://snowflake.torproject.org/
+After=network-online.target docker.socket firewalld.service
+Wants=network-online.target
+[Service]
+ExecStart=/usr/bin/snowflake-proxy -capacity 65536
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
+EOL
 sudo systemctl enable --now snowflake-proxy
 cd /etc/tor/
 sudo systemctl stop tor
-sudo echo "BridgeRelay 1" > torrc
-sudo echo "ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy" >> torrc
-sudo echo "ServerTransportListenAddr obfs4 0.0.0.0:9001" >> torrc
-sudo echo "ExtORPort auto" >> torrc
-sudo echo "ORPort auto" >> torrc
-sudo echo "KeepBindCapabilities auto" >> torrc
-sudo echo "ExtendByEd25519ID auto" >> torrc
-sudo echo "ConnectionPadding auto" >> torrc
-sudo echo "RefuseUnknownExits auto" >> torrc
-sudo echo "GeoIPExcludeUnknown 0" >> torrc
-sudo echo "PreferIPv6Automap" >> torrc
-sudo echo "HardwareAccel 1" >> torrc
-sudo echo "ClientOnly 0" >> torrc
-sudo echo "DNSPort auto" >> torrc
-sudo echo "AvoidDiskWrites 0" >> torrc
-sudo echo "UseGuardFraction auto" >> torrc
-sudo echo "OptimisticData auto" >> torrc
-sudo echo "UseMicrodescriptors auto" >> torrc
-sudo echo "CacheDirectoryGroupReadable auto" >> torrc
-sudo echo "ExitRelay auto" >> torrc
-sudo echo "SocksPort auto" >> torrc
-sudo echo "KeepBindCapabilities auto" >> torrc
-sudo echo "ClientAutoIPv6ORPort 1" >> torrc
-sudo echo "DoSCircuitCreationEnabled auto" >> torrc
-sudo echo "DoSConnectionEnabled auto" >> torrc
-sudo echo "DisableNetwork 0" >> torrc
-sudo echo "DisableAllSwap 0" >> torrc
-sudo echo "DoSRefuseSingleHopClientRendezvous auto" >> torrc
+cat > torrc << 'EOL'
+BridgeRelay 1" > torrc
+ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+ServerTransportListenAddr obfs4 0.0.0.0:9001
+ExtORPort auto
+ORPort auto
+KeepBindCapabilities auto
+ExtendByEd25519ID auto
+ConnectionPadding auto
+RefuseUnknownExits auto
+GeoIPExcludeUnknown 0
+PreferIPv6Automap
+HardwareAccel 1
+ClientOnly 0
+DNSPort auto
+AvoidDiskWrites 0
+UseGuardFraction auto
+OptimisticData auto
+UseMicrodescriptors auto
+CacheDirectoryGroupReadable auto
+ExitRelay auto
+SocksPort auto
+KeepBindCapabilities auto
+ClientAutoIPv6ORPort 1
+DoSCircuitCreationEnabled auto
+DoSConnectionEnabled auto
+DisableNetwork 0
+DisableAllSwap 0
+DoSRefuseSingleHopClientRendezvous auto
+EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 mkdir -p tor@.service.d/ tor@default.service.d/
