@@ -90,8 +90,6 @@ sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/t/
 sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
-sudo apt-fast dist-upgrade -y
-sudo
 cd ~/
 clear
 echo Done!
