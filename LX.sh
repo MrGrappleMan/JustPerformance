@@ -18,6 +18,7 @@ sudo apt-fast update
 sudo apt-fast install zsh microsoft-edge-dev cpufrequtils preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
 sudo apt-fast purge firefox thunderbird -y
 sudo systemctl enable --now preload
+sudo systemctl enable --now unattended-upgrades
 cd /usr/bin/
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
