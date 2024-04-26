@@ -16,9 +16,7 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] h
 sudo rm microsoft.gpg
 sudo apt-fast update
 sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils preload snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades apt-listchanges -y
-sudo apt-fast purge firefox thunderbird -y
-# ----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now preload
+sudo apt-fast purge firefox chro thunderbird -y
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades
 sudo systemctl stop unattended-upgrades
