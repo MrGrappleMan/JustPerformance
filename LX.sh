@@ -166,6 +166,7 @@ kernel.sched_migration_cost_ns = 5000000
 zswap.enabled = 0
 EOL
 # ----------------------------------------------------------------------------------------------------
+sudo apt-fast autoremove -y
 cd ~/
 clear
 echo Done!
