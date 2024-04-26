@@ -143,7 +143,6 @@ sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
 sudo cat > sysctl.conf << 'EOL'
-fs.file-max = 999999999999999999
 vm.swappiness = 200
 vm.max_map_count = 999999999
 fs.file-max = 999999999999999999
