@@ -152,9 +152,10 @@ sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
+zswap.enabled = 0
 vm.swappiness = 200
-vm.max_map_count = 2100000000
-fs.file-max = 999999999999999999
+vm.max_map_count = 2147483647
+fs.file-max = 922337000000000000
 net.core.wmem_default = 31457280
 net.core.rmem_default = 31457280
 net.core.wmem_max = 999999999
@@ -171,7 +172,6 @@ net.ipv4.udp_wmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
-zswap.enabled = 0
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast autoremove -y
