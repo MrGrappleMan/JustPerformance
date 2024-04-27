@@ -21,6 +21,7 @@ sudo apt-fast purge firefox chrome thunderbird -y
 sudo systemctl enable --now unattended-upgrades
 sudo systemctl stop unattended-upgrades
 cd /etc/apt/apt.conf.d/
+sudo chmod 777 /etc/apt/apt.conf.d/50unattended-upgrades
 sudo cat > 50unattended-upgrades << 'EOL'
 Unattended-Upgrade::Allowed-Origins {
 	"${distro_id}:${distro_codename}";
@@ -49,6 +50,7 @@ Unattended-Upgrade::Allow-downgrade "false";
 Unattended-Upgrade::Verbose "false";
 Unattended-Upgrade::Debug "false";
 EOL
+sudo chmod 777 /etc/apt/apt.conf.d/20auto-upgrades
 sudo cat > 20auto-upgrades << 'EOL'
 APT::Periodic::Update-Package-Lists "1";
 APT::Periodic::AutocleanInterval "1";
@@ -59,6 +61,7 @@ sudo systemctl enable --now unattended-upgrades
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 cd /usr/bin/
+sudo chmod 777 /usr/bin/init-zram-swapping
 sudo cat > init-zram-swapping << 'EOL'
 #!/bin/sh
 modprobe zram
@@ -71,6 +74,7 @@ EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
+chmod 777 cd /lib/systemd/system/snowflake-proxy.service
 sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
 Description=snowflake-proxy
@@ -90,6 +94,7 @@ sudo systemctl enable --now snowflake-proxy
 sudo systemctl enable --now tor
 sudo systemctl stop tor
 cd /etc/tor/
+chmod /etc/tor/torrc
 sudo cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -124,6 +129,7 @@ sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 sudo mkdir tor@.service.d
 sudo mkdir tor@default.service.d
+sudo chmod 777 tor@.service.d tor@default.service.d
 sudo echo -e '[Service]' > tor@.service.d/override.conf
 sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
 sudo echo -e '[Service]' > tor@default.service.d/override.conf
@@ -132,12 +138,14 @@ sudo systemctl enable --now tor
 # ----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
+chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
 sudo echo '[Timer]' > override.conf
 sudo echo "OnCalendar=\nOnCalendar=daily" >> override.conf
 sudo systemctl enable --now fstrim.timer
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
-cd /etc/systemd/t/
+cd /etc/systemd/
+chmod 777 /etc/systemd/timesyncd.conf
 sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 # ----------------------------------------------------------------------------------------------------
