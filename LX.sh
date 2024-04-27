@@ -74,7 +74,7 @@ EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
-sudo chmod 777 cd /lib/systemd/system/snowflake-proxy.service
+sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
 sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
 Description=snowflake-proxy
@@ -94,7 +94,7 @@ sudo systemctl enable --now snowflake-proxy
 sudo systemctl enable --now tor
 sudo systemctl stop tor
 cd /etc/tor/
-sudo chmod /etc/tor/torrc
+sudo chmod 777 /etc/tor/torrc
 sudo cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -150,6 +150,7 @@ sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
+sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
 vm.swappiness = 200
 vm.max_map_count = 999999999
