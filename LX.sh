@@ -153,7 +153,7 @@ cd /etc/
 sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
 vm.swappiness = 200
-vm.max_map_count = 999999999
+vm.max_map_count = 2100000000
 fs.file-max = 999999999999999999
 net.core.wmem_default = 31457280
 net.core.rmem_default = 31457280
