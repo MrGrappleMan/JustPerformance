@@ -74,7 +74,7 @@ EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
-chmod 777 cd /lib/systemd/system/snowflake-proxy.service
+sudo chmod 777 cd /lib/systemd/system/snowflake-proxy.service
 sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
 Description=snowflake-proxy
@@ -94,7 +94,7 @@ sudo systemctl enable --now snowflake-proxy
 sudo systemctl enable --now tor
 sudo systemctl stop tor
 cd /etc/tor/
-chmod /etc/tor/torrc
+sudo chmod /etc/tor/torrc
 sudo cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -138,14 +138,14 @@ sudo systemctl enable --now tor
 # ----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
-chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
+sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
 sudo echo '[Timer]' > override.conf
 sudo echo "OnCalendar=\nOnCalendar=daily" >> override.conf
 sudo systemctl enable --now fstrim.timer
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
-chmod 777 /etc/systemd/timesyncd.conf
+sudo chmod 777 /etc/systemd/timesyncd.conf
 sudo echo '[Time]' > timesyncd.conf
 sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 # ----------------------------------------------------------------------------------------------------
