@@ -58,6 +58,7 @@ APT::Periodic::Unattended-Upgrade "1";
 EOL
 sudo systemctl enable --now unattended-upgrades
 # ----------------------------------------------------------------------------------------------------
+sudo swapoff /swapfile
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 cd /usr/bin/
