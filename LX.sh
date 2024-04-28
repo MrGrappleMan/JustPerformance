@@ -31,7 +31,7 @@ Unattended-Upgrade::Allowed-Origins {
 	"${distro_id}:${distro_codename}-updates";
 	"${distro_id}:${distro_codename}-proposed";
 	"${distro_id}:${distro_codename}-backports";
- 	"TorProject:${distro_codename}";
+	"TorProject:${distro_codename}";
 };
 Unattended-Upgrade::Package-Blacklist {
 };
@@ -156,7 +156,7 @@ sudo cat > sysctl.conf << 'EOL'
 zswap.enabled = 0
 vm.swappiness = 200
 vm.max_map_count = 2147483647
-fs.file-max = 922337000000000000
+fs.file-max = 9223372036800000000
 net.core.wmem_default = 31457280
 net.core.rmem_default = 31457280
 net.core.wmem_max = 999999999
