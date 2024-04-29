@@ -153,6 +153,8 @@ sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
+vm.dirty_ratio = 1
+vm.dirty_background_ratio = 1
 zswap.enabled = 0
 vm.swappiness = 200
 vm.max_map_count = 2147483647
@@ -164,10 +166,10 @@ net.core.rmem_max = 999999999
 net.core.somaxconn = 2147483647
 net.core.netdev_max_backlog = 999999999
 net.core.optmem_max = 999999999
-net.ipv4.tcp_mem = 65536 262144 9999999999
-net.ipv4.udp_mem = 65536 262144 9999999999
-net.ipv4.tcp_rmem = 8192 87380 999999999
-net.ipv4.tcp_wmem = 8192 87380 999999999
+net.ipv4.tcp_mem = 65536 9999999999999999999 9999999999999999999
+net.ipv4.udp_mem = 65536 9999999999999999999 9999999999999999999
+net.ipv4.tcp_rmem = 16384 1999999999 1999999999
+net.ipv4.tcp_wmem = 16384 1999999999 1999999999
 net.ipv4.udp_rmem_min = 16384
 net.ipv4.udp_wmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 2000000
