@@ -153,6 +153,7 @@ sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
+vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
 vm.dirty_writeback_centisecs = 100
