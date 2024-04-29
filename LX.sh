@@ -154,9 +154,9 @@ cd /etc/
 sudo chmod 777 /etc/sysctl.conf
 sudo cat > sysctl.conf << 'EOL'
 vm.dirty_background_ratio = 1
-vm.dirty_ratio = 30
-vm.dirty_writeback_centisecs = 500
-vm.dirty_expire_centisecs = 1500
+vm.dirty_ratio = 1
+vm.dirty_writeback_centisecs = 100
+vm.dirty_expire_centisecs = 100
 zswap.enabled = 0
 vm.swappiness = 200
 vm.max_map_count = 2147483647
