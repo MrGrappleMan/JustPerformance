@@ -86,6 +86,7 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 curl -fsSL https://test.docker.com -o dck.sh
 sudo sh dck.sh
 sudo systemctl enable --now docker
+sudo docker run -d --name psclient packetstream/psclient:latest -e CID=69eg
 # `EarnFM----------
 sudo docker run -d --name earnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest
 # `Honeygain----------
@@ -103,8 +104,6 @@ sudo docker run -d --name pawns-cli iproyal/pawns-cli:latest -email=$EMAIL -pass
 EMAIL=
 APIKEY=
 sudo docker run -d --name repocket repocket/repocket -RP_EMAIL=$EMAIL -RP_API_KEY=$APIKEY
-# `Packetstream----------
-sudo docker run -d --name psclient packetstream/psclient:latest -e CID=69eg
 # !`Final----------
 CONTAINERS='honeygain repocket earnfm-client pawns-cli psclient'
 sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --include-stopped --include-restarting --revive-stopped --interval 300 $CONTAINERS
