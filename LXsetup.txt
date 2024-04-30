@@ -87,7 +87,6 @@ curl -fsSL https://test.docker.com -o dck.sh
 sudo sh dck.sh
 sudo systemctl enable --now docker
 sudo docker run -d --name psclient packetstream/psclient:latest -e CID=69eg
-# `EarnFM----------
 sudo docker run -d --name earnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest
 # `Honeygain----------
 EMAIL=
