@@ -108,9 +108,9 @@ sudo docker run -d --name pawns-cli iproyal/pawns-cli:latest -email=$EMAIL -pass
 # `Repocket----------
 EMAIL=
 APIKEY=
-sudo docker run -d --name repocket repocket/repocket -RP_EMAIL=$EMAIL -RP_API_KEY=$APIKEY
+sudo docker run -d --name repocket -e RP_EMAIL=$EMAIL -e RP_API_KEY=$APIKEY repocket/repocket
 # !`Final----------
-CONTAINERS='mgmpsclient mgmearnfm-client honeygain repocket earnfm-client pawns-cli psclient'
+CONTAINERS='mgmpsclient mgmearnfm-client honeygain repocket pawns-cli earnfm-client psclient'
 sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --include-stopped --include-restarting --revive-stopped --interval 300 $CONTAINERS
 sudo docker update --restart=always --memory-swap=-1 --net=host --cpus=0.000 --cpu-quota=0 --pids-limit=-1 --cpu-rt-period=2000000 $(docker ps -q)
 # !`Remove all----------
