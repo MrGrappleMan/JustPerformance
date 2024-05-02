@@ -38,7 +38,7 @@ Unattended-Upgrade::Package-Blacklist {
 Unattended-Upgrade::AutoFixInterruptedDpkg "true";
 Unattended-Upgrade::DevRelease "auto";
 Unattended-Upgrade::MinimalSteps "false";
-Unattended-Upgrade::InstallOnShutdown "false";
+Unattended-Upgrade::InstallOnShutdown "true";
 Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
 Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
 Unattended-Upgrade::Remove-Unused-Dependencies "true";
@@ -140,15 +140,21 @@ sudo systemctl enable --now tor
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
-sudo echo '[Timer]' > override.conf
-sudo echo "OnCalendar=\nOnCalendar=daily" >> override.conf
+sudo cat > override.conf << 'EOL'
+[Timer]
+OnCalendar=
+OnCalendar=daily
+EOL
 sudo systemctl enable --now fstrim.timer
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo echo '[Time]' > timesyncd.conf
-sudo echo "NTP=time.google.com\nFallbackNTP=time.windows.com" >> timesyncd.conf
+sudo cat > timesyncd.conf << 'EOL'
+[Time]
+NTP=time.google.com
+FallbackNTP=time.windows.com
+EOL
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf
