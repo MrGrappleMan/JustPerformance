@@ -1,1 +1,2 @@
 */20 * * * * boinccmd --acct_mgr sync
+@hourly /usr/bin/unattended-upgrade -d
