@@ -15,7 +15,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt-fast update
-sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades apt-listchanges -y
+sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
 sudo apt-fast purge firefox chrome thunderbird -y
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades
@@ -47,12 +47,6 @@ Unattended-Upgrade::Skip-Updates-On-Metered-Connections "true";
 Unattended-Upgrade::Allow-downgrade "false";
 Unattended-Upgrade::Verbose "false";
 Unattended-Upgrade::Debug "false";
-EOL
-sudo chmod 777 /etc/apt/apt.conf.d/20auto-upgrades
-sudo cat > 20auto-upgrades << 'EOL'
-APT::Periodic::Update-Package-Lists "1";
-APT::Periodic::AutocleanInterval "1";
-APT::Periodic::Unattended-Upgrade "1";
 EOL
 sudo systemctl enable --now unattended-upgrades
 # ----------------------------------------------------------------------------------------------------
