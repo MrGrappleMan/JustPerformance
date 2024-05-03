@@ -1,5 +1,7 @@
-sudo echo Procedure in progress...reduce interaction with system.
-echo echo Be patient
+sudo echo Procedure in progress...reduce interaction with your system.
+ech
+apt update
+apt install su -y
 sudo apt update >/dev/null 2>&1
 sudo apt install curl wget -y >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
@@ -10,14 +12,12 @@ sudo add-apt-repository main -y >/dev/null 2>&1
 sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
-sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
 sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' >/dev/null 2>&1
 sudo rm microsoft.gpg >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-sudo apt-fast install zsh microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y >/dev/null 2>&1
+sudo apt-fast install microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y >/dev/null 2>&1
 sudo apt-fast purge firefox package-update-indicator google-chrome thunderbird -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
