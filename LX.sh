@@ -1,27 +1,29 @@
-sudo apt update
-sudo apt install curl wget -y
-sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+sudo echo Procedure in progress...reduce interaction with system.
+echo echo Be patient
+sudo apt update >/dev/null 2>&1
+sudo apt install curl wget -y >/dev/null 2>&1
+sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
-sudo apt-fast update
-sudo apt-fast install software-properties-common -y
-sudo add-apt-repository main -y
-sudo add-apt-repository restricted -y
-sudo add-apt-repository universe -y
-sudo add-apt-repository multiverse -y
+sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast install software-properties-common -y >/dev/null 2>&1
+sudo add-apt-repository main -y >/dev/null 2>&1
+sudo add-apt-repository restricted -y >/dev/null 2>&1
+sudo add-apt-repository universe -y >/dev/null 2>&1
+sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
 sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
-sudo rm microsoft.gpg
-sudo apt-fast update
-sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y
-sudo apt-fast purge firefox package-update-indicator google-chrome thunderbird -y
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' >/dev/null 2>&1
+sudo rm microsoft.gpg >/dev/null 2>&1
+sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast install zsh microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y >/dev/null 2>&1
+sudo apt-fast purge firefox package-update-indicator google-chrome thunderbird -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now unattended-upgrades
-sudo systemctl stop unattended-upgrades
-cd /etc/apt/apt.conf.d/
-sudo chmod 777 /etc/apt/apt.conf.d/50unattended-upgrades
+sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
+sudo systemctl stop unattended-upgrades >/dev/null 2>&1
+cd /etc/apt/apt.conf.d/ >/dev/null 2>&1
+sudo chmod 777 /etc/apt/apt.conf.d/50unattended-upgrades >/dev/null 2>&1
 sudo cat > 50unattended-upgrades << 'EOL'
 Unattended-Upgrade::Allowed-Origins {
 	"${distro_id}:${distro_codename}";
@@ -48,13 +50,13 @@ Unattended-Upgrade::Allow-downgrade "false";
 Unattended-Upgrade::Verbose "false";
 Unattended-Upgrade::Debug "false";
 EOL
-sudo systemctl enable --now unattended-upgrades
+sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo swapoff /swapfile
-sudo systemctl enable --now zram-config
-sudo systemctl stop zram-config
+sudo swapoff /swapfile >/dev/null 2>&1
+sudo systemctl enable --now zram-config >/dev/null 2>&1
+sudo systemctl stop zram-config >/dev/null 2>&1
 cd /usr/bin/
-sudo chmod 777 /usr/bin/init-zram-swapping
+sudo chmod 777 /usr/bin/init-zram-swapping >/dev/null 2>&1
 sudo cat > init-zram-swapping << 'EOL'
 #!/bin/sh
 modprobe zram
@@ -64,10 +66,10 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 64 /dev/zram0
 EOL
-sudo systemctl enable --now zram-config
+sudo systemctl enable --now zram-config >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
-sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
+sudo chmod 777 /lib/systemd/system/snowflake-proxy.service >/dev/null 2>&1
 sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
 Description=snowflake-proxy
@@ -82,12 +84,12 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 EOL
-sudo systemctl enable --now snowflake-proxy
+sudo systemctl enable --now snowflake-proxy >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now tor
-sudo systemctl stop tor
+sudo systemctl enable --now tor >/dev/null 2>&1
+sudo systemctl stop tor >/dev/null 2>&1
 cd /etc/tor/
-sudo chmod 777 /etc/tor/torrc
+sudo chmod 777 /etc/tor/torrc >/dev/null 2>&1
 sudo cat > torrc << 'EOL'
 BridgeRelay 1" > torrc
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -118,30 +120,30 @@ DisableNetwork 0
 DisableAllSwap 0
 DoSRefuseSingleHopClientRendezvous auto
 EOL
-sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
+sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy >/dev/null 2>&1
 cd /etc/systemd/system/
-sudo mkdir tor@.service.d
-sudo mkdir tor@default.service.d
-sudo chmod 777 tor@.service.d tor@default.service.d
-sudo echo -e '[Service]' > tor@.service.d/override.conf
-sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf
-sudo echo -e '[Service]' > tor@default.service.d/override.conf
-sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
-sudo systemctl enable --now tor
+sudo mkdir tor@.service.d >/dev/null 2>&1
+sudo mkdir tor@default.service.d >/dev/null 2>&1
+sudo chmod 777 tor@.service.d tor@default.service.d >/dev/null 2>&1
+sudo echo -e '[Service]' > tor@.service.d/override.conf >/dev/null 2>&1
+sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf >/dev/null 2>&1
+sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
+sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
+sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
+sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 cd /etc/systemd/system/fstrim.timer.d/
-sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
+sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
 [Timer]
 OnCalendar=
 OnCalendar=daily
 EOL
-sudo systemctl enable --now fstrim.timer
+sudo systemctl enable --now fstrim.timer >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
-sudo chmod 777 /etc/systemd/timesyncd.conf
+sudo chmod 777 /etc/systemd/timesyncd.conf >/dev/null 2>&1
 sudo cat > timesyncd.conf << 'EOL'
 [Time]
 NTP=time.google.com
@@ -149,7 +151,7 @@ FallbackNTP=time.windows.com
 EOL
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
-sudo chmod 777 /etc/sysctl.conf
+sudo chmod 777 /etc/sysctl.conf >/dev/null 2>&1
 sudo cat > sysctl.conf << 'EOL'
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
