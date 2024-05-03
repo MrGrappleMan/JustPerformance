@@ -18,6 +18,8 @@ sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo te
 # Science United
 EMAIL=
 PASSWORD=
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
+sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
 sudo apt install boinc-client nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y
 sudo systemctl enable --now boinc-client
 sudo usermod -aG boinc $USER
@@ -116,6 +118,3 @@ sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.soc
 sudo docker update --restart=always --memory-swap=-1 --cpus=0.000 --cpu-quota=0 --pids-limit=-1 --cpu-rt-period=2000000 $(sudo docker ps -q -a)
 # !`Remove all----------
 sudo docker rm $(sudo docker ps -q -a) -f
-
-# EarnApp
-earnapp register
