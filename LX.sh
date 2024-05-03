@@ -1,7 +1,7 @@
 sudo apt update
 sudo apt install curl wget -y
-sudo /bin/bash -c "$(sudo curl -sL https://git.io/vokNn)"
-sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y > nul
+sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
 sudo apt-fast update
 sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
@@ -15,8 +15,8 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt-fast update
-sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils snowflake-proxy tor git obfs4proxy util-linux zram-config unattended-upgrades -y
-sudo apt-fast purge firefox chrome thunderbird -y
+sudo apt-fast install zsh microsoft-edge-dev cpufrequtils coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y
+sudo apt-fast purge firefox package-update-indicator google-chrome thunderbird -y
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades
 sudo systemctl stop unattended-upgrades
@@ -178,7 +178,6 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------
-sudo apt-fast autoremove -y
 cd ~/
 clear
 echo Done!
