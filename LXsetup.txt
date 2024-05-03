@@ -1,6 +1,6 @@
 # Quick access to here: bit.ly/LXsetup
 # Sections are divided by blank lines 
-# For sections with empty variables, paste them in a text editior for editing them conviniently
+# For sections with empty variables, paste them in a text editior for editing them conveniently
 # Windows users, in the >>terminal<<:
 # To COPY use Ctrl+Shift+C
 # To PASTE use Ctrl+Shift+V
@@ -10,12 +10,10 @@
 # Ensure a stabe internet connection, or use your phone's USB Tethering feature
 https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 
-# CPU Governor
-sudo apt-fast install
 # For Performance:
-sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
+sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
 # For OnDemand(default for most distributions):
-sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
+sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
 
 # Science United
 EMAIL=
