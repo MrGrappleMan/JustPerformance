@@ -1,7 +1,6 @@
 sudo echo Procedure in progress...reduce interaction with your system.
-ech
 apt update
-apt install su -y
+apt install sudo -y
 sudo apt update >/dev/null 2>&1
 sudo apt install curl wget -y >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
