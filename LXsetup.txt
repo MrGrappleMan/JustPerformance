@@ -23,7 +23,7 @@ sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy ja
 sudo apt-fast install boinc-client nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y; sudo systemctl enable --now boinc-client; sudo usermod -aG boinc $USER
 boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
 cd /etc/boinc-client/
-cat > cc-config.xml << 'EOL'
+sudo cat > cc-config.xml << 'EOL'
 <?xml version="1.0" encoding="UTF-8" ?>
 <cc_config>
     <log_flags>
