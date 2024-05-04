@@ -6,7 +6,7 @@
 # To PASTE use Ctrl+Shift+V
 
 # Main script(to be executed before anything below this secton is)
-# Execute by copy-pasting the raw text in a terminal
+# Execute by copy-pasting the raw text from the site into a terminal
 # Ensure a stabe internet connection, or use your phone's USB Tethering feature
 https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 
@@ -20,9 +20,7 @@ EMAIL=
 PASSWORD=
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
 sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
-sudo apt install boinc-client nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y
-sudo systemctl enable --now boinc-client
-sudo usermod -aG boinc $USER
+sudo apt install boinc-client nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y; sudo systemctl enable --now boinc-client; sudo usermod -aG boinc $USER
 boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
 cd /etc/boinc-client/
 cat > cc-config.xml << 'EOL'
@@ -116,5 +114,5 @@ sudo docker run -d --name repocket -e RP_EMAIL=$EMAIL -e RP_API_KEY=$APIKEY repo
 CONTAINERS='mgmpsclient mgmearnfm-client honeygain repocket pawns-cli earnfm-client psclient'
 sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --include-stopped --include-restarting --revive-stopped --interval 300 $CONTAINERS
 sudo docker update --restart=always --memory-swap=-1 --cpus=0.000 --cpu-quota=0 --pids-limit=-1 --cpu-rt-period=2000000 $(sudo docker ps -q -a)
-# !`Remove all----------
+# !`Remove all(For emergencies)----------
 sudo docker rm $(sudo docker ps -q -a) -f
