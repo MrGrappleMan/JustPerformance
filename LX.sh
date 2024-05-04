@@ -1,3 +1,4 @@
+clear
 sudo echo Procedure in progress...reduce interaction with your system.
 apt update >/dev/null 2>&1
 apt install sudo -y >/dev/null 2>&1
@@ -11,7 +12,7 @@ sudo add-apt-repository main -y >/dev/null 2>&1
 sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
-sudo curl https://packages.microsoft.com/keys/microsoft.asc >/dev/null 2>&1 | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' >/dev/null 2>&1
 sudo rm microsoft.gpg >/dev/null 2>&1
