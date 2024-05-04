@@ -105,7 +105,6 @@ ExtendByEd25519ID auto
 ConnectionPadding auto
 RefuseUnknownExits auto
 GeoIPExcludeUnknown 0
-PreferIPv6Automap
 HardwareAccel 1
 ClientOnly 0
 DNSPort auto
