@@ -17,7 +17,11 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] h
 sudo rm microsoft.gpg >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast install microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y >/dev/null 2>&1
-sudo apt-fast purge firefox package-update-indicator google-chrome thunderbird -y >/dev/null 2>&1
+sudo apt-fast purge firefox -y >/dev/null 2>&1
+sudo apt-fast purge package-update-indicator -y >/dev/null 2>&1
+sudo apt-fast purge google-chrome -y >/dev/null 2>&1
+sudo apt-fast purge thunderbird -y >/dev/null 2>&1
+sudo apt-fast purge timeshift -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
 sudo systemctl stop unattended-upgrades >/dev/null 2>&1
