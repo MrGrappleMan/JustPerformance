@@ -17,7 +17,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/nul
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo apt-fast update
 sudo apt-fast install microsoft-edge-dev coreutils util-linux synaptic zram-config -y >/dev/null 2>&1
-sudo apt-fast install snowflake-proxy tor obfs4proxy
+sudo apt-fast install snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
 sudo apt-fast purge firefox -y >/dev/null 2>&1
 sudo apt-fast purge package-update-indicator -y >/dev/null 2>&1
 sudo apt-fast purge google-chrome -y >/dev/null 2>&1
