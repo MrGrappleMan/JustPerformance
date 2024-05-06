@@ -7,10 +7,10 @@ sudo apt install curl wget -y
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
 sudo apt-fast update
-sudo apt-fast install software-properties-common -y >/dev/null 2>&1
-sudo add-apt-repository main -y >/dev/null 2>&1
-sudo add-apt-repository restricted -y >/dev/null 2>&1
-sudo add-apt-repository universe -y >/dev/null 2>&1
+sudo apt-fast install software-properties-common -y
+sudo add-apt-repository main -y
+sudo add-apt-repository restricted -y
+sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
