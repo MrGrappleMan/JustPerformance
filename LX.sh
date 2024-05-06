@@ -23,7 +23,7 @@ sudo apt-fast purge google-chrome -y >/dev/null 2>&1
 sudo apt-fast purge thunderbird -y >/dev/null 2>&1
 sudo apt-fast purge timeshift -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo swapoff /swapfile >/dev/null 2>&1
+sudo swapoff /swapfile
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
 cd /usr/bin/
