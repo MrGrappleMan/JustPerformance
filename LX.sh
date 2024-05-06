@@ -1,5 +1,4 @@
 clear
-sudo echo Procedure in progress...reduce interaction with your system.
 apt update >/dev/null 2>&1
 apt install sudo -y >/dev/null 2>&1
 sudo apt update >/dev/null 2>&1
@@ -17,7 +16,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/nul
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' >/dev/null 2>&1
 sudo rm microsoft.gpg >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-sudo apt-fast install microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config unattended-upgrades -y >/dev/null 2>&1
+sudo apt-fast install microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config -y >/dev/null 2>&1
 sudo apt-fast purge firefox -y >/dev/null 2>&1
 sudo apt-fast purge package-update-indicator -y >/dev/null 2>&1
 sudo apt-fast purge google-chrome -y >/dev/null 2>&1
