@@ -3,9 +3,9 @@ apt update
 apt install sudo -y
 sudo apt update
 sudo apt install curl wget -y
-sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
+sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
-sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast update
 sudo apt-fast install software-properties-common -y >/dev/null 2>&1
 sudo add-apt-repository main -y >/dev/null 2>&1
 sudo add-apt-repository restricted -y >/dev/null 2>&1
