@@ -150,6 +150,6 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------
-cd ~/
+cd
 clear
 echo Done!
