@@ -24,7 +24,7 @@ sudo apt-fast purge thunderbird -y >/dev/null 2>&1
 sudo apt-fast purge timeshift -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo swapoff /swapfile
-sudo systemctl enable --now zram-config >/dev/null 2>&1
+sudo systemctl enable --now zram-config >/dev/null 2>&
 sudo systemctl stop zram-config >/dev/null 2>&1
 cd /usr/bin/
 sudo chmod 777 /usr/bin/init-zram-swapping >/dev/null 2>&1
@@ -101,7 +101,7 @@ sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null
+sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
