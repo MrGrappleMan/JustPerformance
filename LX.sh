@@ -24,8 +24,8 @@ sudo apt-fast purge thunderbird -y >/dev/null 2>&1
 sudo apt-fast purge timeshift -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo swapoff /swapfile
-sudo systemctl enable --now zram-config >/dev/null 2>&
-sudo systemctl stop zram-config >/dev/null 2>&1
+sudo systemctl enable --now zram-config
+sudo systemctl stop zram-config
 cd /usr/bin/
 sudo chmod 777 /usr/bin/init-zram-swapping >/dev/null 2>&1
 sudo cat > init-zram-swapping << 'EOL'
