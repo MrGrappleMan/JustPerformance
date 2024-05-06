@@ -101,7 +101,7 @@ sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
+sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
@@ -109,7 +109,7 @@ sudo cat > override.conf << 'EOL'
 OnCalendar=
 OnCalendar=daily
 EOL
-sudo systemctl enable --now fstrim.timer >/dev/null 2>&1
+sudo systemctl enable --now fstrim.timer
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
