@@ -11,7 +11,7 @@ sudo apt-fast install software-properties-common -y
 sudo add-apt-repository main -y
 sudo add-apt-repository restricted -y
 sudo add-apt-repository universe -y
-sudo add-apt-repository multiverse -y >/dev/null 2>&1
+sudo add-apt-repository multiverse -y
 sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg >/dev/null 2>&1
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
