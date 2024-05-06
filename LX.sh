@@ -1,3 +1,4 @@
+cd 
 clear
 apt update
 apt install sudo -y
@@ -15,45 +16,13 @@ sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mi
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/ >/dev/null 2>&1
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' >/dev/null 2>&1
 sudo rm microsoft.gpg >/dev/null 2>&1
-sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast update
 sudo apt-fast install microsoft-edge-dev coreutils snowflake-proxy tor obfs4proxy util-linux zram-config -y >/dev/null 2>&1
 sudo apt-fast purge firefox -y >/dev/null 2>&1
 sudo apt-fast purge package-update-indicator -y >/dev/null 2>&1
 sudo apt-fast purge google-chrome -y >/dev/null 2>&1
 sudo apt-fast purge thunderbird -y >/dev/null 2>&1
 sudo apt-fast purge timeshift -y >/dev/null 2>&1
-# ----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
-sudo systemctl stop unattended-upgrades >/dev/null 2>&1
-cd /etc/apt/apt.conf.d/ >/dev/null 2>&1
-sudo chmod 777 /etc/apt/apt.conf.d/50unattended-upgrades >/dev/null 2>&1
-sudo cat > 50unattended-upgrades << 'EOL'
-Unattended-Upgrade::Allowed-Origins {
-	"${distro_id}:${distro_codename}";
-	"${distro_id}:${distro_codename}-security";
-	"${distro_id}ESMApps:${distro_codename}-apps-security";
-	"${distro_id}ESM:${distro_codename}-infra-security";
-	"${distro_id}:${distro_codename}-updates";
-	"${distro_id}:${distro_codename}-proposed";
-	"${distro_id}:${distro_codename}-backports";
-	"TorProject:${distro_codename}";
-};
-Unattended-Upgrade::Package-Blacklist {
-};
-Unattended-Upgrade::AutoFixInterruptedDpkg "true";
-Unattended-Upgrade::DevRelease "auto";
-Unattended-Upgrade::MinimalSteps "false";
-Unattended-Upgrade::InstallOnShutdown "true";
-Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
-Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
-Unattended-Upgrade::Remove-Unused-Dependencies "true";
-Unattended-Upgrade::SyslogEnable "false";
-Unattended-Upgrade::Skip-Updates-On-Metered-Connections "true";
-Unattended-Upgrade::Allow-downgrade "false";
-Unattended-Upgrade::Verbose "false";
-Unattended-Upgrade::Debug "false";
-EOL
-sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo swapoff /swapfile >/dev/null 2>&1
 sudo systemctl enable --now zram-config >/dev/null 2>&1
