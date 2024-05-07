@@ -13,6 +13,9 @@ https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 # OpenSSH:
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install openssh-server -y; sudo systemctl enable --now ssh; sudo ufw allow ssh
 
+# TightVNC:
+sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt install tightvncserver
+
 # For Performance:
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
 # For OnDemand(default for most distributions):
