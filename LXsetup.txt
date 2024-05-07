@@ -17,10 +17,9 @@ sudo apt-fast install openssh-server -y
 sudo ufw allow ssh
 
 # For Performance:
-sudo apt-fast update
-sudo apt-fast dist-upgrade -y sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
+sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
 # For OnDemand(default for most distributions):
-sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
+sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
 
 # Science United
 EMAIL=
