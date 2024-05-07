@@ -14,7 +14,7 @@ sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y
 sudo add-apt-repository partner -y
 sudo apt-fast update
-sudo apt-fast install microsoft-edge-dev coreutils util-linux synaptic zram-config -y
+sudo apt-fast install coreutils util-linux synaptic zram-config -y
 sudo apt-fast install snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
 sudo apt-fast purge package-update-indicator -y
 # ----------------------------------------------------------------------------------------------------
