@@ -32,7 +32,7 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 64 /dev/zram0
 EOL
-sudo systemctl enable --now zram-config >/dev/null 2>&1
+sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service >/dev/null 2>&1
