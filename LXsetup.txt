@@ -11,6 +11,7 @@
 https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 
 # OpenSSH:
+sudo apt-fast update
 sudo apt-fast install openssh-server -y
 sudo ufw allow ssh
 
