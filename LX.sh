@@ -145,7 +145,8 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------
-sudo apt-fast install 
+sudo apt-fast update
+sudo apt-fast dist-upgrade -y
 cd
 clear
 echo Done!
