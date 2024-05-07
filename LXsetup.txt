@@ -11,7 +11,8 @@
 https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 
 # OpenSSH:
-sudo apt
+sudo apt-fast install openssh-server -y
+sudo 
 
 # For Performance:
 sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
