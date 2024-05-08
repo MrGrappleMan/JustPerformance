@@ -18,7 +18,6 @@ sudo apt-fast install coreutils util-linux synaptic zram-config -y
 sudo apt-fast install snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
 sudo apt-fast purge package-update-indicator -y
 # ----------------------------------------------------------------------------------------------------
-sudo swapoff /swapfile
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 cd /usr/bin/
