@@ -22,6 +22,7 @@ sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufr
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
 
 # Science United
+# Regist
 EMAIL=
 PASSWORD=
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
