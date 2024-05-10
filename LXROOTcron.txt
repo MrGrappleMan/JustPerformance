@@ -1,2 +1,3 @@
 # */20 * * * * boinccmd --acct_mgr sync >/dev/null 2>&1
-0 * * * * apt-fast update
+0 * * * * apt-fast update >/dev/null 2>&1
+5 * * * * apt-fast dist-upgrade >/dev/null 2>&1
