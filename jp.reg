@@ -6,6 +6,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\Themes\Personalize]
 "AppsUseLightTheme"=dword:00000000
+"SystemUsesLightTheme"=dword:00000000
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "UserPreferencesMask"=hex:90,12,03,80,10,00,00,00
