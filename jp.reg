@@ -138,15 +138,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
 "EnablePrefetcher"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio]
-"Affinity"=dword:ffffffff
-"Background Only"="True"
-"Clock Rate"=dword:00002710
-"GPU Priority"=dword:00000008
-"Priority"=dword:00000006
-"Scheduling Category"="Medium"
-"SFIO Priority"="Normal"
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing]
 "Affinity"=dword:ffffffff
 "Background Only"="True"
