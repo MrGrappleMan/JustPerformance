@@ -132,6 +132,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "SystemResponsiveness"=dword:00000000
+"NetworkThrottlingIndex"=dword:ffffffff
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
 "EnablePrefetcher"=dword:00000003
@@ -195,9 +196,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "DisplayParameters"=dword:00000001
 
-; --------------------------------------------
-; Take Ownership
-; --------------------------------------------
 
 [HKEY_CLASSES_ROOT\*\shell\runas]
 @="Take Ownership"
