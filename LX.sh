@@ -96,7 +96,7 @@ sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
+sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
@@ -104,15 +104,14 @@ sudo cat > override.conf << 'EOL'
 OnCalendar=
 OnCalendar=daily
 EOL
-sudo systemctl enable --now fstrim.timer
-# ----------------------------------------------------------------------------------------------------
-sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+sudo systemctl enable --now fstrim.timer >/dev/null 2>&1
+sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf >/dev/null 2>&1
 cd /etc/systemd/
 sudo chmod 777 /etc/systemd/timesyncd.conf >/dev/null 2>&1
 sudo cat > timesyncd.conf << 'EOL'
 [Time]
-NTP=time.google.com
-FallbackNTP=time.windows.com
+NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
+FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
 # ----------------------------------------------------------------------------------------------------
 cd /etc/
