@@ -14,9 +14,9 @@ sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-sudo apt-fast install coreutils util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
-for pkg in package-update-indicator; do sudo apt-fast install $pkg; done
-for pkg in package-update-indicator; do sudo apt-fast remove $pkg; done
+sudo apt-fast install  -y >/dev/null 2>&1
+for ipkg in package-update-indicator; do sudo apt-fast install $ipkg; done
+for rpkg in package-update-indicator; do sudo apt-fast remove $rpkg; done
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
