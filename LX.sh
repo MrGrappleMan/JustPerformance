@@ -1,4 +1,5 @@
 clear
+echo Process 
 apt update
 apt install sudo -y
 sudo apt update
