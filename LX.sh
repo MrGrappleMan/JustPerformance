@@ -28,7 +28,7 @@ totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
 mem=$((totalmem * 1024))
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
-swapon -p 64 /dev/zram0
+swapon -p 32764 /dev/zram0
 EOL
 sudo systemctl enable --now zram-config
 # ----------------------------------------------------------------------------------------------------
