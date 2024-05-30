@@ -153,7 +153,8 @@ EOL
 cd /etc/apt/apt.conf.d/
 sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
 sudo systemctl stop unattended-upgrades >/dev/null 2>&1
-
+sudo cat > sysctl.conf << 'EOL'
+EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
