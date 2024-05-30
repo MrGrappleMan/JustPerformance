@@ -159,7 +159,7 @@ Unattended-Upgrade::Allowed-Origins {
 Unattended-Upgrade::Package-Blacklist {
 };
 EOL
-sudo cat > 50unattended-upgrades << 'EOL'
+sudo cat > 20auto-upgrades << 'EOL'
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
