@@ -1,17 +1,17 @@
 clear
 echo Procedure will take a longtime to complete.
 echo Please wait...
-apt update
-apt install sudo -y
-sudo apt update
-sudo apt install curl git wget -y
-sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+apt update >/dev/null 2>&1
+apt install sudo -y >/dev/null 2>&1
+sudo apt update >/dev/null 2>&1
+sudo apt install curl git wget -y >/dev/null 2>&1
+sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
-sudo apt-fast update
-sudo apt-fast install software-properties-common -y
-sudo add-apt-repository main -y
-sudo add-apt-repository restricted -y
-sudo add-apt-repository universe -y
+sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast install software-properties-common -y >/dev/null 2>&1
+sudo add-apt-repository main -y >/dev/null 2>&1
+sudo add-apt-repository restricted -y >/dev/null 2>&1
+sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y
 sudo apt-fast update
 sudo apt-fast install coreutils util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
