@@ -150,7 +150,9 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------u
-/etc/apt/apt.conf.d/
+cd /etc/apt/apt.conf.d/
+sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
+sudo systemctl stop zram-config >/dev/null 2>&1
 
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
