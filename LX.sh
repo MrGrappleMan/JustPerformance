@@ -1,4 +1,3 @@
-cd /tmp/
 clear
 apt update
 apt install sudo -y
