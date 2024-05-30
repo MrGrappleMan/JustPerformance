@@ -1,5 +1,6 @@
 clear
-echo Process 
+echo Procedure will take a longtime to complete.
+echo Please wait...
 apt update
 apt install sudo -y
 sudo apt update
