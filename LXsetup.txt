@@ -19,7 +19,6 @@ sudo apt-fast update
 sudo apt-fast dist-upgrade -y
 sudo curl -sL https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb>crd.deb
 sudo apt-fast install ./crd.deb -y
-DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdLIrYfVJR6YIn5O8PDLiKk_rEKMSBPO6-NdjP-7752sdjk81QA2-v1DCrCwqNUDG0mFJA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
 
 # For Performance:
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
