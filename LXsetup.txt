@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install ufw openssh-server -y; sudo systemctl enable --now ssh; sudo ufw allow ssh
 
 # Chrome Remote Desktop:
-sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt install tightvncserver -y; sudo vncserver
+sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo curl -sL https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 
 # For Performance:
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils; sudo systemctl disable ondemand
