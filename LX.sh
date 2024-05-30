@@ -147,6 +147,10 @@ EOL
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub >/dev/null 2>&1
 sudo update-grub >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
+cat <<EOF | crontab -
+
+EOF
+# ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
 cd
