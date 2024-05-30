@@ -26,7 +26,7 @@ sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufr
 EMAIL=
 PASSWORD=
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
-sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/jammy jammy main -y
+sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/noble noble main
 sudo apt-fast install boinc-client boinc-manager nvidia-cuda-toolkit ocl-icd-libopencl1 boinc-virtualbox -y
 sudo systemctl enable --now boinc-client
 sudo usermod -aG boinc $USER
