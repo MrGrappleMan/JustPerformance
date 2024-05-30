@@ -15,13 +15,7 @@ sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast install coreutils util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-get remove $pkg; done
-cd /tmp/ >/dev/null 2>&1
-curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
-sudo sh dck.sh >/dev/null 2>&1
-sudo systemctl enable --now docker >/dev/null 2>&1
-sudo docker run -d --name mgmpsclient -e CID=69eg packetstream/psclient:latest >/dev/null 2>&1
-sudo docker run -d --name mgmearnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest >/dev/null 2>&1
+
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
