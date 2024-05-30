@@ -12,10 +12,10 @@ sudo apt-fast install software-properties-common -y >/dev/null 2>&1
 sudo add-apt-repository main -y >/dev/null 2>&1
 sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
-sudo add-apt-repository multiverse -y
-sudo apt-fast update
+sudo add-apt-repository multiverse -y >/dev/null 2>&1
+sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast install coreutils util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
-sudo apt-fast purge package-update-indicator -y
+sudo apt-fast purge package-update-indicator -y >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
