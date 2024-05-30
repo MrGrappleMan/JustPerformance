@@ -86,7 +86,7 @@ IPv6Exit 1
 DirCache 1
 EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy >/dev/null 2>&1
-cd /etc/systemd/system/
+cd /etc/systemd/system/ >/dev/null 2>&1
 sudo mkdir tor@.service.d >/dev/null 2>&1
 sudo mkdir tor@default.service.d >/dev/null 2>&1
 sudo chmod 777 tor@.service.d tor@default.service.d >/dev/null 2>&1
@@ -97,7 +97,7 @@ sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/n
 sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
-cd /etc/systemd/system/fstrim.timer.d/
+cd /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
 [Timer]
@@ -114,7 +114,7 @@ NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.
 FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
 # ----------------------------------------------------------------------------------------------------
-cd /etc/
+cd /etc/ >/dev/null 2>&1
 sudo chmod 777 /etc/sysctl.conf >/dev/null 2>&1
 sudo cat > sysctl.conf << 'EOL'
 vm.vfs_cache_pressure = 50
@@ -144,8 +144,8 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------
-sudo apt-fast update
-sudo apt-fast dist-upgrade -y
+sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast dist-upgrade -y >/dev/null 2>&1
 cd
 clear
 echo Done!
