@@ -55,33 +55,35 @@ sudo systemctl stop tor >/dev/null 2>&1
 cd /etc/tor/
 sudo chmod 777 /etc/tor/torrc >/dev/null 2>&1
 sudo cat > torrc << 'EOL'
+ORPort auto
+ExitRelay 0
+SocksPort 0
 BridgeRelay 1
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 ServerTransportListenAddr obfs4 0.0.0.0:9001
 ExtORPort auto
-ORPort auto
-KeepBindCapabilities auto
-ExtendByEd25519ID auto
-ConnectionPadding auto
-RefuseUnknownExits auto
-GeoIPExcludeUnknown 0
-HardwareAccel 1
-ClientOnly 0
-DNSPort auto
 AvoidDiskWrites 0
-UseGuardFraction auto
-OptimisticData auto
-UseMicrodescriptors auto
-CacheDirectoryGroupReadable auto
-ExitRelay auto
-SocksPort auto
-KeepBindCapabilities auto
-ClientAutoIPv6ORPort 1
-DoSCircuitCreationEnabled auto
-DoSConnectionEnabled auto
-DisableNetwork 0
+BandwidthBurst 16 TBytes
+BandwidthRate 16 TBytes
+ConnLimit 2048
+DisableOOSCheck 0
+DisableDebuggerAttachment 1
 DisableAllSwap 0
-DoSRefuseSingleHopClientRendezvous auto
+DisableNetwork 0
+ExtendByEd25519ID 1
+FetchDirInfoEarly 1
+FetchHidServDescriptors 1
+FetchServerDescriptors 1
+FetchUselessDescriptors 0
+HardwareAccel 1
+KeepBindCapabilities 1
+NoExec 0
+ClientPreferIPv6DirPort 1
+ClientPreferIPv6ORPort 1
+ClientUseIPv6 1
+DownloadExtraInfo 1
+IPv6Exit 1
+DirCache 1
 EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy >/dev/null 2>&1
 cd /etc/systemd/system/
