@@ -90,7 +90,7 @@ sudo dkms autoinstall
 
 # Docker stuff
 # !`Setup----------
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-get remove $pkg; done
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-fast remove $pkg; done
 cd /tmp/ >/dev/null 2>&1
 curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
 sudo sh dck.sh >/dev/null 2>&1
