@@ -14,8 +14,9 @@ https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install ufw openssh-server -y; sudo systemctl enable --now ssh; sudo ufw allow ssh
 
 # Chrome Remote Desktop(issues may be present):
-cd
-sudo apt-fast update; sudo apt-fast dist-upgrade -y
+cd /tmp/
+sudo apt-fast update
+sudo apt-fast dist-upgrade -y
 sudo curl -sL https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb>crd.deb
 DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdLIrYfVJR6YIn5O8PDLiKk_rEKMSBPO6-NdjP-7752sdjk81QA2-v1DCrCwqNUDG0mFJA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
 
