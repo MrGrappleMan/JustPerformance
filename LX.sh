@@ -152,7 +152,7 @@ EOL
 # ----------------------------------------------------------------------------------------------------u
 cd /etc/apt/apt.conf.d/
 sudo systemctl enable --now unattended-upgrades >/dev/null 2>&1
-sudo systemctl stop zram-config >/dev/null 2>&1
+sudo systemctl stop unattended-upgrades >/dev/null 2>&1
 
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
