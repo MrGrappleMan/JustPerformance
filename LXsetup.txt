@@ -93,7 +93,7 @@ sudo sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl8
 sudo dkms add -m rtl88x2bu -v git
 sudo dkms autoinstall
 
-# Docker stuff
+# Docker
 # !`Setup----------
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-fast remove $pkg; done
 cd /tmp/ >/dev/null 2>&1
