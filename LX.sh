@@ -14,7 +14,7 @@ sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-sudo apt-fast install coreutils unattended-upgrades util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
+sudo apt-fast install coreutils unattended-upgrades apt-listchanges util-linux zram-config snowflake-proxy tor obfs4proxy -y >/dev/null 2>&1
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-get remove $pkg; done
 cd /tmp/ >/dev/null 2>&1
 curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
@@ -160,6 +160,9 @@ Unattended-Upgrade::Package-Blacklist {
 };
 EOL
 sudo cat > 20auto-upgrades << 'EOL'
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::AutocleanInterval "1";
+APT::Periodic::Unattended-Upgrade "1";
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
