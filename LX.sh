@@ -145,14 +145,14 @@ kernel.sched_migration_cost_ns = 5000000
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub >/dev/null 2>&1
-sudo update-grub >/dev/null 2>&1
+sudo update-grub >/dev/null 21
 # ----------------------------------------------------------------------------------------------------
 cat <<EOF | sudo crontab -
 */20 * * * * boinccmd --acct_mgr sync >/dev/null 2>&1
 @hourly (sudo apt-fast update >/dev/null 2>&1; sudo apt-fast dist-upgrade -y >/dev/null 2>&1; sudo apt-fast autoclean >/dev/null 2>&1)
 EOF
 # ----------------------------------------------------------------------------------------------------
-sudo sys
+sudo systemctl enable resolvconf
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
