@@ -44,7 +44,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853E
 sudo apt-add-repository deb https://boinc.berkeley.edu/dl/linux/nightly/noble noble main
 sudo apt-fast update
 sudo apt-fast dist-upgrade -y
-for ipkg in boinc-client boinc-manager boinc-virtualbox; do sudo apt-fast install $ipkg -y; done
+for bpkg in boinc-client boinc-manager boinc-virtualbox; do sudo apt-fast install $bpkg -y; done
 sudo systemctl enable --now boinc-client
 sudo usermod -aG boinc $USER
 boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
