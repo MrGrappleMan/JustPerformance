@@ -1,6 +1,6 @@
 # Quick access to here: bit.ly/LXsetup
 # Sections are divided by blank lines 
-# For sections with empty variables, paste them in a text editior for editing them conveniently
+# For sections with empty variables, paste them in a text editior for editing the parameters
 # Windows users, in the >>terminal<<:
 # To COPY use Ctrl+Shift+C
 # To PASTE use Ctrl+Shift+V
@@ -32,7 +32,6 @@ sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufr
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install cpufrequtils -y; sudo echo 'GOVERNOR="ondemand"' | sudo tee /etc/default/cpufrequtils; sudo systemctl enable ondemand
 
 # Science United
-# Copy into a text editor to edit the above 2 parameters
 EMAIL=
 PASSWORD=
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 40254C9B29853EA6
