@@ -156,8 +156,9 @@ sudo systemctl enable --now resolvconf >/dev/null 2>&1
 sudo systemctl stop resolvconf >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
 sudo cat > base << 'EOL'
-nameserver 1.1.1.1
 nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 1.1.1.1
 nameserver 9.9.9.9
 nameserver 208.67.222.222
 nameserver 192.71.245.208
