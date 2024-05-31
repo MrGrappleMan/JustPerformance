@@ -10,7 +10,8 @@
 # Using your phone's USB Tethering is an option, but may be risky due to it randomly disconnecting. Use it only to install the network driver.
 # Run the command below this line:
 
-# Nowind them from the web.
+# Now, find them from the web.
+# 
 
 # Main script(to be executed before anything below this secton)
 # Execute by copy-pasting the raw text from the site into a terminal
