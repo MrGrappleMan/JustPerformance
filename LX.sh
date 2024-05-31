@@ -154,10 +154,11 @@ EOF
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf
 sudo systemctl stop resolvconf >/dev/null 2>&1
-cd 
+cd /etc/resolvconf/resolv.conf.d/
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
 cd
+sudo chmod 777 /etc/tor/torrc >/dev/null 2>&1
 clear
 echo Done!
