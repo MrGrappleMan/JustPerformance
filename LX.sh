@@ -156,7 +156,7 @@ sudo systemctl enable --now resolvconf
 sudo systemctl stop resolvconf >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
 sudo cat > base << 'EOL'
-
+name
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
