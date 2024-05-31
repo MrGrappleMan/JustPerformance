@@ -11,7 +11,13 @@
 # Run the command below this line:
 
 # Now, find them from the web.
-# 
+# RTL88x2BU Network Driver by RinCat
+sudo apt-fast update
+sudo apt-fast dist-upgrade -y
+sudo git clone "https://github.com/RinCat/RTL88x2BU-Linux-Driver.git" /usr/src/rtl88x2bu-git
+sudo sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl88x2bu-git/dkms.conf
+sudo dkms add -m rtl88x2bu -v git
+sudo dkms autoinstall 
 
 # Main script(to be executed before anything below this secton)
 # Execute by copy-pasting the raw text from the site into a terminal
@@ -95,14 +101,6 @@ sudo cat > cc_config.xml << 'EOL'
     </options>
 </cc_config>
 EOL
-
-# RTL88x2BU Network Driver by RinCat
-sudo apt-fast update
-sudo apt-fast dist-upgrade -y
-sudo git clone "https://github.com/RinCat/RTL88x2BU-Linux-Driver.git" /usr/src/rtl88x2bu-git
-sudo sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl88x2bu-git/dkms.conf
-sudo dkms add -m rtl88x2bu -v git
-sudo dkms autoinstall
 
 # Docker
 # !`Setup----------
