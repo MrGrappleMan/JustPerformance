@@ -163,7 +163,7 @@ nameserver 1.0.0.1
 nameserver 9.9.9.9
 nameserver 149.112.112.112
 nameserver 208.67.222.222
-nam
+nameserver 208.67.220.220
 nameserver 192.71.245.208
 nameserver 91.239.100.100
 nameserver 45.33.97.5
