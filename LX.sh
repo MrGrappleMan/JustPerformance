@@ -97,7 +97,7 @@ sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/n
 sudo systemctl enable --now tor >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
-cd /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
+cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
 sudo cat > override.conf << 'EOL'
 [Timer]
@@ -114,7 +114,7 @@ NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.
 FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
 # ----------------------------------------------------------------------------------------------------
-cd /etc/ >/dev/null 2>&1
+cd /etc/
 sudo chmod 777 /etc/sysctl.conf >/dev/null 2>&1
 sudo cat > sysctl.conf << 'EOL'
 vm.vfs_cache_pressure = 50
@@ -152,7 +152,7 @@ cat <<EOF | sudo crontab -
 @hourly (sudo apt-fast update >/dev/null 2>&1; sudo apt-fast dist-upgrade -y >/dev/null 2>&1; sudo apt-fast autoclean >/dev/null 2>&1)
 EOF
 # ----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now resolvconf
+sudo systemctl enable --now resolvconf >/dev/null 2>&1
 sudo systemctl stop resolvconf >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
 sudo cat > base << 'EOL'
@@ -165,7 +165,7 @@ nameserver 91.239.100.100
 nameserver 45.33.97.5
 nameserver 94.140.14.140
 EOL
-sudo systemctl enable --now resolvconf
+sudo systemctl enable --now resolvconf >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
