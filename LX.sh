@@ -158,7 +158,7 @@ cd /etc/resolvconf/resolv.conf.d/
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
-cd
-sudo chmod 777 /etc/tor/torrc >/dev/null 2>&1
+cd /etc/resolvconf/resolv.conf.d/
+sudo chmod 777  >/dev/null 2>&1
 clear
 echo Done!
