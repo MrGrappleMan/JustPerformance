@@ -165,6 +165,7 @@ nameserver 91.239.100.100
 nameserver 45.33.97.5
 nameserver 94.140.14.140
 EOL
+sudo systemctl enable --now resolvconf
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
