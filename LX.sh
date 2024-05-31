@@ -152,7 +152,8 @@ cat <<EOF | sudo crontab -
 @hourly (sudo apt-fast update >/dev/null 2>&1; sudo apt-fast dist-upgrade -y >/dev/null 2>&1; sudo apt-fast autoclean >/dev/null 2>&1)
 EOF
 # ----------------------------------------------------------------------------------------------------
-sudo systemctl enable resolvconf
+sudo systemctl enable --now resolvconf
+
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
