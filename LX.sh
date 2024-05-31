@@ -165,6 +165,9 @@ nameserver 149.112.112.112
 nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 91.239.100.100
+89.233.43.71
+45.33.97.5
+37.235.1.177
 
 EOL
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
