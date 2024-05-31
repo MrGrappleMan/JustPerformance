@@ -102,7 +102,7 @@ EOL
 
 # Docker
 # !`Setup----------
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container package-update-indicator runc; do sudo apt-fast remove $pkg; done
+for cpkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container runc; do sudo apt-fast remove $cpkg; done
 cd /tmp/ >/dev/null 2>&1
 curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
 sudo sh dck.sh >/dev/null 2>&1
