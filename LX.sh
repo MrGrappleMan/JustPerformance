@@ -4,7 +4,8 @@ echo Please wait...
 apt update >/dev/null 2>&1
 apt install sudo -y >/dev/null 2>&1
 sudo apt update >/dev/null 2>&1
-sudo apt install curl git wget -y >/dev/null 2>&1
+for ipkg in coreutils nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
+sudo apt install curl git dkms wget -y >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
