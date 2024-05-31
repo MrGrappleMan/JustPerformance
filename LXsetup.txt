@@ -8,7 +8,7 @@
 # Network Drivers:
 # Install your network drivers before the main script
 # Using your phone's USB Tethering is an option, but may be risky due to it randomly disconnecting. Use it only to install the network driver.
-# Run the code below this line to install some tools 
+# Run the command below this line to install tools that ensu
 # Find them from the web.
 
 # Main script(to be executed before anything below this secton)
