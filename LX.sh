@@ -162,7 +162,7 @@ nameserver 9.9.9.9
 nameserver 208.67.222.222
 nameserver 192.71.245.208
 nameserver 91.239.100.100
-nameserver 91.
+nameserver 45.33.97.5
 EOL
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
