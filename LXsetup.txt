@@ -9,7 +9,7 @@
 # Install your network drivers before the main script
 # Using your phone's USB Tethering is an option, but may be risky due to it randomly disconnecting. Use it only to install the network driver.
 # Run the command below this line:
-sudo apt update; sudo apt dist-upgrade -y; for ipkg in curl git dkms wget; do sudo apt install $ipkg -y; done
+sudo apt update; sudo apt dist-upgrade -y; for apkg in curl git dkms wget build-essential; do sudo apt install $apkg -y; done
 # Now, find them from the web manually.
 # RTL88x2BU Network Driver by RinCat
 sudo git clone "https://github.com/RinCat/RTL88x2BU-Linux-Driver.git" /usr/src/rtl88x2bu-git
