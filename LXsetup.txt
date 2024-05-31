@@ -15,7 +15,7 @@ sudo apt update; sudo apt dist-upgrade -y; for apkg in curl git dkms wget build-
 sudo git clone "https://github.com/RinCat/RTL88x2BU-Linux-Driver.git" /usr/src/rtl88x2bu-git
 sudo sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl88x2bu-git/dkms.conf
 sudo dkms add -m rtl88x2bu -v git
-sudo dkms autoinstall 
+sudo dkms autoinstall
 
 # Main script(to be executed before anything below this secton)
 # Execute by copy-pasting the raw text from the site into a terminal
