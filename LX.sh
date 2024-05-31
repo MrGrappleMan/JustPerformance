@@ -19,7 +19,7 @@ for rpkg in package-update-indicator; do sudo apt-fast remove $rpkg -y >/dev/nul
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
-cd /usr/bin/ >/dev/null 2>&1
+cd /usr/bin/
 sudo chmod 777 /usr/bin/init-zram-swapping >/dev/null 2>&1
 sudo cat > init-zram-swapping << 'EOL'
 #!/bin/sh
@@ -32,7 +32,7 @@ swapon -p 32764 /dev/zram0
 EOL
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
-cd /lib/systemd/system/ >/dev/null 2>&1
+cd /lib/systemd/system/
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service >/dev/null 2>&1
 sudo cat > snowflake-proxy.service << 'EOL'
 [Unit]
@@ -86,7 +86,7 @@ IPv6Exit 1
 DirCache 1
 EOL
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy >/dev/null 2>&1
-cd /etc/systemd/system/ >/dev/null 2>&1
+cd /etc/systemd/system/
 sudo mkdir tor@.service.d >/dev/null 2>&1
 sudo mkdir tor@default.service.d >/dev/null 2>&1
 sudo chmod 777 tor@.service.d tor@default.service.d >/dev/null 2>&1
