@@ -25,7 +25,7 @@ https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
 # OpenSSH:
 sudo apt-fast update; sudo apt-fast dist-upgrade -y; sudo apt-fast install ufw openssh-server -y; sudo systemctl enable --now ssh; sudo ufw allow ssh
 
-# Chrome Remote Desktop(issues may be present):
+# Chrome Remote Desktop(issues may be present for Wayland):
 cd /tmp/
 sudo apt-fast update
 sudo apt-fast dist-upgrade -y
