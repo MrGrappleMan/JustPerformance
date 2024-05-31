@@ -153,7 +153,8 @@ cat <<EOF | sudo crontab -
 EOF
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf
-
+sudo systemctl stop resolvconf >/dev/null 2>&1
+cd 
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
