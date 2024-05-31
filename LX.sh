@@ -155,10 +155,11 @@ EOF
 sudo systemctl enable --now resolvconf
 sudo systemctl stop resolvconf >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
+
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
-sudo chmod 777  >/dev/null 2>&1
+sudo chmod 777 /etc/resolvconf/resolv.conf.d/base >/dev/null 2>&1
 clear
 echo Done!
