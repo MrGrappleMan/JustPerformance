@@ -96,7 +96,7 @@ sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf >/dev/null 2>&
 sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
-# ----------------------------------------------------------------------------------------------------
+# FSTr----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
@@ -114,7 +114,7 @@ sudo cat > timesyncd.conf << 'EOL'
 NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
-# Sysct----------------------------------------------------------------------------------------------------
+# sysctl.conf----------------------------------------------------------------------------------------------------
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf >/dev/null 2>&1
 sudo cat > sysctl.conf << 'EOL'
