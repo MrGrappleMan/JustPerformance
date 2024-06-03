@@ -1,9 +1,9 @@
 clear
 echo Procedure will take a long time to complete.
 echo Please wait...
-apt update >/dev/null 2>&1
-apt install sudo -y >/dev/null 2>&1
-sudo apt update >/dev/null 2>&1
+apt-get update >/dev/null 2>&1
+apt-get install sudo -y >/dev/null 2>&1
+sudo apt-get update >/dev/null 2>&1
 for epkg in curl git dkms wget build-essential; do sudo apt install $epkg -y >/dev/null 2>&1; done
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)" >/dev/null 2>&1
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
