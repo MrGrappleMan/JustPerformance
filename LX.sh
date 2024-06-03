@@ -15,12 +15,7 @@ sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
 for ipkg in kde-full coreutils resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
-for rpkg in xfconf gnome package-update-indicator; do sudo apt-fast remove $rpkg -y >/dev/null 2>&1; done
-sudo apt-fast autoremove >/dev/null 2>&1
-sudo apt-fast -f install >/dev/null 2>&1
-sudo apt-fast clean >/dev/null 2>&1
-sudo apt-fast autoclean >/dev/null 2>&1
-sudo apt-fast update >/dev/null 2>&1
+for rpkg in xfconf gnome package-update-indicator; do sudo apt-fast remove $rpkg -y --autoremove >/dev/null 2>&1; done
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
