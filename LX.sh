@@ -96,7 +96,7 @@ sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf >/dev/null 2>&
 sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
-# FSTrim----------------------------------------------------------------------------------------------------
+# FS Trim----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
@@ -144,15 +144,15 @@ net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
-# No Boot Log----------------------------------------------------------------------------------------------------
+# No Boot Logo----------------------------------------------------------------------------------------------------
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub >/dev/null 2>&1
 sudo update-grub >/dev/null 2>&1
-# ----------------------------------------------------------------------------------------------------
+# Crontab----------------------------------------------------------------------------------------------------
 cat <<EOF | sudo crontab -
 */20 * * * * boinccmd --acct_mgr sync >/dev/null 2>&1
 @hourly (sudo apt-fast autoremove >/dev/null 2>&1; sudo apt-fast -f install >/dev/null 2>&1; sudo apt-fast clean >/dev/null 2>&1; sudo apt-fast autoclean >/dev/null 2>&1; sudo apt-fast update >/dev/null 2>&1; sudo apt-fast dist-upgrade >/dev/null 2>&1; sudo ubuntu-drivers autoinstall >/dev/null 2>&1)
 EOF
-# ----------------------------------------------------------------------------------------------------
+# DNS Setup----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
 sudo systemctl stop resolvconf >/dev/null 2>&1
 sudo chmod 777 /etc/resolvconf/resolv.conf.d/base >/dev/null 2>&1
