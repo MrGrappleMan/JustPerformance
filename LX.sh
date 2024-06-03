@@ -149,12 +149,12 @@ sudo update-grub >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 cat <<EOF | sudo crontab -
 */20 * * * * boinccmd --acct_mgr sync >/dev/null 2>&1
-@hourly 
-sudo apt-fast autoremove >/dev/null 2>&1
+@hourly (sudo apt-fast autoremove >/dev/null 2>&1; 
 sudo apt-fast -f install >/dev/null 2>&1
 sudo apt-fast clean >/dev/null 2>&1
 sudo apt-fast autoclean >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
+sudo apt-fast dist-upgrade >/dev/null 2>&1
 EOF
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
