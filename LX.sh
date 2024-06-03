@@ -96,7 +96,7 @@ sudo echo -e "NoNewPrivileges=no" >> tor@.service.d/override.conf >/dev/null 2>&
 sudo echo -e '[Service]' > tor@default.service.d/override.conf >/dev/null 2>&1
 sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf >/dev/null 2>&1
 sudo systemctl enable --now tor >/dev/null 2>&1
-# FSTr----------------------------------------------------------------------------------------------------
+# FSTrim----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/ >/dev/null 2>&1
 cd /etc/systemd/system/fstrim.timer.d/
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf >/dev/null 2>&1
@@ -144,7 +144,7 @@ net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 EOL
-# ----------------------------------------------------------------------------------------------------
+# No Boot Log----------------------------------------------------------------------------------------------------
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub >/dev/null 2>&1
 sudo update-grub >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
