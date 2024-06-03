@@ -154,7 +154,7 @@ EOF
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
 sudo systemctl stop resolvconf >/dev/null 2>&1
-sudo chmod 777 /etc/systemd/timesyncd.conf >/dev/null 2>&1
+sudo chmod 777 /etc/resolvconf/resolv.conf.d/base >/dev/null 2>&1
 cd /etc/resolvconf/resolv.conf.d/
 sudo cat > base << 'EOL'
 nameserver 8.8.8.8
