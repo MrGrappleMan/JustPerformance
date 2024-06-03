@@ -15,9 +15,9 @@ sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo add-apt-repository ppa:graphics-drivers/ppa -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-for ipkg in systemd ubuntu-drivers-common kde-full coreutils resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
+for ipkg in systemd ubuntu-drivers-common kde-full coreutils flatpak resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
 for rpkg in xfconf cinnamon gnome package-update-indicator; do sudo apt-fast remove $rpkg -y --autoremove >/dev/null 2>&1; done
-# ----------------------------------------------------------------------------------------------------
+# ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
 cd /usr/bin/
@@ -32,7 +32,7 @@ mkswap /dev/zram0
 swapon -p 32764 /dev/zram0
 EOL
 sudo systemctl enable --now zram-config >/dev/null 2>&1
-# ----------------------------------------------------------------------------------------------------
+# Snowflajr----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service >/dev/null 2>&1
 sudo cat > snowflake-proxy.service << 'EOL'
