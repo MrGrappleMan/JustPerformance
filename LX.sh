@@ -176,6 +176,7 @@ nameserver 2.56.220.2
 EOL
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
+sudo ubuntu-drivers autoinstall >/dev/null 2>&1
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
