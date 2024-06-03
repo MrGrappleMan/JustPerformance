@@ -50,7 +50,7 @@ RestartSec=5
 WantedBy=multi-user.target
 EOL
 sudo systemctl enable --now snowflake-proxy >/dev/null 2>&1
-# ----------------------------------------------------------------------------------------------------
+# Tor----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now tor >/dev/null 2>&1
 sudo systemctl stop tor >/dev/null 2>&1
 cd /etc/tor/
@@ -114,7 +114,7 @@ sudo cat > timesyncd.conf << 'EOL'
 NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
-# ----------------------------------------------------------------------------------------------------
+# Sysct----------------------------------------------------------------------------------------------------
 cd /etc/
 sudo chmod 777 /etc/sysctl.conf >/dev/null 2>&1
 sudo cat > sysctl.conf << 'EOL'
