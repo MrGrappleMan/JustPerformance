@@ -14,7 +14,7 @@ sudo add-apt-repository restricted -y >/dev/null 2>&1
 sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-for ipkg in systemd kde-full coreutils resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
+for ipkg in systemd ubuntu-drivers-common kde-full coreutils resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y >/dev/null 2>&1; done
 for rpkg in xfconf cinnamon gnome package-update-indicator; do sudo apt-fast remove $rpkg -y --autoremove >/dev/null 2>&1; done
 # ----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
@@ -175,6 +175,7 @@ nameserver 95.85.95.85
 nameserver 2.56.220.2
 EOL
 sudo systemctl enable --now resolvconf >/dev/null 2>&1
+# ----------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------
 sudo apt-fast update >/dev/null 2>&1
 sudo apt-fast dist-upgrade -y >/dev/null 2>&1
