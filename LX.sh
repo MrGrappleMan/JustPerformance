@@ -18,7 +18,8 @@ sudo apt-fast update >/dev/null 2>&1
 for ipkg in systemd ubuntu-drivers-common kde-full plasma-discover-backend-flatpak coreutils flatpak resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y; done
 for rpkg in xfconf cinnamon gnome package-update-indicator; do sudo apt-fast remove $rpkg -y --autoremove; done
 # Flatpak----------------------------------------------------------------------------------------------------
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo >/dev/null 2>&1
+sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo >/dev/null 2>&1
 # ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config >/dev/null 2>&1
 sudo systemctl stop zram-config >/dev/null 2>&1
