@@ -20,9 +20,9 @@ sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/so
 sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add - >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
 # Drivers
-ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd
+for syspkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd
 # System
-for ipkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y; done
+for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo >/dev/null 2>&1
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo >/dev/null 2>&1
