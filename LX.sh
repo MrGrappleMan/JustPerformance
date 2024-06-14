@@ -19,8 +19,9 @@ sudo add-apt-repository ppa:system76-dev/pre-stable -y >/dev/null 2>&1
 sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
 sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add - >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
-# Graphical Drivers
+# Drivers
 # System Programs
+for ipkg in systemd system76-driver system76-driver-nvidia ubuntu-drivers-common coreutils flatpak resolvconf nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd util-linux plymouth zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $ipkg -y; done
 # Other Programs
 for rpkg in package-update-indicator; do sudo apt-fast remove $rpkg -y --autoremove; done
 # Flatpak----------------------------------------------------------------------------------------------------
