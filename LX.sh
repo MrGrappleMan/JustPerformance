@@ -1,6 +1,4 @@
 clear
-echo Procedure will take a long time to complete.
-echo Please wait...
 apt-get update
 apt-get install sudo -y
 sudo apt-get update
