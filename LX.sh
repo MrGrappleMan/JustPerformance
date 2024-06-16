@@ -4,7 +4,7 @@ echo Please wait...
 apt-get update
 apt-get install sudo -y
 sudo apt-get update
-for prepkg in curl git dkms wget build-essential; do sudo apt-get install $epkg -y; done
+for prepkg in curl git dkms wget build-essential; do sudo apt-get install $prepkg -y; done
 sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
 sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
 sudo apt-fast update
