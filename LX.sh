@@ -24,7 +24,6 @@ sudo apt-fast update
 # Drivers----------------------------------------------------------------------------------------------------
 for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd; do sudo apt-fast install $drvpkg -y; done
 sudo systemctl enable --now nvidia-persistenced
-sudo systemctl enable --now system76-power
 sudo systemctl enable -- now firmware-manager
 # System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
