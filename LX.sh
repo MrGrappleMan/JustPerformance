@@ -15,8 +15,10 @@ sudo add-apt-repository universe -y >/dev/null 2>&1
 sudo add-apt-repository multiverse -y >/dev/null 2>&1
 sudo add-apt-repository ppa:graphics-drivers/ppa -y >/dev/null 2>&1
 sudo add-apt-repository ppa:kubuntu-ppa/backports -y >/dev/null 2>&1
-sudo add-apt-repository ppa:kubuntu-ppa/backports-extra
-sudo add-apt-repository ppa:kubuntu-ppa/backports-landing
+sudo add-apt-repository ppa:kubuntu-ppa/backports-extra -y >/dev/null 2>&1
+sudo add-apt-repository ppa:kubuntu-ppa/backports-landing -y >/dev/null 2>&1
+sudo add-apt-repository ppa:kubuntu-ppa/ppa-landing
+sudo add-apt-repository ppa:system76-dev/stable -y >/dev/null 2>&1
 sudo add-apt-repository ppa:system76-dev/pre-stable -y >/dev/null 2>&1
 sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
 sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add - >/dev/null 2>&1
