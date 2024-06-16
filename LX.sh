@@ -14,8 +14,8 @@ sudo add-apt-repository restricted -y
 sudo add-apt-repository universe -y
 sudo add-apt-repository multiverse -y
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo add-apt-repository ppa:kubuntu-ppa/ppa
-sudo add-apt-repository ppa:kubuntu-ppa/ppa-landing
+sudo add-apt-repository ppa:kubuntu-ppa/ppa -y
+sudo add-apt-repository ppa:kubuntu-ppa/ppa-landing -y
 sudo add-apt-repository ppa:system76-dev/stable -y
 sudo add-apt-repository ppa:system76-dev/pre-stable -y
 sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
