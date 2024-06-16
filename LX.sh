@@ -21,9 +21,9 @@ sudo add-apt-repository ppa:kubuntu-ppa/ppa-landing
 sudo add-apt-repository ppa:system76-dev/stable -y >/dev/null 2>&1
 sudo add-apt-repository ppa:system76-dev/pre-stable -y >/dev/null 2>&1
 sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
-sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add - >/dev/null 2>&1
+sudo wget -qO - http://
 sudo sh -c 'echo "deb http://archive.neon.kde.org/testing focal main" > /etc/apt/sources.list.d/neon-testing.list'
-sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add -
+sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add - >/dev/null 2>&1
 sudo apt-fast update >/dev/null 2>&1
 # Drivers
 for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd; do sudo apt-fast install $drvpkg -y; done
