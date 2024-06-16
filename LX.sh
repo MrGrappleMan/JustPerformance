@@ -26,10 +26,11 @@ sudo sh -c 'echo "deb http://archive.neon.kde.org/testing focal main" > /etc/apt
 sudo sh -c 'echo "deb http://archive.neon.kde.org/unstable focal main" > /etc/apt/sources.list.d/neon-unstable.list'
 sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add -
 sudo apt-fast update
-# Drivers
+# Drivers----------------------------------------------------------------------------------------------------
 for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd; do sudo apt-fast install $drvpkg -y; done
 sudo ubuntu-drivers install --gpgpu
-# System Pacj----------------------------------------------------------------------------------------------------
+
+# System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
