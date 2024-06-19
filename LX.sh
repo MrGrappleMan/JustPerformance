@@ -30,6 +30,19 @@ for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowfl
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+curl -sSL https://install.pi-hole.net | bash
+
+sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
+# Bind to localhost
+listen-address=127.0.0.1
+bind-interfaces
+EOF
+
+# Restart Pi-hole services to apply changes
+sudo pihole restartdns
+
+# Inform the user that the installation and configuration are complete
+echo "Pi-hole has been installed and configured to block ads only for this machine."
 # ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
