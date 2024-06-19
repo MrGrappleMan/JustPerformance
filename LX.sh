@@ -24,13 +24,19 @@ sudo apt-fast update
 # Drivers----------------------------------------------------------------------------------------------------
 for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd; do sudo apt-fast install $drvpkg -y; done
 sudo systemctl enable --now nvidia-persistenced
-sudo systemctl enable --now system76-power
 sudo systemctl enable -- now firmware-manager
 # System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+curl -sSL https://install.pi-hole.net | bash
+sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
+# Bind to localhost
+listen-address=127.0.0.1
+bind-interfaces
+EOF
+sudo pihole restartdns
 # ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
