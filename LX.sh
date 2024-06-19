@@ -33,7 +33,6 @@ sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://fl
 # Pi-Hole----------------------------------------------------------------------------------------------------
 curl -sSL https://install.pi-hole.net | bash
 sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
-# Bind to localhost
 listen-address=127.0.0.1
 bind-interfaces
 EOF
