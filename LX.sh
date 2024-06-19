@@ -33,11 +33,12 @@ sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://fl
 # Pi-Hole----------------------------------------------------------------------------------------------------
 curl -sSL https://install.pi-hole.net | bash
 sudo systemctl enable --now pihole-FTL
-sudo systemctl s pihole-FTL
+sudo systemctl stop pihole-FTL
 sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
 listen-address=127.0.0.1
 bind-interfaces
 EOF
+sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
 # ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
