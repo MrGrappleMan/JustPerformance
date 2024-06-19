@@ -30,6 +30,7 @@ for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowfl
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+# Pi-Hole----------------------------------------------------------------------------------------------------
 curl -sSL https://install.pi-hole.net | bash
 sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
 # Bind to localhost
