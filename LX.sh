@@ -1,20 +1,18 @@
 clear
+cd
 sudo pacman -Syu --devel --noconfirm curl git dkms wget base-devel
-for prepkg in curl git dkms wget build-essential; do sudo apt-get install $prepkg -y; done
-sudo /bin/bash -c "$(sudo curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
-sudo /bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
+# Paru----------------------------------------------------------------------------------------------------
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+cd
+# Chaotic-AUR----------------------------------------------------------------------------------------------------
+pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key 3056513887B78AEB
+paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+/bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
 sudo curl -sSL https://install.pi-hole.net | bash
-sudo apt-fast update
-sudo apt-fast install software-properties-common -y
-sudo add-apt-repository main -y
-sudo add-apt-repository restricted -y
-sudo add-apt-repository universe -y
-sudo add-apt-repository multiverse -y
-sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo add-apt-repository ppa:kubuntu-ppa/ppa -y
-sudo add-apt-repository ppa:kubuntu-ppa/ppa-landing -y
-sudo add-apt-repository ppa:system76-dev/stable -y
-sudo add-apt-repository ppa:system76-dev/pre-stable -y
 sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
 sudo sh -c 'echo "deb http://archive.neon.kde.org/testing focal main" > /etc/apt/sources.list.d/neon-testing.list'
 sudo sh -c 'echo "deb http://archive.neon.kde.org/unstable focal main" > /etc/apt/sources.list.d/neon-unstable.list'
