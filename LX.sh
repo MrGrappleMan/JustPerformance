@@ -1,5 +1,5 @@
 clear
-sudo pacman -Syu --devel curl git wget base-devel
+sudo pacman -Syu curl git wget base-devel
 # Paru----------------------------------------------------------------------------------------------------
 cd
 git clone https://aur.archlinux.org/paru.git
