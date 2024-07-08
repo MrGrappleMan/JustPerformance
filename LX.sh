@@ -1,5 +1,5 @@
 clear
-sudo pacman -Syu --noconfirm curl git wget base-devel
+sudo pacman -Syu --noconfirm curl git wget base-devel nvidia-beta nvidia-beta-dkms
 # Paru----------------------------------------------------------------------------------------------------
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
