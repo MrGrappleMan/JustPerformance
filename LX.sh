@@ -2,7 +2,7 @@ clear
 sudo pacman -Syu --noconfirm curl git wget base-devel
 # Paru----------------------------------------------------------------------------------------------------
 cd
-git clone https://aur.archlinux.org/paru.git
+git clone https://aur.archlinux.org/paru-git.git /tmp/paru
 cd paru
 makepkg -si
 cd
