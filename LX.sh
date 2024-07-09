@@ -1,11 +1,13 @@
 clear
 sudo pacman -Syu --noconfirm --needed curl git wget base-devel nvidia-beta nvidia-beta-dkms nv
 # Paru----------------------------------------------------------------------------------------------------
+# Setup
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
 cd
+# Config
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
