@@ -9,19 +9,12 @@ cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
 cd /etc/paru/paru.conf
-#
-# $PARU_CONF
-# /etc/paru.conf
-# ~/.config/paru/paru.conf
-#
-# See the paru.conf(5) manpage for options
 [options]
 PgpFetch
 Devel
 Provides
 DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-#BottomUp
-#RemoveMake
+SkipReview
 SudoLoop
 #UseAsk
 #SaveChanges
