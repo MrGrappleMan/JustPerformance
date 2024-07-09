@@ -141,7 +141,8 @@ FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.c
 EOL
 # sysctl.conf----------------------------------------------------------------------------------------------------
 cd /etc/
-sudo chmod 777 /etc/sysctl.conf
+sudo chmod 777 /
+sudo zsh -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
 sudo cat > sysctl.conf << 'EOL'
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
@@ -168,7 +169,7 @@ net.ipv4.udp_wmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
-EOL
+EOL'
 # No Boot Logo----------------------------------------------------------------------------------------------------
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
 sudo update-grub
