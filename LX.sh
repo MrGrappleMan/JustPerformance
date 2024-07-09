@@ -36,10 +36,6 @@ SudoLoop
 #SignDb
 #KeepRepoCache
 
-#[bin]
-#FileManager = vifm
-#MFlags = --skippgpcheck
-#Sudo = doas
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
