@@ -46,7 +46,6 @@ sudo pihole restartdns
 # ZRAM----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
-cd /usr/bin/
 sudo chmod 777 /usr/bin/init-zram-swapping
 sudo zsh -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
 #!/bin/zsh
