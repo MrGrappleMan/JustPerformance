@@ -1,5 +1,6 @@
+#!/bin/zsh
 clear
-sudo pacman -Syu --noconfirm --needed curl git wget base-devel nvidia-beta nvidia-beta-dkms nv
+sudo pacman -Syu --noconfirm --needed curl git wget base-devel nvidia-beta nvidia-beta-dkms
 # Paru----------------------------------------------------------------------------------------------------
 # Setup
 cd
