@@ -8,7 +8,7 @@ git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
-sudo zsh -c 'cat > cd /etc/paru/paru.conf << "EOL"
+sudo zsh -c 'cat > /etc/paru/paru.conf << "EOL"
 [options]
 PgpFetch
 Devel
