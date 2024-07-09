@@ -48,17 +48,8 @@ sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 cd /usr/bin/
 sudo chmod 777 /usr/bin/init-zram-swapping
-sudo cat > init-zram-swapping << 'EOL'
-#!/bin/sh
-modprobe zram
-totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
-mem=$((totalmem * 1024))
-echo $mem > /sys/block/zram0/disksize
-mkswap /dev/zram0
-swapon -p 32764 /dev/zram0
-EOL
-sudo bash -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
-#!/bin/sh
+sudo zsh -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
+#!/bin/zsh
 modprobe zram
 totalmem=$(LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//")
 mem=$((totalmem * 1024))
