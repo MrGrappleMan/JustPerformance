@@ -9,7 +9,37 @@ cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
 cd /etc/paru/paru.conf
+#
+# $PARU_CONF
+# /etc/paru.conf
+# ~/.config/paru/paru.conf
+#
+# See the paru.conf(5) manpage for options
+[options]
+PgpFetch
+Devel
+Provides
+DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
+#BottomUp
+#RemoveMake
+SudoLoop
+#UseAsk
+#SaveChanges
+#CombinedUpgrade
+#CleanAfter
+#UpgradeMenu
+#NewsOnUpgrade
 
+#LocalRepo
+#Chroot
+#Sign
+#SignDb
+#KeepRepoCache
+
+#[bin]
+#FileManager = vifm
+#MFlags = --skippgpcheck
+#Sudo = doas
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
@@ -140,8 +170,7 @@ NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.
 FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
 EOL
 # sysctl.conf----------------------------------------------------------------------------------------------------
-cd /etc/
-sudo chmod 777 /etc/sysctl.conf
+sudo zsh -c 'cat > /etc/sysctl.conf << "EOL"
 sudo cat > sysctl.conf << 'EOL'
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
@@ -168,8 +197,8 @@ net.ipv4.udp_wmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
-EOL
-# No Boot Logo----------------------------------------------------------------------------------------------------
+EOL'
+# Boot debug----------------------------------------------------------------------------------------------------
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
 sudo update-grub
 # Crontab----------------------------------------------------------------------------------------------------
