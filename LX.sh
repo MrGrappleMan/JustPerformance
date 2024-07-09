@@ -36,9 +36,6 @@ SudoLoop
 #SignDb
 #KeepRepoCache
 
-#
-# Binary OPTIONS
-#
 #[bin]
 #FileManager = vifm
 #MFlags = --skippgpcheck
