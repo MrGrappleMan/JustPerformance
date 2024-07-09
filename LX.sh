@@ -57,9 +57,6 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32764 /dev/zram0
 EOL'
-
-# Set the permissions to be readable and executable by everyone, but writable only by the owner
-sudo chmod 755 /usr/local/bin/init-zram-swapping
 sudo systemctl enable --now zram-config
 # Snowflake----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
