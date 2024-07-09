@@ -9,6 +9,7 @@ makepkg -si --noconfirm
 cd
 # Config
 cd /etc/paru/paru.conf
+ch
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
@@ -56,6 +57,18 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32764 /dev/zram0
 EOL
+sudo bash -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
+#!/bin/sh
+modprobe zram
+totalmem=$(LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//")
+mem=$((totalmem * 1024))
+echo $mem > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon -p 32764 /dev/zram0
+EOL'
+
+# Set the permissions to be readable and executable by everyone, but writable only by the owner
+sudo chmod 755 /usr/local/bin/init-zram-swapping
 sudo systemctl enable --now zram-config
 # Snowflake----------------------------------------------------------------------------------------------------
 cd /lib/systemd/system/
