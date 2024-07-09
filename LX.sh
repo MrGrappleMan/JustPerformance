@@ -16,6 +16,7 @@ Provides
 DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
 SkipReview
 SudoLoop
+CompletionInterval = 1
 #UseAsk
 #SaveChanges
 #CombinedUpgrade
