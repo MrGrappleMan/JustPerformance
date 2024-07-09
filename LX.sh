@@ -18,7 +18,7 @@ SkipReview
 SudoLoop
 CompletionInterval = 1
 #UseAsk
-#SaveChanges
+SaveChanges
 #CombinedUpgrade
 #CleanAfter
 #UpgradeMenu
