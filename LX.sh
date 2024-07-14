@@ -2,13 +2,14 @@
 clear
 sudo pacman -Syu --noconfirm base-devel
 # Paru----------------------------------------------------------------------------------------------------
+
 # Setup
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
-sudocat > /etc/paru/paru.conf << "EOL"
+cat > /etc/paru/paru.conf << "EOL"
 [options]
 PgpFetch
 Devel
@@ -19,7 +20,7 @@ SudoLoop
 CompletionInterval = 1
 SaveChanges
 CombinedUpgrade
-EOL'
+EOL
 # Powerpill----------------------------------------------------------------------------------------------------
 # Setup
 paru -Syu powerpill
