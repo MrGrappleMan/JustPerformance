@@ -2,13 +2,10 @@
 clear
 sudo pacman -Syu --noconfirm base-devel
 # Paru----------------------------------------------------------------------------------------------------
-
-# Setup
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
-# Config
 cat > /etc/paru.conf << "XIT"
 [options]
 PgpFetch
@@ -22,7 +19,6 @@ SaveChanges
 CombinedUpgrade
 XIT
 # Powerpill----------------------------------------------------------------------------------------------------
-# Setup
 paru -Syu powerpill
 
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
