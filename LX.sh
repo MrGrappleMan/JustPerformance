@@ -9,7 +9,7 @@ git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
-cat > /etc/paru/paru.conf << "XIT"
+cat > /etc/paru.conf << "XIT"
 [options]
 PgpFetch
 Devel
