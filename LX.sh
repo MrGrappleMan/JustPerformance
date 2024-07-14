@@ -1,12 +1,12 @@
 #!/bin/zsh
 clear
-sudo pacman -Syu --noconfirm base-devel powerpill
+sudo pacman -Syu --noconfirm base-devel powerpill flat
 # Paru----------------------------------------------------------------------------------------------------
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
-cat > /etc/paru.conf << "XIT"
+sudo cat > /etc/paru.conf << "XIT"
 [options]
 PgpFetch
 Devel
