@@ -12,7 +12,7 @@ PgpFetch
 Devel
 Provides
 DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-SkipReview
+CleanAfter
 SudoLoop
 CompletionInterval = 1
 SaveChanges
