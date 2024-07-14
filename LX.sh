@@ -21,7 +21,77 @@ PacmanBin = /usr/bin/powerpill
 XIT
 # Powerpill----------------------------------------------------------------------------------------------------
 sudo cat > /etc/powerpill/powerpill.json << "XIT"
-
+{
+  "aria2": {
+    "args": [
+	"--no-conf",
+      "--allow-overwrite=true",
+      "--always-resume=false",
+      "--auto-file-renaming=false",
+      "--check-integrity=true",
+      "--conditional-get=true",
+      "--continue=true",
+      "--file-allocation=falloc",
+      "--log-level=error",
+      "--max-concurrent-downloads=100",
+      "--max-connection-per-server=5",
+      "--min-split-size=5M",
+      "--remote-time=true",
+      "--show-console-readout=true"
+    ],
+    "path": "/usr/bin/aria2c"
+  },
+  "pacman": {
+    "config": "/etc/pacman.conf",
+    "path": "/usr/bin/pacman"
+  },
+  "pacserve": {
+    "server": null
+  },
+  "powerpill": {
+    "select": true,
+    "reflect databases": false
+  },
+  "reflector": {
+    "args.unused": [
+      "--protocol",
+      "http",
+      "--latest",
+      "50"
+    ]
+  },
+  "rsync": {
+    "args": [
+      "--no-motd",
+      "--progress"
+    ],
+    "db only": true,
+    "path": "/usr/bin/rsync",
+    "servers": 
+    [
+	"rsync://mirror.csclub.uwaterloo.ca/archlinux/$repo/os/$arch",
+	"rsync://rsync.localmsp.org/arch/$repo/os/$arch",
+	"rsync://lug.mtu.edu/archlinux/$repo/os/$arch",
+	"rsync://mirrors.kernel.org/archlinux/$repo/os/$arch",
+	"rsync://mirror.lty.me/archlinux/$repo/os/$arch",
+	"rsync://archlinux.polymorf.fr/archlinux/$repo/os/$arch",
+	"rsync://mirror.js-webcoding.de/pub/archlinux/$repo/os/$arch",
+	"rsync://ftp.nluug.nl/archlinux/$repo/os/$arch",
+	"rsync://mirror.de.leaseweb.net/archlinux/$repo/os/$arch",
+	"rsync://mirror.neuf.no/archlinux/$repo/os/$arch",
+	"rsync://archlinux.honkgong.info/archlinux/$repo/os/$arch",
+	"rsync://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
+	"rsync://ftp.sh.cvut.cz/arch/$repo/os/$arch",
+	"rsync://archlinux.mirror.pkern.at/archlinux/$repo/os/$arch",
+	"rsync://mirror.f4st.host/archlinux/$repo/os/$arch",
+	"rsync://mirror.datacenter.by/archlinux/$repo/os/$arch",
+	"rsync://ftp.swin.edu.au/archlinux/$repo/os/$arch",
+	"rsync://archlinux.c3sl.ufpr.br/archlinux/$repo/os/$arch",
+	"rsync://mirror.dkm.cz/archlinux/$repo/os/$arch",
+	"rsync://ftp.yzu.edu.tw/Linux/archlinux/$repo/os/$arch"
+    ]
+  }
+}
 XIT
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
