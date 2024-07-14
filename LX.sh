@@ -9,7 +9,7 @@ git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
 # Config
-cat > /etc/paru/paru.conf << "EOL"
+cat > /etc/paru/paru.conf << "ASDF"
 [options]
 PgpFetch
 Devel
@@ -20,7 +20,7 @@ SudoLoop
 CompletionInterval = 1
 SaveChanges
 CombinedUpgrade
-EOL
+nd
 # Powerpill----------------------------------------------------------------------------------------------------
 # Setup
 paru -Syu powerpill
