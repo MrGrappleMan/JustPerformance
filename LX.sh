@@ -1,6 +1,6 @@
 #!/bin/zsh
 clear
-sudo pacman -Syu --noconfirm base-devel
+sudo pacman -Syu --noconfirm base-devel powerpill
 # Paru----------------------------------------------------------------------------------------------------
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
@@ -17,6 +17,7 @@ SudoLoop
 CompletionInterval = 1
 SaveChanges
 CombinedUpgrade
+PacmanBin = /usr/bin/powerpill
 XIT
 # Powerpill----------------------------------------------------------------------------------------------------
 paru -Syu powerpill
