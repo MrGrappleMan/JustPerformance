@@ -1,5 +1,13 @@
 #!/bin/zsh
 clear
+check_internet() {
+  if ping -c 1 8.8.8.8 &> /dev/null; then
+    echo "Internet connection is active."
+  else
+    echo "No internet connection. Exiting."
+    exit 1
+  fi
+}
 sudo pacman -Syu --noconfirm base-devel powerpill flatpak git
 # Paru----------------------------------------------------------------------------------------------------
 cd
