@@ -102,7 +102,8 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 sudo curl -sSL https://install.pi-hole.net | bash
 # Drivers----------------------------------------------------------------------------------------------------
 for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd
-do sudo apt-fast install $drvpkg -y; done
+do sudo apt-fast install $drvpkg -y
+done
 sudo systemctl enable --now nvidia-persistenced
 sudo systemctl enable --now firmware-manager
 # System Packages----------------------------------------------------------------------------------------------------
