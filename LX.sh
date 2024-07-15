@@ -4,7 +4,7 @@ check_internet() {
   if ping -c 1 8.8.8.8 &> /dev/null; then
     echo "Internet:Y"
   else
-    echo "No internet connection. Exiting."
+    echo ""
     exit 1
   fi
 }
