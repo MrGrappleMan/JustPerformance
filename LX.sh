@@ -1,10 +1,10 @@
 #!/bin/zsh
 clear
-check_internet() {
+() {
   if ping -c 1 8.8.8.8 &> /dev/null; then
-    echo "✓ Internet"
+    echo "Y Internet"
   else
-    echo ""
+    echo "X Internet"
     exit 1
   fi
 }
