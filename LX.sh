@@ -2,7 +2,7 @@
 clear
 check_internet() {
   if ping -c 1 8.8.8.8 &> /dev/null; then
-    echo "Internet connection is active."
+    echo "Internet:Y"
   else
     echo "No internet connection. Exiting."
     exit 1
