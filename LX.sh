@@ -1,13 +1,5 @@
 #!/bin/zsh
 clear
-() {
-  if ping -c 1 8.8.8.8 &> /dev/null; then
-    echo "Y Internet"
-  else
-    echo "X Internet"
-    exit 1
-  fi
-}
 sudo pacman -Syu --noconfirm base-devel powerpill flatpak git
 # Paru----------------------------------------------------------------------------------------------------
 cd
@@ -106,12 +98,8 @@ pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-# ----------------------------------------------------------------------------------------------------
-
-/bin/bash -c "$(sudo curl -sL https://brightdata.com/static/earnapp/install.sh)" -y >/dev/null 2>&1
+# Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
-sudo sh -c 'echo "deb http://archive.neon.kde.org/user focal main" > /etc/apt/sources.list.d/neon.list'
-sudo sh -c 'echo "deb http://archive.neon.kde.org/testing focal main" > /etc/apt/sources.list.d/neon-testing.list'
 sudo sh -c 'echo "deb http://archive.neon.kde.org/unstable focal main" > /etc/apt/sources.list.d/neon-unstable.list'
 sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add -
 sudo apt-fast update
