@@ -100,11 +100,9 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
-sudo sh -c 'echo "deb http://archive.neon.kde.org/unstable focal main" > /etc/apt/sources.list.d/neon-unstable.list'
-sudo wget -qO - http://archive.neon.kde.org/public.key | sudo apt-key add -
-sudo apt-fast update
 # Drivers----------------------------------------------------------------------------------------------------
-for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd; do sudo apt-fast install $drvpkg -y; done
+for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd
+do sudo apt-fast install $drvpkg -y; done
 sudo systemctl enable --now nvidia-persistenced
 sudo systemctl enable --now firmware-manager
 # System Packages----------------------------------------------------------------------------------------------------
