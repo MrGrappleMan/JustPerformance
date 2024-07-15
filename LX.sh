@@ -2,7 +2,7 @@
 clear
 check_internet() {
   if ping -c 1 8.8.8.8 &> /dev/null; then
-    echo "Internet:Y"
+    echo "✓ Internet"
   else
     echo ""
     exit 1
