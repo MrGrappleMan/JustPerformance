@@ -37,7 +37,7 @@ sudo cat > /etc/powerpill/powerpill.json << "XIT"
       "--max-connection-per-server=262144",
       "--min-split-size=5M",
       "--remote-time=true",
-      "--show-console-readout=true"
+      "--show-console-readout=false"
     ],
     "path": "/usr/bin/aria2c"
   },
