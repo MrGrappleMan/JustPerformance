@@ -102,8 +102,8 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
 # AUR----------------------------------------------------------------------------------------------------
-for drvpkg in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev paru -Syu powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers
-do paru -Syu --noconfirm --skipreview $drvpkg -y
+for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers
+do paru -Syu --noconfirm --skipreview $pakges -y
 done
 # System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
