@@ -107,7 +107,6 @@ for drvpkg in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-uti
 do paru -Syu --noconfirm --skipreview $drvpkg -y
 done
 sudo systemctl enable --now nvidia-persistenced
-sudo systemctl enable --now firmware-manager
 # System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
