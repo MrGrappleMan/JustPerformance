@@ -19,6 +19,7 @@ SaveChanges
 CombinedUpgrade
 PacmanBin = /usr/bin/powerpill
 XIT
+paru -Syu powerpill 
 # Powerpill----------------------------------------------------------------------------------------------------
 sudo cat > /etc/powerpill/powerpill.json << "XIT"
 {
