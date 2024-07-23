@@ -102,7 +102,7 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
 # Drivers----------------------------------------------------------------------------------------------------
-for drvpkg in ubuntu-drivers-common system76-driver system76-driver-nvidia nvidia-cuda-toolkit ocl-icd-libopencl1 opencl-icd
+for drvpkg in nvidia-beta-dkms 
 do sudo apt-fast install $drvpkg -y
 done
 sudo systemctl enable --now nvidia-persistenced
