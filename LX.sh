@@ -20,7 +20,6 @@ CombinedUpgrade
 PacmanBin = /usr/bin/powerpill
 CompletionInterval = 1
 XIT
-paru -Syu powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers
 # Powerpill----------------------------------------------------------------------------------------------------
 sudo cat > /etc/powerpill/powerpill.json << "XIT"
 {
@@ -102,8 +101,8 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
-# Drivers----------------------------------------------------------------------------------------------------
-for drvpkg in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev
+# AUR----------------------------------------------------------------------------------------------------
+for drvpkg in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev paru -Syu powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers
 do paru -Syu --noconfirm --skipreview $drvpkg -y
 done
 # System Packages----------------------------------------------------------------------------------------------------
