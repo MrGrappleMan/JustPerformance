@@ -106,7 +106,6 @@ sudo curl -sSL https://install.pi-hole.net | bash
 for drvpkg in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev
 do paru -Syu --noconfirm --skipreview $drvpkg -y
 done
-sudo systemctl enable --now nvidia-persistenced
 # System Packages----------------------------------------------------------------------------------------------------
 for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
