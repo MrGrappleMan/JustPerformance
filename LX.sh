@@ -102,7 +102,7 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
 # Drivers----------------------------------------------------------------------------------------------------
-for drvpkg in nvidia-open-git nvidia-open-dkms
+for drvpkg in nvidia-open-git nvidia-open-dkms-git
 do sudo apt-fast install $drvpkg -y
 done
 sudo systemctl enable --now nvidia-persistenced
