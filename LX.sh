@@ -1,6 +1,6 @@
 #!/bin/zsh
 clear
-sudo pacman -Syu --noconfirm base-devel powerpill flatpak git
+sudo pacman -Syu --noconfirm base-devel git
 # Paru----------------------------------------------------------------------------------------------------
 cd
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
@@ -19,7 +19,7 @@ SaveChanges
 CombinedUpgrade
 PacmanBin = /usr/bin/powerpill
 XIT
-paru -Syu powerpill 
+paru -Syu powerpill flatpak
 # Powerpill----------------------------------------------------------------------------------------------------
 sudo cat > /etc/powerpill/powerpill.json << "XIT"
 {
