@@ -20,7 +20,7 @@ CombinedUpgrade
 PacmanBin = /usr/bin/powerpill
 CompletionInterval = 1
 XIT
-paru -Syu powerpill flatpak
+paru -Syu powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers
 # Powerpill----------------------------------------------------------------------------------------------------
 sudo cat > /etc/powerpill/powerpill.json << "XIT"
 {
