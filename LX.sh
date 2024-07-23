@@ -18,6 +18,7 @@ CompletionInterval = 1
 SaveChanges
 CombinedUpgrade
 PacmanBin = /usr/bin/powerpill
+CompletionInterval = 1
 XIT
 paru -Syu powerpill flatpak
 # Powerpill----------------------------------------------------------------------------------------------------
