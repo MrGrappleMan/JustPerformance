@@ -54,7 +54,7 @@ sudo cat > /etc/powerpill/powerpill.json << "XIT"
     "reflect databases": false
   },
   "reflector": {
-    "args.unused": [
+    "args": [
       "--protocol",
       "http",
       "--latest",
