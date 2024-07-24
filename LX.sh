@@ -102,11 +102,10 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo curl -sSL https://install.pi-hole.net | bash
 # AUR----------------------------------------------------------------------------------------------------
-for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak linux-xanmod-rt linux-xanmod-rt-headers 
+for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git linux-xanmod-rt linux-xanmod-rt-headers 
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
 # System Packages----------------------------------------------------------------------------------------------------
-for syspkg in systemd coreutils flatpak resolvconf util-linux zram-config snowflake-proxy tor obfs4proxy; do sudo apt-fast install $syspkg -y; done
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
