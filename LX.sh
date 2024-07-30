@@ -98,8 +98,6 @@ pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-# Pi-Hole----------------------------------------------------------------------------------------------------
-sudo curl -sSL https://install.pi-hole.net | bash
 # AUR----------------------------------------------------------------------------------------------------
 for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git linux-xanmod-rt linux-xanmod-rt-headers 
 do paru -Syu --noconfirm --skipreview $pakges -y
