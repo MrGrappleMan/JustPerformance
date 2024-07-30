@@ -102,8 +102,6 @@ paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zs
 for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git pi-hole-server linux-xanmod-rt linux-xanmod-rt-headers 
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
-# AUR----------------------------------------------------------------------------------------------------
-
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
