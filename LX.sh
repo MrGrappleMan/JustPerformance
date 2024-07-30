@@ -99,9 +99,11 @@ pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 # AUR----------------------------------------------------------------------------------------------------
-for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git linux-xanmod-rt linux-xanmod-rt-headers 
+for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git pi-hole-server linux-xanmod-rt linux-xanmod-rt-headers 
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
+# AUR----------------------------------------------------------------------------------------------------
+
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
