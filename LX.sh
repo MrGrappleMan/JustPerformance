@@ -57,8 +57,8 @@ for pakges in\
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
 # Flatpak----------------------------------------------------------------------------------------------------
-sudo flatpak remote-add --if-not-exists --noninteractive f https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo flatpak remote-add --if-not-exists --noninteractive fb https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
 curl -sSL https://install.pi-hole.net | bash
 sudo systemctl enable --now pihole-FTL
@@ -73,7 +73,7 @@ sudo pihole restartdns
 sudo systemctl enable --now zram-config
 sudo systemctl stop zram-config
 sudo chmod 777 /usr/bin/init-zram-swapping
-sudo zsh -c 'cat > /usr/local/bin/init-zram-swapping << "EOL"
+cat > /usr/local/bin/init-zram-swapping << "XIT"
 #!/bin/zsh
 modprobe zram
 totalmem=$(LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//")
@@ -81,32 +81,37 @@ mem=$((totalmem * 1024))
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32764 /dev/zram0
-EOL'
+XIT
 sudo systemctl enable --now zram-config
 # Snowflake----------------------------------------------------------------------------------------------------
-cd /lib/systemd/system/
-sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
-sudo cat > snowflake-proxy.service << 'EOL'
-[Unit]
-Description=snowflake-proxy
-Documentation=man:snowflake-proxy
-Documentation=https://snowflake.torproject.org/
-After=network-online.target docker.socket firewalld.service
-Wants=network-online.target
+sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT"
 [Service]
-ExecStart=/usr/bin/snowflake-proxy -capacity 65536
+ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
 Restart=always
 RestartSec=5
+DynamicUser=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateMounts=true
+PrivateIPC=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectProc=invisible
+ProtectHostname=true
+ProtectClock=true
+ProtectSystem=strict
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
 [Install]
 WantedBy=multi-user.target
-EOL
+XIT
 sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now tor
-sudo systemctl stop tor
-cd /etc/tor/
-sudo chmod 777 /etc/tor/torrc
-sudo cat > torrc << 'EOL'
+sudo cat > /etc/tor/torrc << "XIT"
 ORPort auto
 ExitRelay 0
 SocksPort 0
@@ -136,7 +141,7 @@ ClientUseIPv6 1
 DownloadExtraInfo 1
 IPv6Exit 1
 DirCache 1
-EOL
+XIT
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 sudo mkdir tor@.service.d
@@ -160,14 +165,13 @@ sudo systemctl enable --now fstrim.timer
 sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo cat > timesyncd.conf << 'EOL'
+sudo cat > timesyncd.conf << "XIT
 [Time]
 NTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
 FallbackNTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
-EOL
+XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
-sudo zsh -c 'cat > /etc/sysctl.conf << "EOL"
-sudo cat > sysctl.conf << 'EOL'
+sudo cat > sysctl.conf << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
@@ -193,23 +197,11 @@ net.ipv4.udp_wmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 2000000
 net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
-EOL'
-# Boot debug----------------------------------------------------------------------------------------------------
-sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
-sudo update-grub
-# Crontab----------------------------------------------------------------------------------------------------
-cat <<EOF | sudo crontab -
-*/20 * * * * boinccmd --acct_mgr sync
-@hourly paru -Syu
-EOF
+XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now resolvconf
-sudo systemctl stop resolvconf
-sudo chmod 777 /etc/resolvconf/resolv.conf.d/base
-cd /etc/resolvconf/resolv.conf.d/
-sudo cat > base << 'EOL'
+sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
 nameserver 2.56.220.2
-EOL
+XIT
 sudo systemctl enable --now resolvconf
 # End----------------------------------------------------------------------------------------------------
 clear
