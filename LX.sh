@@ -47,8 +47,13 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 # AUR----------------------------------------------------------------------------------------------------
-for pakges in nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev flatpak paru-git pi-hole-server\
-linux-xanmod-edge linux-xanmod-edge-headers
+for pakges in\
+ nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash\
+ opencl-amd-dev amdvbflash\
+ pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
+ hyprland-git eww-git\
+ flatpak paru-git pi-hole-server\
+ linux-xanmod-edge linux-xanmod-edge-headers
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
 # Flatpak----------------------------------------------------------------------------------------------------
@@ -157,8 +162,8 @@ cd /etc/systemd/
 sudo chmod 777 /etc/systemd/timesyncd.conf
 sudo cat > timesyncd.conf << 'EOL'
 [Time]
-NTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
-FallbackNTP=time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com pool.ntp.org
+NTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
+FallbackNTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
 EOL
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo zsh -c 'cat > /etc/sysctl.conf << "EOL"
@@ -195,7 +200,7 @@ sudo update-grub
 # Crontab----------------------------------------------------------------------------------------------------
 cat <<EOF | sudo crontab -
 */20 * * * * boinccmd --acct_mgr sync
-@hourly (sudo apt-fast autoremove; sudo apt-fast -f install; sudo apt-fast clean; sudo apt-fast autoclean; sudo apt-fast update; sudo apt-fast dist-upgrade; sudo ubuntu-drivers autoinstall)
+@hourly paru -Syu
 EOF
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now resolvconf
@@ -203,21 +208,6 @@ sudo systemctl stop resolvconf
 sudo chmod 777 /etc/resolvconf/resolv.conf.d/base
 cd /etc/resolvconf/resolv.conf.d/
 sudo cat > base << 'EOL'
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-nameserver 1.1.1.1
-nameserver 1.0.0.1
-nameserver 9.9.9.9
-nameserver 149.112.112.112
-nameserver 208.67.222.222
-nameserver 208.67.220.220
-nameserver 91.239.100.100
-nameserver 89.233.43.71
-nameserver 45.33.97.5
-nameserver 37.235.1.177
-nameserver 94.140.14.140
-nameserver 94.140.14.141
-nameserver 95.85.95.85
 nameserver 2.56.220.2
 EOL
 sudo systemctl enable --now resolvconf
