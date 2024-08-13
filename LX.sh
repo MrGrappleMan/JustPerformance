@@ -11,99 +11,48 @@ PgpFetch
 Devel
 Provides
 DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-CleanAfter
+CompletionInterval = 1
 SudoLoop
-CompletionInterval = 1
-SaveChanges
-CombinedUpgrade
-PacmanBin = /usr/bin/powerpill
-CompletionInterval = 1
-XIT
-# Powerpill----------------------------------------------------------------------------------------------------
-sudo cat > /etc/powerpill/powerpill.json << "XIT"
-{
-  "aria2": {
-    "args": [
-	"--no-conf",
-      "--allow-overwrite=true",
-      "--always-resume=false",
-      "--auto-file-renaming=true",
-      "--check-integrity=true",
-      "--conditional-get=true",
-      "--continue=true",
-      "--file-allocation=falloc",
-      "--log-level=error",
-      "--max-concurrent-downloads=262144",
-      "--max-connection-per-server=262144",
-      "--min-split-size=5M",
-      "--remote-time=true",
-      "--show-console-readout=false"
-    ],
-    "path": "/usr/bin/aria2c"
-  },
-  "pacman": {
-    "config": "/etc/pacman.conf",
-    "path": "/usr/bin/pacman"
-  },
-  "pacserve": {
-    "server": null
-  },
-  "powerpill": {
-    "select": true,
-    "reflect databases": false
-  },
-  "reflector": {
-    "args": [
-      "--protocol",
-      "http",
-      "--latest",
-      "50"
-    ]
-  },
-  "rsync": {
-    "args": [
-      "--no-motd",
-      "--progress"
-    ],
-    "db only": true,
-    "path": "/usr/bin/rsync",
-    "servers": 
-    [
-	"rsync://mirror.csclub.uwaterloo.ca/archlinux/$repo/os/$arch",
-	"rsync://rsync.localmsp.org/arch/$repo/os/$arch",
-	"rsync://lug.mtu.edu/archlinux/$repo/os/$arch",
-	"rsync://mirrors.kernel.org/archlinux/$repo/os/$arch",
-	"rsync://mirror.lty.me/archlinux/$repo/os/$arch",
-	"rsync://archlinux.polymorf.fr/archlinux/$repo/os/$arch",
-	"rsync://mirror.js-webcoding.de/pub/archlinux/$repo/os/$arch",
-	"rsync://ftp.nluug.nl/archlinux/$repo/os/$arch",
-	"rsync://mirror.de.leaseweb.net/archlinux/$repo/os/$arch",
-	"rsync://mirror.neuf.no/archlinux/$repo/os/$arch",
-	"rsync://archlinux.honkgong.info/archlinux/$repo/os/$arch",
-	"rsync://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
-	"rsync://ftp.sh.cvut.cz/arch/$repo/os/$arch",
-	"rsync://archlinux.mirror.pkern.at/archlinux/$repo/os/$arch",
-	"rsync://mirror.f4st.host/archlinux/$repo/os/$arch",
-	"rsync://mirror.datacenter.by/archlinux/$repo/os/$arch",
-	"rsync://ftp.swin.edu.au/archlinux/$repo/os/$arch",
-	"rsync://archlinux.c3sl.ufpr.br/archlinux/$repo/os/$arch",
-	"rsync://mirror.dkm.cz/archlinux/$repo/os/$arch",
-	"rsync://ftp.yzu.edu.tw/Linux/archlinux/$repo/os/$arch"
-    ]
-  }
-}
+SkipReview
 XIT
 # Chaotic-AUR----------------------------------------------------------------------------------------------------
-pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 3056513887B78AEB
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+# Pacman----------------------------------------------------------------------------------------------------
+sudo cat > /etc/pacman.conf << "XIT"
+[options]
+HoldPkg = pacman glibc paru-git
+CleanMethod = KeepInstalled
+Architecture = auto
+Color
+CheckSpace
+DisableDownloadTimeout
+VerbosePkgLists
+ParallelDownloads = 262144
+[core-testing]
+Include = /etc/pacman.d/mirrorlist
+[core]
+Include = /etc/pacman.d/mirrorlist
+[extra-testing]
+Include = /etc/pacman.d/mirrorlist
+[extra]
+Include = /etc/pacman.d/mirrorlist
+[multilib-testing]
+Include = /etc/pacman.d/mirrorlist
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+XIT
 # AUR----------------------------------------------------------------------------------------------------
-for pakges in nvidia-open-git nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev powerpill flatpak paru-git pi-hole-server linux-xanmod-edge-linux-bin-x64v4 linux-xanmod-edge-linux-headers-bin-x64v4
+for pakges in nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash amdvbflash opencl-amd-dev flatpak paru-git pi-hole-server\
+linux-xanmod-edge linux-xanmod-edge-headers
 do paru -Syu --noconfirm --skipreview $pakges -y
 done
 # Flatpak----------------------------------------------------------------------------------------------------
-sudo flatpak remote-add --if-not-exists --noninteractive s https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists --noninteractive f https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive fb https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
 curl -sSL https://install.pi-hole.net | bash
