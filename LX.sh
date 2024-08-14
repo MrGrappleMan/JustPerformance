@@ -6,6 +6,15 @@ sudo pacman -Syu --noconfirm base-devel git
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
 sudo cat > /etc/pacman.conf << "XIT"
+[options]
+HoldPkg = pacman glibc paru-git
+CleanMethod = KeepInstalled
+Architecture = auto
+Color
+CheckSpace
+DisableDownloadTimeout
+VerbosePkgLists
+ParallelDownloads = 262144
 [core-testing]
 Include = /etc/pacman.d/mirrorlist
 [core]
@@ -17,6 +26,7 @@ Include = /etc/pacman.d/mirrorlist
 [multilib-testing]
 Include = /etc/pacman.d/mirrorlist
 [multilib]
+Include = /etc/pacman.d/mirrorlist
 XIT
 rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
@@ -1285,5 +1295,4 @@ nameserver 2001:4860:4860::8844
 XIT
 sudo systemctl enable --now resolvconf
 # End----------------------------------------------------------------------------------------------------
-clear
 echo Done!
