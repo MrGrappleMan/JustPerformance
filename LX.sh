@@ -3,6 +3,19 @@ clear
 cd
 sudo pacman -Syu --noconfirm base-devel git 
 # PackageMgmt----------------------------------------------------------------------------------------------------
+sudo cat > /etc/pacman.conf << "XIT"
+[core-testing]
+Include = /etc/pacman.d/mirrorlist
+[core]
+Include = /etc/pacman.d/mirrorlist
+[extra-testing]
+Include = /etc/pacman.d/mirrorlist
+[extra]
+Include = /etc/pacman.d/mirrorlist
+[multilib-testing]
+Include = /etc/pacman.d/mirrorlist
+[multilib]
+XIT
 rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
