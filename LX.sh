@@ -94,17 +94,45 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 XIT
 sudo systemctl enable --now JPzram
-sudo ramroot
+sudo ramroot -CEY
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now pihole-FTL
-sudo systemctl stop pihole-FTL
-sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
-listen-address=127.0.0.1
-bind-interfaces
-EOF
+cat > /etc/pihole/pihole-FTL.conf << "XIT"
+RATE_LIMIT=0/0
+XIT
+cat > /etc/pihole/adlists.list << "XIT"
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
+https://v.firebog.net/hosts/static/w3kbl.txt
+https://adaway.org/hosts.txt
+https://v.firebog.net/hosts/AdguardDNS.txt
+https://v.firebog.net/hosts/Admiral.txt
+https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+https://v.firebog.net/hosts/Easylist.txt
+https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
+https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+https://v.firebog.net/hosts/Easyprivacy.txt
+https://v.firebog.net/hosts/Prigent-Ads.txt
+https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
+https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
+https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+https://v.firebog.net/hosts/Prigent-Crypto.txt
+https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
+https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
+https://phishing.army/download/phishing_army_blocklist_extended.txt
+https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
+https://v.firebog.net/hosts/RPiList-Malware.txt
+https://v.firebog.net/hosts/RPiList-Phishing.txt
+https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
+https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
+https://urlhaus.abuse.ch/downloads/hostfile/
+XIT
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
@@ -178,24 +206,23 @@ sudo echo -e "NoNewPrivileges=no" >> tor@default.service.d/override.conf
 sudo systemctl enable --now tor
 # FS Trim----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
-cd /etc/systemd/system/fstrim.timer.d/
-sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
-sudo cat > override.conf << 'EOL'
+touch /etc/systemd/system/fstrim.timer.d/override.conf
+sudo cat > /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
 [Timer]
 OnCalendar=
 OnCalendar=daily
-EOL
+XIT
 sudo systemctl enable --now fstrim.timer
-sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 cd /etc/systemd/
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo cat > timesyncd.conf << "XIT
+sudo cat > timesyncd.conf << "XIT"
 [Time]
 NTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
 FallbackNTP=pool.ntp.org time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
-sudo cat > sysctl.conf << "XIT"
+touch /etc/sysctl.conf
+sudo cat > /etc/sysctl.conf << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
@@ -224,7 +251,12 @@ kernel.sched_migration_cost_ns = 5000000
 XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
-nameserver 2.56.220.2
+nameserver 2620:fe::fe
+nameserver 2620:fe::9
+nameserver 2606:4700:4700::1111
+nameserver 2606:4700:4700::1001
+nameserver 2001:4860:4860::8888
+nameserver 2001:4860:4860::8844
 XIT
 sudo systemctl enable --now resolvconf
 # End----------------------------------------------------------------------------------------------------
