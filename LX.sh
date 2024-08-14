@@ -47,17 +47,16 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 paru -Syu --noconfirm\
- nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash\
- opencl-amd-dev amdvbflash\
- pipewire-git libpipewire-git wireplumber-git libwireplumber-git zram-generator\
+ linux-xanmod-edge linux-xanmod-edge-headers zram-generator\
+ pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
- flatpak paru-git pi-hole-standalone\
- linux-xanmod-edge linux-xanmod-edge-headers
+ flatpak paru-git pi-hole-standalone snowflake-pt-proxy\
+# nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
+# opencl-amd-dev amdvbflash
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
-curl -sSL https://install.pi-hole.net | bash
 sudo systemctl enable --now pihole-FTL
 sudo systemctl stop pihole-FTL
 sudo tee /etc/dnsmasq.d/02-custom.conf <<EOF
