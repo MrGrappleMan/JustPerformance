@@ -46,7 +46,6 @@ Include = /etc/pacman.d/mirrorlist
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
-# AUR----------------------------------------------------------------------------------------------------
 paru -Syu --noconfirm\
  nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash\
  opencl-amd-dev amdvbflash\
