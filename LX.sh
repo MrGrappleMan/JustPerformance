@@ -1,7 +1,7 @@
 #!/bin/zsh
 clear
 sudo pacman -Syu --noconfirm base-devel git
-# Paru----------------------------------------------------------------------------------------------------
+# PackageMgmt----------------------------------------------------------------------------------------------------
 git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
 cd /tmp/paru-git
 makepkg -si --noconfirm
@@ -15,12 +15,10 @@ CompletionInterval = 1
 SudoLoop
 SkipReview
 XIT
-# Chaotic-AUR----------------------------------------------------------------------------------------------------
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-# Pacman----------------------------------------------------------------------------------------------------
 sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
@@ -45,15 +43,24 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
+[kde-unstable]
+Include = /etc/pacman.d/mirrorlist
+[gnome-unstable]
+Include = /etc/pacman.d/mirrorlist
 XIT
+# PackageInst----------------------------------------------------------------------------------------------------
 paru -Syu --noconfirm\
- linux-xanmod-edge linux-xanmod-edge-headers zram-generator ramroot-btrfs\
- pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
- hyprland-git eww-git\
- flatpak paru-git pi-hole-standalone snowflake-pt-proxy\
-# nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
-# opencl-amd-dev amdvbflash
-# ZRAM----------------------------------------------------------------------------------------------------
+linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
+pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
+hyprland-git eww-git\
+flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
+if [[ "$1" == "N" ]]; then
+ paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
+fi
+if [[ "$1" == "A" ]]; then
+ paru -Syu --noconfirm opencl-amd-dev amdvbflash
+fi
+# ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 cat > /usr/bin/JPzram << "XIT"
 #!/bin/zsh
 if [[ "$1" == "Y" ]]; then
@@ -86,6 +93,8 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 XIT
+sudo systemctl enable --now JPzram
+sudo ramroot
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
