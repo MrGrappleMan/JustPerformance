@@ -68,9 +68,6 @@ EOF
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
 # ZRAM----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now zram-config
-sudo systemctl stop zram-config
-sudo chmod 777 /usr/bin/init-zram-swapping
 cat > /usr/local/bin/init-zram-swapping << "XIT"
 #!/bin/zsh
 modprobe zram
