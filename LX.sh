@@ -47,12 +47,45 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 paru -Syu --noconfirm\
- linux-xanmod-edge linux-xanmod-edge-headers zram-generator\
+ linux-xanmod-edge linux-xanmod-edge-headers zram-generator ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
  flatpak paru-git pi-hole-standalone snowflake-pt-proxy\
 # nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 # opencl-amd-dev amdvbflash
+# ZRAM----------------------------------------------------------------------------------------------------
+cat > /usr/bin/JPzram << "XIT"
+#!/bin/zsh
+if [[ "$1" == "Y" ]]; then
+ modprobe zram
+ mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
+ echo $mem > /sys/block/zram0/disksize
+ mkswap /dev/zram0
+ swapon -p 32764 /dev/zram0
+fi
+if [[ "$1" == "N" ]]; then
+ if DEVICES=$(grep zram /proc/swaps | awk '{print $1}'); then
+   for i in $DEVICES; do
+     swapoff $i
+   done
+ fi
+ rmmod zram
+fi
+XIT
+cat > /lib/systemd/system/JPzram.service << "XIT"
+[Unit]
+Description=
+Before=systemd-oomd.service
+
+[Service]
+ExecStart=/usr/bin/JPzram Y
+ExecStop=/usr/bin/JPzram N
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+XIT
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
@@ -65,17 +98,6 @@ bind-interfaces
 EOF
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
-# ZRAM----------------------------------------------------------------------------------------------------
-cat > /usr/local/bin/init-zram-swapping << "XIT"
-#!/bin/zsh
-modprobe zram
-totalmem=$(LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//")
-mem=$((totalmem * 1024))
-echo $mem > /sys/block/zram0/disksize
-mkswap /dev/zram0
-swapon -p 32764 /dev/zram0
-XIT
-sudo systemctl enable --now zram-config
 # Snowflake----------------------------------------------------------------------------------------------------
 sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT"
 [Service]
