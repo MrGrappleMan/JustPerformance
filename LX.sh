@@ -1,8 +1,7 @@
 #!/bin/zsh
 clear
 cd
-sudo pacman -Syu --noconfirm base-devel git 
-# PackageMgmt----------------------------------------------------------------------------------------------------
+# PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
 sudo cat > /etc/pacman.conf << "XIT"
@@ -28,6 +27,7 @@ Include = /etc/pacman.d/mirrorlist
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
+sudo pacman -Syu --noconfirm base-devel git
 rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
