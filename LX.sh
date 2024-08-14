@@ -47,15 +47,14 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 # AUR----------------------------------------------------------------------------------------------------
-for pakges in\
+paru -Syu --noconfirm\
  nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash\
  opencl-amd-dev amdvbflash\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
  flatpak paru-git pi-hole-server\
  linux-xanmod-edge linux-xanmod-edge-headers
-do paru -Syu --noconfirm --skipreview $pakges -y
-done
+do p
 # Flatpak----------------------------------------------------------------------------------------------------
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
