@@ -3,6 +3,8 @@ clear
 cd
 sudo pacman -Syu --noconfirm base-devel git 
 # PackageMgmt----------------------------------------------------------------------------------------------------
+sudo touch /etc/pacman.conf
+sudo chmod 777 /etc/pacman.conf
 sudo cat > /etc/pacman.conf << "XIT"
 [core-testing]
 Include = /etc/pacman.d/mirrorlist
@@ -20,6 +22,8 @@ rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 makepkg -si --noconfirm
+sudo touch /etc/paru.conf
+sudo chmod 777 /etc/paru.conf
 sudo cat > /etc/paru.conf << "XIT"
 [options]
 PgpFetch
@@ -64,6 +68,8 @@ Include = /etc/pacman.d/mirrorlist
 [gnome-unstable]
 Include = /etc/pacman.d/mirrorlist
 XIT
+sudo touch /etc/pacman.d/mirrorlist
+sudo chmod 777 /etc/pacman.d/mirrorlist
 sudo cat > /etc/pacman.d/mirrorlist << "XIT"
 #
 # Arch Linux repository mirrorlist
@@ -1077,7 +1083,7 @@ if [[ "$1" == "A" ]]; then
 fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
-sudo chmod +x /usr/bin/JPzram
+sudo chmod 777 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram << "XIT"
 #!/bin/zsh
 if [[ "$1" == "Y" ]]; then
@@ -1097,7 +1103,7 @@ if [[ "$1" == "N" ]]; then
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
-sudo chmod +x /lib/systemd/system/JPzram.service
+sudo chmod 777 /lib/systemd/system/JPzram.service
 cat > /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
 Description=
