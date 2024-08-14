@@ -1,9 +1,11 @@
 #!/bin/zsh
 clear
-sudo pacman -Syu --noconfirm base-devel git
+cd
+sudo pacman -Syu --noconfirm base-devel git 
 # PackageMgmt----------------------------------------------------------------------------------------------------
-git clone https://aur.archlinux.org/paru-git.git /tmp/paru-git
-cd /tmp/paru-git
+rm -rf paru-git
+git clone https://aur.archlinux.org/paru-git.git
+cd paru-git
 makepkg -si --noconfirm
 sudo cat > /etc/paru.conf << "XIT"
 [options]
@@ -15,6 +17,7 @@ CompletionInterval = 1
 SudoLoop
 SkipReview
 XIT
+rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
@@ -1060,7 +1063,9 @@ if [[ "$1" == "A" ]]; then
  paru -Syu --noconfirm opencl-amd-dev amdvbflash
 fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
-cat > /usr/bin/JPzram << "XIT"
+sudo touch /usr/bin/JPzram
+sudo chmod +x /usr/bin/JPzram
+sudo cat > /usr/bin/JPzram << "XIT"
 #!/bin/zsh
 if [[ "$1" == "Y" ]]; then
  modprobe zram
@@ -1078,6 +1083,8 @@ if [[ "$1" == "N" ]]; then
  rmmod zram
 fi
 XIT
+sudo touch /lib/systemd/system/JPzram.service
+sudo chmod +x /lib/systemd/system/JPzram.service
 cat > /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
 Description=
@@ -1098,10 +1105,10 @@ sudo ramroot -CEY
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
-cat > /etc/pihole/pihole-FTL.conf << "XIT"
+sudo cat > /etc/pihole/pihole-FTL.conf << "XIT"
 RATE_LIMIT=0/0
 XIT
-cat > /etc/pihole/adlists.list << "XIT"
+sudo cat > /etc/pihole/adlists.list << "XIT"
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
