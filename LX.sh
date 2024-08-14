@@ -1049,10 +1049,10 @@ Server = https://mirrors.nguyenhoang.cloud/archlinux/$repo/os/$arch
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 paru -Syu --noconfirm\
-linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
-pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
-hyprland-git eww-git\
-flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
+ linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
+ pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
+ hyprland-git eww-git\
+ flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
