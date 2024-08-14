@@ -49,7 +49,7 @@ XIT
 paru -Syu --noconfirm\
  nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash\
  opencl-amd-dev amdvbflash\
- pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
+ pipewire-git libpipewire-git wireplumber-git libwireplumber-git zram-generator\
  hyprland-git eww-git\
  flatpak paru-git pi-hole-standalone\
  linux-xanmod-edge linux-xanmod-edge-headers
