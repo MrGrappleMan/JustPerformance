@@ -1266,8 +1266,8 @@ NTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.faceb
 FallbackNTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
-sudo touch /etc/tor/torrc
-sudo chmod 777 /etc/tor/torrc
+sudo touch /etc/sysctl.conf
+sudo chmod 777 /etc/sysctl.conf
 sudo cat > /etc/sysctl.conf << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
@@ -1296,6 +1296,7 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
+
 sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
