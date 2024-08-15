@@ -1258,10 +1258,9 @@ OnCalendar=
 OnCalendar=daily
 XIT
 sudo systemctl enable --now fstrim.timer
-cd /etc/systemd/
-sudo
+sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo cat > timesyncd.conf << "XIT"
+sudo cat > /etc/systemd/timesyncd.conf << "XIT"
 [Time]
 NTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
 FallbackNTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
