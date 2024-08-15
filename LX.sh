@@ -1296,8 +1296,8 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
-sudo touch /etc/sysctl.conf
-sudo chmod 777 /etc/sysctl.conf
+sudo touch /etc/resolvconf/resolv.conf.d/base
+sudo chmod 777 /etc/resolvconf/resolv.conf.d/base
 sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
