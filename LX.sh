@@ -1140,8 +1140,8 @@ sudo chmod 777 /etc/pihole/pihole-FTL.conf
 sudo cat > /etc/pihole/pihole-FTL.conf << "XIT"
 RATE_LIMIT=0/0
 XIT
-sudo touch /lib/systemd/system/JPzram.service
-sudo chmod 777 /lib/systemd/system/JPzram.service
+sudo touch /etc/pihole/adlists.list
+sudo chmod 777 /etc/pihole/adlists.list
 sudo cat > /etc/pihole/adlists.list << "XIT"
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
