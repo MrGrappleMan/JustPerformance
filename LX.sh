@@ -1083,9 +1083,7 @@ Server = https://mirror.kirbee.tech/archlinux/$repo/os/$arch
 Server = https://mirrors.nguyenhoang.cloud/archlinux/$repo/os/$arch
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
-for pakges in $archpkgs
-do
-paru -Syu --noconfirm\
+for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
