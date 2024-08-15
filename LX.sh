@@ -1115,7 +1115,7 @@ fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 777 /lib/systemd/system/JPzram.service
-cat > /lib/systemd/system/JPzram.service << "XIT"
+sudo cat > /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
 Description=
 Before=systemd-oomd.service
