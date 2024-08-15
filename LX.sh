@@ -1251,7 +1251,7 @@ sudo systemctl enable --now tor
 # FS Trim----------------------------------------------------------------------------------------------------
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 sudo touch /etc/systemd/system/fstrim.timer.d/override.conf
-sudo chmod 777 /etc/pihole/adlists.list
+sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
 sudo cat > /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
 [Timer]
 OnCalendar=
