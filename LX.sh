@@ -1085,10 +1085,11 @@ XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
- pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
+#
+# pipewire-git libpipewire-git wireplumber-git libwireplumber-git
 done
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
