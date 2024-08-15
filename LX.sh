@@ -1088,7 +1088,7 @@ for pakges in\
  hyprland-git eww-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
-# The below are conflicting. Will do a forcefull install method to defeat flatpak's xdg
+# The below are conflicting. Will do a forcefull install method to defeat flatpak's xdg conflict
 # pipewire-git libpipewire-git wireplumber-git libwireplumber-git
 done
 if [[ "$1" == "N" ]]; then
