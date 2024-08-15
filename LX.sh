@@ -1088,6 +1088,7 @@ for pakges in\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  hyprland-git eww-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
+do paru -Syu --noconfirm $
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
