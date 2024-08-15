@@ -1176,8 +1176,8 @@ XIT
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
-sudo touch /etc/pihole/adlists.list
-sudo chmod 777 /etc/pihole/adlists.list
+sudo touch /lib/systemd/system/snowflake-proxy.service
+sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
 sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT"
 [Service]
 ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
@@ -1259,6 +1259,7 @@ OnCalendar=daily
 XIT
 sudo systemctl enable --now fstrim.timer
 cd /etc/systemd/
+sudo
 sudo chmod 777 /etc/systemd/timesyncd.conf
 sudo cat > timesyncd.conf << "XIT"
 [Time]
