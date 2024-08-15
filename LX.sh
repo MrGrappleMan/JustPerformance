@@ -1205,8 +1205,8 @@ WantedBy=multi-user.target
 XIT
 sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
-sudo touch /etc/pihole/adlists.list
-sudo chmod 777 /etc/pihole/adlists.list
+sudo touch /etc/tor/torrc
+sudo chmod 777 /etc/tor/torrc
 sudo cat > /etc/tor/torrc << "XIT"
 ORPort auto
 ExitRelay 0
