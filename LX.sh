@@ -1135,8 +1135,8 @@ sudo ramroot -CEY
 sudo flatpak remote-add --if-not-exists --noninteractive flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 # Pi-Hole----------------------------------------------------------------------------------------------------
-sudo touch /lib/systemd/system/JPzram.service
-sudo chmod 777 /
+sudo touch /etc/pihole/pihole-FTL.conf
+sudo chmod 777 /etc/pihole/pihole-FTL.conf
 sudo cat > /etc/pihole/pihole-FTL.conf << "XIT"
 RATE_LIMIT=0/0
 XIT
