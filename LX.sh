@@ -1084,6 +1084,7 @@ Server = https://mirrors.nguyenhoang.cloud/archlinux/$repo/os/$arch
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in $archpkgs
+do
 paru -Syu --noconfirm\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
