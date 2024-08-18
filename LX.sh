@@ -1089,10 +1089,10 @@ XIT
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  hyprland-git eww-git\
+ pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
-# The below are conflicting. Will do a forcefull install method to defeat flatpak's xdg conflict
-# pipewire-git libpipewire-git wireplumber-git libwireplumber-git
+
 done
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
