@@ -31,6 +31,8 @@ sudo fallocate -l 12G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon ~/swapfile
+sudo sysctl vm.swappiness=1
+
 sudo pacman -Syu --noconfirm base-devel git
 rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
