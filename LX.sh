@@ -1092,7 +1092,9 @@ for pakges in\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
-sudo bootctl update #SystemD-Boot 
+sudo bootctl update #SystemD-Boot (^o^)(^_-)
+
+
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
