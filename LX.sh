@@ -27,7 +27,7 @@ Include = /etc/pacman.d/mirrorlist
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
-sudo fallocate -l 4G ~/swapfile
+sudo fallocate -l 12G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon ~/swapfile
