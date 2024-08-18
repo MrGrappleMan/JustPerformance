@@ -1092,9 +1092,10 @@ for pakges in\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
+done
 sudo bootctl update #SystemD-Boot (^o^)
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUBhub (^_^)
-# pls migrate to grub or sysdboot if u want xzn
+# pls migrate to grub or sysdboot if u want xan
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
