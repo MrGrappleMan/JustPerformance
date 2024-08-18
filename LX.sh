@@ -1093,7 +1093,8 @@ for pakges in\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
 do paru -Syu --noconfirm $pakges
 for pakgis in\
-do paru -
+ linux 
+do paru -Rns --noconfirm $pakgis
 done
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
