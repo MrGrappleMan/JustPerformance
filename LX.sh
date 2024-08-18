@@ -1095,11 +1095,13 @@ do paru -Syu --noconfirm $pakges
 done
 sudo bootctl update #SystemD-Boot (^o^)
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUBhub (^_^)
-# pls migrate to grub or sysdboot if u want xan
+# pls migrate to grub or sysdboot if u want xanmod
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
 done
+sudo bootctl update #SystemD-Boot (^o^)
+sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUBhub (^_^)
 if [[ "$1" == "N" ]]; then
  paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
