@@ -27,6 +27,8 @@ Include = /etc/pacman.d/mirrorlist
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
+sudo fallocate -l 4G ~/swapfile
+sudo chmod 600 ~/swapfile
 sudo pacman -Syu --noconfirm base-devel git
 rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
