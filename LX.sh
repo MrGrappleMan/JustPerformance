@@ -1094,7 +1094,7 @@ for pakges in\
 do paru -Syu --noconfirm $pakges
 sudo bootctl update #SystemD-Boot (^o^)
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUBhub (^_^)
-# pls migrate to grub osysdboot 
+# pls migrate to grub or sysdboot if u want xzn
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
