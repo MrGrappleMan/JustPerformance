@@ -1279,7 +1279,7 @@ sudo chmod 777 /etc/systemd/timesyncd.conf
 sudo cat > /etc/systemd/timesyncd.conf << "XIT"
 [Time]
 NTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
-FallbackNTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
+FallbackNTP
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
@@ -1330,5 +1330,6 @@ DNSOverTLS=yes
 Domains=~.
 XIT
 sudo systemctl enable --now systemd-resolved
+sudo systemctl enable --now systemd-networkd
 # End----------------------------------------------------------------------------------------------------
 echo Done!
