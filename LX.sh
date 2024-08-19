@@ -1316,15 +1316,15 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
-dot-sg.blahdns.com
-dot-de.blahdns.com
-dns.adguard.com
-base.dns.mullvad.net
-security-filter-dns.cleanbrowsing.org
-p2.freedns.controld.com
-one.one.one.one
-dns.quad9.net
-dns.google
+DNS=dot-sg.blahdns.com
+DNS=dot-de.blahdns.com
+DNS=dns.adguard.com
+DNS=base.dns.mullvad.net
+DNS=security-filter-dns.cleanbrowsing.org
+DNS=p2.freedns.controld.com
+DNS=one.one.one.one
+DNS=dns.quad9.net
+DNS=dns.google
 DNSSEC=no
 DNSOverTLS=yes
 Domains=~.
