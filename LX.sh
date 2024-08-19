@@ -1321,7 +1321,11 @@ nameserver 2a01:3a0:53:53::
 nameserver 
 nameserver 
 
+# DNS.Watch
 
+# Quad9
+
+# Cloudflare
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
 nameserver 2606:4700:4700::1111
