@@ -1340,6 +1340,7 @@ dns.quad9.net
 dns.google
 DNSSEC=no
 DNSOverTLS=yes
+Domains=~.
 XIT
 sudo systemctl enable --now systemd-resolved
 # End----------------------------------------------------------------------------------------------------
