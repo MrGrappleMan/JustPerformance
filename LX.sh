@@ -1330,11 +1330,11 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 #Private DNS
 one.one.one.one
 dns.quad9.net
-2. dns.adguard.com
-4. adblock.doh.mullvad.net
-5. p2.freedns.controld.com
-7. security-filter-dns.cleanbrowsing.org
-8. dns.google
+dns.adguard.com
+adblock.doh.mullvad.net
+p2.freedns.controld.com
+security-filter-dns.cleanbrowsing.org
+dns.google
 XIT
 sudo systemctl enable --now systemd-resolved
 # End----------------------------------------------------------------------------------------------------
