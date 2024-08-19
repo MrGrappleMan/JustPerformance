@@ -1278,7 +1278,9 @@ sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 777 /etc/systemd/timesyncd.conf
 sudo cat > /etc/systemd/timesyncd.conf << "XIT"
 [Time]
-NTP=pool.ntp.org time.cloudflare.com time.google.com time.windows.com time.facebook.com time.apple.com
+NTP=pool.ntp.org
+NTP=time.cloudflare.com
+NTP=time.google.com time.windows.com time.facebook.com time.apple.com
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
