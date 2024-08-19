@@ -32,9 +32,8 @@ sudo chmod 777 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon ~/swapfile
 sudo sysctl vm.swappiness=1
-sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/*
+sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
 sudo pacman -Syy --noconfirm base-devel git
-sudo rm -rf paru-git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 makepkg -si --noconfirm
