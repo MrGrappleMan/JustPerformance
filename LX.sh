@@ -1322,15 +1322,8 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 
 # DNS.Watch
 
-# Quad9
 2620:fe::fe
 2620:fe::9
-9.9.9.9
-
-# Cloudflare
-
-# Google
-
 2606:4700:4700::1111
 2606:4700:4700::1001
 2001:4860:4860::8888
