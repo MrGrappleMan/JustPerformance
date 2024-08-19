@@ -1337,6 +1337,6 @@ nameserver 2606:4700:4700::1001
 nameserver 2001:4860:4860::8888
 nameserver 2001:4860:4860::8844
 XIT
-sudo systemctl enable --now resolvconf
+sudo systemctl enable --now systemd-resolved
 # End----------------------------------------------------------------------------------------------------
 echo Done!
