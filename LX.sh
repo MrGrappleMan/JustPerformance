@@ -1315,7 +1315,9 @@ XIT
 sudo touch /etc/resolvconf/resolv.conf.d/base
 sudo chmod 777 /etc/resolvconf/resolv.conf.d/base
 sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
-
+nameserver 2001:67c:28a4::
+nameserver 2a01:3a0:53:53::
+nameserver
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
 nameserver 2606:4700:4700::1111
