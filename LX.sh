@@ -1332,7 +1332,7 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 dot-sg.blahdns.com
 dot-de.blahdns.com
 dns.adguard.com
-base.doh.mullvad.
+base.dns.mullvad.net
 security-filter-dns.cleanbrowsing.org
 p2.freedns.controld.com
 one.one.one.one
