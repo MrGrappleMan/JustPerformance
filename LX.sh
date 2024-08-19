@@ -1316,18 +1316,17 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
-DNS=2001:67c:28a4:: 2a01:3a0:53:53:: 
 # UncensoredDNS
-nameserver 2001:67c:28a4::
-nameserver 2a01:3a0:53:53::
-nameserver 91.239.100.100
-nameserver 89.233.43.71
+2001:67c:28a4::
+2a01:3a0:53:53::
+91.239.100.100
+89.233.43.71
 
 # DNS.Watch
 
 # Quad9
-nameserver 2620:fe::fe
-nameserver 2620:fe::9
+2620:fe::fe
+2620:fe::9
 nameserver 9.9.9.9
 
 # Cloudflare
