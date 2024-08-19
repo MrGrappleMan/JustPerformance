@@ -1338,6 +1338,8 @@ p2.freedns.controld.com
 one.one.one.one
 dns.quad9.net
 dns.google
+DNSSEC=no
+DNSOverTLS=yes
 XIT
 sudo systemctl enable --now systemd-resolved
 # End----------------------------------------------------------------------------------------------------
