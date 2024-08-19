@@ -1319,8 +1319,6 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 # UncensoredDNS
 2001:67c:28a4::
 2a01:3a0:53:53::
-
-# DNS.Watch
 2001:1608:10:25::1c04:b12f
 2001:1608:10:25::9249:d69b
 2620:fe::fe
@@ -1329,6 +1327,8 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 2606:4700:4700::1001
 2001:4860:4860::8888
 2001:4860:4860::8844
+
+
 XIT
 sudo systemctl enable --now systemd-resolved
 # End----------------------------------------------------------------------------------------------------
