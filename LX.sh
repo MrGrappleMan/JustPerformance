@@ -1316,19 +1316,6 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
-# IPv6
-2001:67c:28a4::
-2a01:3a0:53:53::
-2001:1608:10:25::1c04:b12f
-2001:1608:10:25::9249:d69b
-2620:fe::fe
-2620:fe::9
-2606:4700:4700::1111
-2606:4700:4700::1001
-2001:4860:4860::8888
-2001:4860:4860::8844
-
-#Private DNS
 dot-sg.blahdns.com
 dot-de.blahdns.com
 dns.adguard.com
