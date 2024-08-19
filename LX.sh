@@ -1101,6 +1101,7 @@ do paru -Rns --noconfirm $pakgis
 done
 sudo bootctl update #SystemD-Boot
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
+# Still have integrated graphics :)
 if [[ "$1" == "N" ]]; then
  paru -Syyu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
