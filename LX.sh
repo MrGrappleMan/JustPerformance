@@ -1091,7 +1091,7 @@ for pakges in\
  hyprland-git eww-git\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy
-do paru -Syu --noconfirm $pakges
+do paru -Syyu --noconfirm $pakges
 done
 sudo bootctl update #SystemD-Boot
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
@@ -1100,12 +1100,12 @@ for pakgis in\
 do paru -Rns --noconfirm $pakgis
 done
 sudo bootctl update #SystemD-Boot
-sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUBhub
+sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
 if [[ "$1" == "N" ]]; then
- paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
+ paru -Syyu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
 if [[ "$1" == "A" ]]; then
- paru -Syu --noconfirm opencl-amd-dev amdvbflash
+ paru -Syyu --noconfirm opencl-amd-dev amdvbflash
 fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
