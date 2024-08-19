@@ -1326,6 +1326,7 @@ nameserver 89.233.43.71
 # Quad9
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
+nameserver 9.9.9.9
 
 # Cloudflare
 
