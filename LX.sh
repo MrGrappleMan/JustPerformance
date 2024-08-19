@@ -1318,8 +1318,8 @@ sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
 # UncensoredDNS
 nameserver 2001:67c:28a4::
 nameserver 2a01:3a0:53:53::
-nameserver 
-nameserver 
+nameserver 91.239.100.100
+nameserver 89.233.43.71
 
 # DNS.Watch
 
