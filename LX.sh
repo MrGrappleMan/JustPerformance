@@ -1312,9 +1312,9 @@ net.ipv4.tcp_low_latency = 1
 kernel.sched_migration_cost_ns = 5000000
 XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
-sudo touch /etc/resolvconf/resolv.conf.d/base
-sudo chmod 777 /etc/resolvconf/resolv.conf.d/base
-sudo cat > /etc/resolvconf/resolv.conf.d/base << "XIT"
+sudo touch /etc/systemd/resolved.conf
+sudo chmod 777 /etc/systemd/resolved.conf
+sudo cat > /etc/systemd/resolved.conf << "XIT"
 # UncensoredDNS
 nameserver 2001:67c:28a4::
 nameserver 2a01:3a0:53:53::
