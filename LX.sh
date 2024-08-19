@@ -1315,6 +1315,8 @@ XIT
 sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
+[Resolve]
+DNS=2001:67c:28a4:: 2a01:3a0:53:53:: 
 # UncensoredDNS
 nameserver 2001:67c:28a4::
 nameserver 2a01:3a0:53:53::
