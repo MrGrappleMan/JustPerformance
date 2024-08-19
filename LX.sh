@@ -1324,10 +1324,13 @@ nameserver
 # DNS.Watch
 
 # Quad9
-
-# Cloudflare
 nameserver 2620:fe::fe
 nameserver 2620:fe::9
+
+# Cloudflare
+
+# Google
+
 nameserver 2606:4700:4700::1111
 nameserver 2606:4700:4700::1001
 nameserver 2001:4860:4860::8888
