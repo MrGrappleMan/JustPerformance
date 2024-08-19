@@ -1316,7 +1316,7 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
-# UncensoredDNS
+# IPv6
 2001:67c:28a4::
 2a01:3a0:53:53::
 2001:1608:10:25::1c04:b12f
