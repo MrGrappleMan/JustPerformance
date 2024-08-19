@@ -1322,10 +1322,10 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
-DNS=dns.adguard.com
-DNS=base.dns.mullvad.net
-DNS=security-filter-dns.cleanbrowsing.org
 DNS=p2.freedns.controld.com
+DNS=base.dns.mullvad.net
+DNS=dns.adguard.com
+
 DNS=one.one.one.one
 DNS=dns.quad9.net
 DNS=dns.google
