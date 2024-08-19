@@ -1327,6 +1327,7 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 2606:4700:4700::1001
 2001:4860:4860::8888
 2001:4860:4860::8844
+
 #Private DNS
 dot-sg.blahdns.com
 dot-de.blahdns.com
