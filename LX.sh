@@ -1329,7 +1329,7 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 2001:4860:4860::8844
 #Private DNS
 one.one.one.one
-dns.oogle
+dns.google
 
 XIT
 sudo systemctl enable --now systemd-resolved
