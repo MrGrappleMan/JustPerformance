@@ -1328,6 +1328,8 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 2001:4860:4860::8888
 2001:4860:4860::8844
 #Private DNS
+dot-sg.blahdns.com
+dot-de.blahdns.com
 dns.adguard.com
 adblock.doh.mullvad.net
 p2.freedns.controld.com
