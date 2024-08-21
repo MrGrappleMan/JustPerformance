@@ -1087,7 +1087,7 @@ Server = https://mirrors.nguyenhoang.cloud/archlinux/$repo/os/$arch
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
- linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
+ linux-cachyos-rc linux-cachyos-rc-headers ramroot-btrfs\
  hyprland-git eww-git\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy boinc-nox
