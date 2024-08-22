@@ -1125,7 +1125,7 @@ echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32765 /dev/zram0
 fi
-
+XIT
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 755 /lib/systemd/system/JPzram.service
 sudo cat > /lib/systemd/system/JPzram.service << "XIT"
@@ -1134,8 +1134,8 @@ Description=
 Before=systemd-oomd.service
 
 [Service]
-ExecStart=/usr/bin/JPzram
-ExecStop=/usr/bin/JPzram N
+ExecStart=/usr/bin/JPzram Y
+ExecStop=/usr/bin/JPzram
 Type=oneshot
 RemainAfterExit=true
 
