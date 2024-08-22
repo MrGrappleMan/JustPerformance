@@ -1088,9 +1088,9 @@ XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
- hyprland-git eww-git\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  paru-git mc pi-hole-standalone snowflake-pt-proxy boinc-nox
+#  hyprland-git eww-git flatpak
 do paru -Syyu --noconfirm $pakges
 done
 sudo bootctl update #SystemD-Boot
