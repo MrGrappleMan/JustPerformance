@@ -1110,6 +1110,14 @@ sudo touch /usr/bin/JPzram
 sudo chmod 755 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram << "XIT"
 #!/bin/zsh
+if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
+    for i in $DEVICES; do
+        swapoff $i
+    done
+fi
+if lsmod | grep -q zram; then
+    rmmod zram
+fi
 modprobe zram
 mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 echo $mem > /sys/block/zram0/disksize
