@@ -1118,20 +1118,14 @@ fi
 if lsmod | grep -q zram; then
     rmmod zram
 fi
+if [[ "$1" == "Y" ]]; then
 modprobe zram
 mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32765 /dev/zram0
-if [[ "$1" == "N" ]]; then
- if DEVICES=$(grep zram /proc/swaps | awk '{print $1}'); then
-   for i in $DEVICES; do
-     swapoff $i
-   done
- fi
- rmmod zram
 fi
-XIT
+
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 755 /lib/systemd/system/JPzram.service
 sudo cat > /lib/systemd/system/JPzram.service << "XIT"
