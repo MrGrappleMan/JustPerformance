@@ -27,7 +27,7 @@ Include = /etc/pacman.d/mirrorlist
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
-sudo fallocate -l 12G ~/swapfile
+sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon ~/swapfile
@@ -1090,7 +1090,7 @@ for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  hyprland-git eww-git\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
- flatpak paru-git mc pi-hole-standalone snowflake-pt-proxy boinc-nox
+ paru-git mc pi-hole-standalone snowflake-pt-proxy boinc-nox
 do paru -Syyu --noconfirm $pakges
 done
 sudo bootctl update #SystemD-Boot
