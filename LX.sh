@@ -1115,7 +1115,7 @@ if [[ "$1" == "Y" ]]; then
  mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
  echo $mem > /sys/block/zram0/disksize
  mkswap /dev/zram0
- swapon -p 200 /dev/zram0
+ swapon -p 8192 /dev/zram0
 fi
 if [[ "$1" == "N" ]]; then
  if DEVICES=$(grep zram /proc/swaps | awk '{print $1}'); then
