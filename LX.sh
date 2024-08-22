@@ -1093,8 +1093,6 @@ for pakges in\
 #  hyprland-git eww-git flatpak
 do paru -Syyu --noconfirm $pakges
 done
-sudo bootctl update #SystemD-Boot
-sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
