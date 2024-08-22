@@ -1110,13 +1110,11 @@ sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram << "XIT"
 #!/bin/zsh
-if [[ "$1" == "Y" ]]; then
- modprobe zram
- mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
- echo $mem > /sys/block/zram0/disksize
- mkswap /dev/zram0
- swapon -p 8192 /dev/zram0
-fi
+modprobe zram
+mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
+echo $mem > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon -p 8192 /dev/zram0
 if [[ "$1" == "N" ]]; then
  if DEVICES=$(grep zram /proc/swaps | awk '{print $1}'); then
    for i in $DEVICES; do
@@ -1134,7 +1132,7 @@ Description=
 Before=systemd-oomd.service
 
 [Service]
-ExecStart=/usr/bin/JPzram Y
+ExecStart=/usr/bin/JPzram
 ExecStop=/usr/bin/JPzram N
 Type=oneshot
 RemainAfterExit=true
