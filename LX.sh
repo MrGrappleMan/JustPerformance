@@ -75,9 +75,7 @@ sudo touch /usr/local/bin/JPmkpkg
 sudo chmod 777 /usr/local/bin/JPmkpkg
 sudo tee /usr/local/bin/JPmkpkg > /dev/null > << "XIT"
 #!/bin/bash
-sudo renice -n -20 -p $$
-makepkg "$@"
-sudo renice -n 0 -p $$
+nice -n -20 /usr/bin/makepkg "$@"
 XIT
 rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
