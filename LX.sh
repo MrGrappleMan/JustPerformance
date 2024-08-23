@@ -9,8 +9,8 @@ sudorefresh() {
 }
 sudorefresh &
 SUDOREFRESHP=$!
-if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
-    for i in $DEVICES; do
+if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
+    for i in $SWAPDEV; do
         sudo swapoff $i
     done
 fi
