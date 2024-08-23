@@ -67,9 +67,7 @@ sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo tee /etc/pacman.d/mirrorlist > /dev/null > << "XIT"
-
-sudo cat > /etc/pacman.conf > /dev/null << "XIT" 
+sudo tee /etc/pacman.conf > /dev/null > << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
