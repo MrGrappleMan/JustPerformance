@@ -16,7 +16,11 @@ if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
 fi
 if lsmod | grep -q zram; then
     rmmod zram
-
+sudo modprobe zram
+sudo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
+sudo echo $mem > /sys/block/zram0/disksize
+sudo mkswap /dev/zram0
+sudo swapon -p 32765 /dev/zram0
 sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
