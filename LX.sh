@@ -1,14 +1,14 @@
 #!/bin/zsh
 clear
 cd
-surefresh() {
+sudorefresh() {
     while true; do
         sudo -v
         sleep 60
     done
 }
-re &
-SUDO_REFRESH_PID=$!
+sudorefresh &
+SUDOREFRESHPID=$!
 
 # Your long-running command
 paru -Syu --noconfirm xanmod
