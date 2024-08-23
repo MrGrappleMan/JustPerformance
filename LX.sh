@@ -11,11 +11,11 @@ sudorefresh &
 SUDOREFRESHP=$!
 if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
     for i in $DEVICES; do
-        swapoff $i
+        sudo swapoff $i
     done
 fi
 if lsmod | grep -q zram; then
-    rmmod zram
+    sudo rmmod zram
 sudo modprobe zram
 sudo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 sudo echo $mem > /sys/block/zram0/disksize
