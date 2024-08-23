@@ -68,7 +68,7 @@ CompletionInterval = 0
 SudoLoop
 SkipReview
 [bin]
-Makepkg = /usr/local/bin/JPmkpkg
+Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
 sudo touch /usr/local/bin/JPmkpkg
