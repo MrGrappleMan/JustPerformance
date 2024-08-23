@@ -101,7 +101,7 @@ Include = /etc/pacman.d/mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo cat > /etc/pacman.d/mirrorlist << "XIT"
+sudo tee /etc/pacman.d/mirrorlist > /dev/null << "XIT"
 #
 # Arch Linux repository mirrorlist
 # Generated on 2024-08-14
