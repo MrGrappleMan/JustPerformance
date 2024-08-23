@@ -62,7 +62,8 @@ SkipReview
 [bin]
 Makepkg = 
 XIT
-sudo cat > /usr/local/bin/ > /dev/null << "XIT"
+sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
+
 XIT
 rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
