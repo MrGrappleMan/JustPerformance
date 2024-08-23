@@ -137,7 +137,7 @@ fi
 sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram > /dev/null << "XIT" 
-#!/bin/zsh
+#!/bin/sh
 if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
     for i in $DEVICES; do
         swapoff $i
@@ -146,10 +146,13 @@ fi
 rmmod zram
 if [[ "$1" == "Y" ]]; then
 modprobe zram
-mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
+totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
+mem=$((totalmem / 2 * 1024))
+
+# initialize the devices
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
-swapon -p 32765 /dev/zram0
+swapon -p 5 /dev/zram0
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
