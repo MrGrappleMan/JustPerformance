@@ -51,7 +51,6 @@ cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null > << "XIT"
-sudo cat > /etc/paru.conf > /dev/null << "XIT
 [options]
 PgpFetch
 Devel
@@ -65,7 +64,7 @@ Makepkg = /usr/local/bin/JPmkpkg
 XIT
 sudo touch /usr/local/bin/JPmkpkg
 sudo chmod 777 /usr/local/bin/JPmkpkg
-sudo tee /etc/pacman.conf > /dev/null > << "XIT"
+sudo tee /> /dev/null > << "XIT"
 sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
 #!/bin/bash
 renice -n -20 -p $$
