@@ -1,13 +1,13 @@
 #!/bin/zsh
 clear
 cd
-refresh_sudo() {
+surefresh() {
     while true; do
         sudo -v
         sleep 60
     done
 }
-refresh_sudo &
+re &
 SUDO_REFRESH_PID=$!
 
 # Your long-running command
