@@ -15,13 +15,10 @@ if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
     done
 fi
 sudo rmmod zram
-sudo modprobe zram
-sudo CORENO=$(nproc)
-sudo echo $CORENO | sudo tee /sys/class/zram-control/hot_add
-sudo mem=$(LC_ALL=C free | sudo grep -e "^Mem:" | awk '{print $2 * 1024}')
-sudo echo $mem | sudo tee /sys/block/zram0/disksize
-sudo mkswap /dev/zram0
-sudo swapon -p 32765 /dev/zram0
+sudo fallocate -1 86 ~/swapfile
+sudo chmod 777 ~/swapfile
+sudo mkswap /swapfile
+sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
