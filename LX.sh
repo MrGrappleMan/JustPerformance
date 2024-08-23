@@ -112,7 +112,7 @@ for pakges in\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  paru-git mc-git pi-hole-standalone snowflake-pt-proxy boinc-nox
 #  hyprland-git eww-git flatpak
-do paru -Syyu --noconfirm $pakges
+do paru -Syu --noconfirm $pakges
 done
 for pakgis in\
  linux linux-headers
