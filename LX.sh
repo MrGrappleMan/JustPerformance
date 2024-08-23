@@ -62,6 +62,8 @@ SkipReview
 [bin]
 Makepkg = /usr/local/bin/JPmkpkg
 XIT
+sudo touch 
+sudo chmod 777 /usr/local/bin/JPmkpkg
 sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
 #!/bin/bash
 renice -n -20 -p $$
