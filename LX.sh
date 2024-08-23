@@ -10,8 +10,8 @@ sudorefresh() {
 sudorefresh &
 SUDOREFRESHP=$!
 if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
-    for i in $SWAPDEV; do
-        sudo swapoff $i
+    for j in $SWAPDEV; do
+        sudo swapoff $j
     done
 fi
 if lsmod | grep -q zram; then
