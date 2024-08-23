@@ -8,11 +8,9 @@ sudorefresh() {
     done
 }
 sudorefresh &
-SUDOREFRESHPID=$!
-
-# Your long-running command
+SUDOREFRESHP=$!
 paru -Syu --noconfirm xanmod
-kill $SUDO_REFRESH_PID
+
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
