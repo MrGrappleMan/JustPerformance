@@ -103,10 +103,10 @@ done
 sudo bootctl update #SystemD-Boot
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
 if [[ "$1" == "N" ]]; then
- paru -Syyu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
+ paru -Syu --noconfirm nvidia-open-dkms-git opencl-nvidia-beta nvidia-utils-beta nvidia-settings-beta nvidia-vpf-git nvflash
 fi
 if [[ "$1" == "A" ]]; then
- paru -Syyu --noconfirm opencl-amd-dev amdvbflash
+ paru -Syu --noconfirm opencl-amd-dev amdvbflash
 fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
