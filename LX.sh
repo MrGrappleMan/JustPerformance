@@ -16,6 +16,8 @@ if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
 fi
 sudo rmmod zram
 sudo modprobe zram
+CORENO=$(nproc)
+sudo echo $CORENO > /sys/class/zram-control/hot_add
 sudo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 sudo echo $mem > /sys/block/zram0/disksize
 sudo mkswap /dev/zram0
@@ -101,7 +103,7 @@ Include = /etc/pacman.d/mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo tee /etc/pacman.d/mirrorlist > /dev/null << "XIT" 
+sudo tee /etc/pacman.d/mirrorlist > /dev/null > << "XIT" 
 #
 # Arch Linux repository mirrorlist
 # Generated on 2024-08-14
