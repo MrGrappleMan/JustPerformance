@@ -64,8 +64,7 @@ Makepkg = /usr/local/bin/JPmkpkg
 XIT
 sudo touch /usr/local/bin/JPmkpkg
 sudo chmod 777 /usr/local/bin/JPmkpkg
-sudo tee /> /dev/null > << "XIT"
-sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
+sudo tee /usr/local/bin/JPmkpkg > /dev/null > << "XIT"
 #!/bin/bash
 renice -n -20 -p $$
 makepkg "$@"
