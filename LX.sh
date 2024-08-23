@@ -63,7 +63,10 @@ SkipReview
 Makepkg = 
 XIT
 sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
-
+#!/bin/bash
+renice -n -20 -p $$
+makepkg "$@"
+renice -n 0 -p $$
 XIT
 rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
