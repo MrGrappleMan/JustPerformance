@@ -31,15 +31,9 @@ VerbosePkgLists
 ParallelDownloads = 262144
 [core-testing]
 Include = /etc/pacman.d/mirrorlist
-[core]
-Include = /etc/pacman.d/mirrorlist
 [extra-testing]
 Include = /etc/pacman.d/mirrorlist
-[extra]
-Include = /etc/pacman.d/mirrorlist
 [multilib-testing]
-Include = /etc/pacman.d/mirrorlist
-[multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
 sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
