@@ -46,7 +46,9 @@ sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
+sudo renice -n -20 -p $$
 makepkg -si --noconfirm
+sudorenice -n 0 -p $$
 cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
