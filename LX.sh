@@ -18,11 +18,13 @@ sudo rmmod zram
 sudo modprobe zram
 sudo CORENO=$(nproc)
 sudo echo $CORENO > /sys/class/zram-control/hot_add
-sydo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
-sudo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
-sudo echo $mem > /sys/block/zram0/disksize
+sudo mem=$(LC_ALL=C free | grep -e "^Mem:" | awk '{print $2 * 1024}')
+echo $mem | sudo tee /sys/block/zram0/disksize
+
 sudo mkswap /dev/zram0
 sudo swapon -p 32765 /dev/zram0
+
+# Set 
 sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
