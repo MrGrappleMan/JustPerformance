@@ -15,7 +15,7 @@ if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
     done
 fi
 sudo rmmod zram
-sudo fallocate -1 86 ~/swapfile
+sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap /swapfile
 sudo swapon -p 32765 ~/swapfile
