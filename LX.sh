@@ -131,11 +131,7 @@ sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram > /dev/null << "XIT" 
 #!/bin/sh
-if DEVICES=$(grep zram /proc/swaps | awk '{print $1}'); then
-  for i in $DEVICES; do
-    swapoff $i
-  done
-fi
+swapoff -a
 rmmod zram
 if [[ "$1" == "Y" ]]; then
 modprobe zram
