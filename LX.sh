@@ -24,7 +24,7 @@ sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
-sudo cat > /etc/pacman.conf << "XIT"
+sudo tee /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
@@ -54,7 +54,7 @@ cd paru-git
 makepkg -si --noconfirm
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
-sudo cat > /etc/paru.conf << "XIT"
+sudo tee /etc/paru.conf << "XIT"
 [options]
 PgpFetch
 Devel
@@ -70,7 +70,7 @@ sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo cat > /etc/pacman.conf << "XIT"
+sudo tee /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
@@ -134,7 +134,7 @@ fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
-sudo cat > /usr/bin/JPzram << "XIT"
+sudo tee /usr/bin/JPzram << "XIT"
 #!/bin/zsh
 if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
     for i in $DEVICES; do
@@ -154,7 +154,7 @@ fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 777 /lib/systemd/system/JPzram.service
-sudo cat > /lib/systemd/system/JPzram.service << "XIT"
+sudo tee /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
 Description=
 Before=systemd-oomd.service
@@ -176,12 +176,12 @@ sudo ramroot -CEY
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo touch /etc/pihole/pihole-FTL.conf
 sudo chmod 777 /etc/pihole/pihole-FTL.conf
-sudo cat > /etc/pihole/pihole-FTL.conf << "XIT"
+sudo tee /etc/pihole/pihole-FTL.conf << "XIT"
 RATE_LIMIT=0/0
 XIT
 sudo touch /etc/pihole/adlists.list
 sudo chmod 777 /etc/pihole/adlists.list
-sudo cat > /etc/pihole/adlists.list << "XIT"
+sudo tee /etc/pihole/adlists.list << "XIT"
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
@@ -217,7 +217,7 @@ sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
 sudo touch /lib/systemd/system/snowflake-proxy.service
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
-sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT"
+sudo tee /lib/systemd/system/snowflake-proxy.service << "XIT"
 [Service]
 ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
 Restart=always
@@ -246,7 +246,7 @@ sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
 sudo touch /etc/tor/torrc
 sudo chmod 777 /etc/tor/torrc
-sudo cat > /etc/tor/torrc << "XIT"
+sudo tee /etc/tor/torrc << "XIT"
 ORPort auto
 ExitRelay 0
 SocksPort 0
@@ -291,7 +291,7 @@ sudo systemctl enable --now tor
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 sudo touch /etc/systemd/system/fstrim.timer.d/override.conf
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
-sudo cat > /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
+sudo tee /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
 [Timer]
 OnCalendar=
 OnCalendar=daily
@@ -299,7 +299,7 @@ XIT
 sudo systemctl enable --now fstrim.timer
 sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo cat > /etc/systemd/timesyncd.conf << "XIT"
+sudo tee /etc/systemd/timesyncd.conf << "XIT"
 [Time]
 NTP=pool.ntp.org
 NTP=time.cloudflare.com
@@ -311,7 +311,7 @@ XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
 sudo chmod 777 /etc/sysctl.conf
-sudo cat > /etc/sysctl.conf << "XIT"
+sudo tee /etc/sysctl.conf << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
@@ -341,7 +341,7 @@ XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
-sudo cat > /etc/systemd/resolved.conf << "XIT"
+sudo tee /etc/systemd/resolved.conf << "XIT"
 [Resolve]
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
