@@ -48,7 +48,7 @@ git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $$
 makepkg -si --noconfirm
-sudorenice -n 0 -p $$
+sudo renice -n 0 -p $$
 cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
@@ -69,9 +69,9 @@ sudo touch /usr/local/bin/JPmkpkg
 sudo chmod 777 /usr/local/bin/JPmkpkg
 sudo tee /usr/local/bin/JPmkpkg > /dev/null > << "XIT"
 #!/bin/bash
-renice -n -20 -p $$
+sudo renice -n -20 -p $$
 makepkg "$@"
-renice -n 0 -p $$
+sudo renice -n 0 -p $$
 XIT
 rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
