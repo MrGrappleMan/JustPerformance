@@ -47,6 +47,7 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 makepkg -si --noconfirm
+cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
 sudo cat > /etc/paru.conf > /dev/null << "XIT"
@@ -61,7 +62,8 @@ SkipReview
 [bin]
 Makepkg = 
 XIT
-cd
+sudo cat > /etc/paru.conf > /dev/null << "XIT"
+XIT
 rm -rf paru-git
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
@@ -80,7 +82,7 @@ ParallelDownloads = 262144
 [core-testing]
 Include = /etc/pacman.d/mirrorlist
 #[core]
-nclude = /etc/pacman.d/mirrorlist
+#Include = /etc/pacman.d/mirrorlist
 [extra-testing]
 Include = /etc/pacman.d/mirrorlist
 #[extra]
