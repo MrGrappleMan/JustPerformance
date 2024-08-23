@@ -49,7 +49,7 @@ cd paru-git
 makepkg -si --noconfirm
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
-sudo cat > /etc/paru.conf > /dev/null << "XIT" 
+sudo cat > /etc/paru.conf > /dev/null << "XIT"
 [options]
 PgpFetch
 Devel
@@ -98,7 +98,7 @@ Include = /etc/pacman.d/mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo tee /etc/pacman.d/mirrorlist > /dev/null > << "XIT" 
+sudo tee /etc/pacman.d/mirrorlist > /dev/null > << "XIT"
 #
 # Arch Linux repository mirrorlist
 # Generated on 2024-08-14
