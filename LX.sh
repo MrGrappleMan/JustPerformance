@@ -9,6 +9,19 @@ sudorefresh() {
 }
 sudorefresh &
 SUDOREFRESHP=$!
+if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
+    for i in $DEVICES; do
+        swapoff $i
+    done
+fi
+if lsmod | grep -q zram; then
+    rmmod zram
+f
+sudo fallocate -l 8G ~/swapfile
+sudo chmod 777 ~/swapfile
+sudo mkswap ~/swapfile
+sudo swapon ~/swapfile
+sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
@@ -35,11 +48,6 @@ Include = /etc/pacman.d/mirrorlist
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 XIT
-sudo fallocate -l 8G ~/swapfile
-sudo chmod 777 ~/swapfile
-sudo mkswap ~/swapfile
-sudo swapon ~/swapfile
-sudo sysctl vm.swappiness=1
 sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
