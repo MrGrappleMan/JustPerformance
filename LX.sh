@@ -143,9 +143,7 @@ if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
         swapoff $i
     done
 fi
-if lsmod | grep -q zram; then
-    rmmod zram
-fi
+rmmod zram
 if [[ "$1" == "Y" ]]; then
 modprobe zram
 mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
