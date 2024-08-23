@@ -9,11 +9,7 @@ sudorefresh() {
 }
 sudorefresh &
 SUDOREFRESHP=$!
-if SWAPDEV=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
-    for j in $SWAPDEV; do
-        sudo swapoff $j
-    done
-fi
+sudo swapoff -a
 sudo rmmod zram
 sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
