@@ -60,7 +60,7 @@ CompletionInterval = 1
 SudoLoop
 SkipReview
 [bin]
-Makepkg = 
+Makepkg = /usr/local/bin/JPmkpkg
 XIT
 sudo cat > /usr/local/bin/JPmkpkg > /dev/null << "XIT"
 #!/bin/bash
