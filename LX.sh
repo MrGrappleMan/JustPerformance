@@ -146,7 +146,7 @@ fi
 rmmod zram
 if [[ "$1" == "Y" ]]; then
 modprobe zram
-totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
+totalmem=((`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`)*1024)
 mem=$((totalmem / 2 * 1024))
 
 # initialize the devices
