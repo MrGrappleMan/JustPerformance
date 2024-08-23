@@ -1,6 +1,24 @@
 #!/bin/zsh
 clear
 cd
+refresh_sudo() {
+    while true; do
+        sudo -v
+        sleep 60
+    done
+}
+
+# Start refreshing sudo in the 
+refresh_sudo &
+SUDO_REFRESH_PID=$!
+
+# Your long-running command
+paru -Syu --noconfirm xanmod
+
+# Kill the sudo refresh process
+kill $SUDO_REFRESH_PID
+
+Compatible with zsh?
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
