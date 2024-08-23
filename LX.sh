@@ -18,6 +18,7 @@ sudo rmmod zram
 sudo modprobe zram
 sudo CORENO=$(nproc)
 sudo echo $CORENO > /sys/class/zram-control/hot_add
+sydo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 sudo mem=$(((LC_ALL=C free | grep -e "^Mem:" | sed -e "s/^Mem: *//" -e "s/  *.*//") * 1024))
 sudo echo $mem > /sys/block/zram0/disksize
 sudo mkswap /dev/zram0
