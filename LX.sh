@@ -61,6 +61,7 @@ SudoLoop
 SkipReview
 [bin]
 Makepkg = /usr/local/bin/JPmkpkg
+SudoFlags = -v
 XIT
 sudo touch /usr/local/bin/JPmkpkg
 sudo chmod 777 /usr/local/bin/JPmkpkg
