@@ -58,6 +58,8 @@ DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
 CompletionInterval = 1
 SudoLoop
 SkipReview
+[bin]
+Makepkg = 
 XIT
 cd
 rm -rf paru-git
