@@ -16,11 +16,7 @@ if DEVICES=$(grep -e "^/dev/zram" /proc/swaps | awk '{print $1}'); then
 fi
 if lsmod | grep -q zram; then
     rmmod zram
-f
-sudo fallocate -l 8G ~/swapfile
-sudo chmod 777 ~/swapfile
-sudo mkswap ~/swapfile
-sudo swapon ~/swapfile
+
 sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
