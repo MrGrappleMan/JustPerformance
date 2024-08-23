@@ -9,8 +9,6 @@ sudorefresh() {
 }
 sudorefresh &
 SUDOREFRESHP=$!
-paru -Syu --noconfirm xanmod
-
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
@@ -1342,4 +1340,5 @@ XIT
 sudo systemctl enable --now systemd-resolved
 sudo systemctl enable --now systemd-networkd
 # End----------------------------------------------------------------------------------------------------
+kill $SUDOREFRESHP
 echo Done!
