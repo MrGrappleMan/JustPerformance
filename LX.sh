@@ -56,29 +56,6 @@ sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo pacman -Syy --noconfirm base-devel git
-git clone https://aur.archlinux.org/paru-git.git
-cd paru-git
-sudo renice -n -20 -p $$
-makepkg -si --noconfirm
-sudo renice -n 0 -p $$
-sudo rm -rf ~/paru-git
-cd
-sudo touch /etc/paru.conf
-sudo chmod 777 /etc/paru.conf
-sudo cat > /etc/paru.conf << "XIT"
-[options]
-PgpFetch
-Devel
-Provides
-DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-CompletionInterval = 0
-SudoLoop
-SkipReview
-[bin]
-Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
-SudoFlags = -v
-XIT
 sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
@@ -107,6 +84,29 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
+XIT
+sudo pacman -Syy --noconfirm base-devel git
+git clone https://aur.archlinux.org/paru-git.git
+cd paru-git
+sudo renice -n -20 -p $$
+makepkg -si --noconfirm
+sudo renice -n 0 -p $$
+sudo rm -rf ~/paru-git
+cd
+sudo touch /etc/paru.conf
+sudo chmod 777 /etc/paru.conf
+sudo cat > /etc/paru.conf << "XIT"
+[options]
+PgpFetch
+Devel
+Provides
+DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
+CompletionInterval = 0
+SudoLoop
+SkipReview
+[bin]
+Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
+SudoFlags = -v
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
