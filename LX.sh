@@ -79,7 +79,6 @@ SkipReview
 Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
-paru -Sc --noconfirm
 sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
