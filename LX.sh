@@ -79,7 +79,7 @@ sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 paru -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo cat > /etc/pacman.conf << "XIT" 
+sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
@@ -143,7 +143,7 @@ fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
-sudo cat > /usr/bin/JPzram << "XIT" 
+sudo cat > /usr/bin/JPzram << "XIT"
 #!/bin/sh
 swapoff -a
 rmmod zram
@@ -157,7 +157,7 @@ fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 777 /lib/systemd/system/JPzram.service
-sudo cat > /lib/systemd/system/JPzram.service << "XIT" 
+sudo cat > /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
 Description=
 Before=systemd-oomd.service
@@ -179,12 +179,12 @@ sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://fl
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo touch /etc/pihole/pihole-FTL.conf
 sudo chmod 777 /etc/pihole/pihole-FTL.conf
-sudo cat > /etc/pihole/pihole-FTL.conf << "XIT" 
+sudo cat > /etc/pihole/pihole-FTL.conf << "XIT"
 RATE_LIMIT=0/0
 XIT
 sudo touch /etc/pihole/adlists.list
 sudo chmod 777 /etc/pihole/adlists.list
-sudo cat > /etc/pihole/adlists.list << "XIT" 
+sudo cat > /etc/pihole/adlists.list << "XIT"
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
@@ -220,7 +220,7 @@ sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
 sudo touch /lib/systemd/system/snowflake-proxy.service
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
-sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT" 
+sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT"
 [Service]
 ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
 Restart=always
@@ -249,7 +249,7 @@ sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
 sudo touch /etc/tor/torrc
 sudo chmod 777 /etc/tor/torrc
-sudo cat > /etc/tor/torrc << "XIT" 
+sudo cat > /etc/tor/torrc << "XIT"
 ORPort auto
 ExitRelay 0
 SocksPort 0
