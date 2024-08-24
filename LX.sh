@@ -48,7 +48,8 @@ Include = /etc/pacman.d/mirrorlist
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
-sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
+sudo rm -rf /var/lib/pacman/db.lck ~/paru-git
+sudo pacman -Scc --noconfirm
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
