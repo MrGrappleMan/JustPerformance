@@ -54,7 +54,7 @@ sudo rm -rf /var/lib/pacman/db.lck ~/paru-git
 sudo rm -r /etc/pacman.d/gnupg
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
-sudo pacman -Scc --noconfirm
+sudo pacman -Sc --noconfirm
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
