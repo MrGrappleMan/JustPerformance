@@ -50,6 +50,9 @@ sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
+renice -n -20 -p $$
+makepkg -sib
+renice -n 0 -p $$
 sudo nice -n -20 makepkg -si --noconfirm
 cd
 sudo touch /etc/paru.conf
