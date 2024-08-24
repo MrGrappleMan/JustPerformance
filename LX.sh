@@ -51,9 +51,8 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 renice -n -20 -p $$
-makepkg -sib
+makepkg -si --noconfirm
 renice -n 0 -p $$
-sudo nice -n -20 makepkg -si --noconfirm
 cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
