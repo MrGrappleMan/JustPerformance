@@ -45,6 +45,8 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist
 [gnome-unstable]
 Include = /etc/pacman.d/mirrorlist
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo rm -rf /var/lib/pacman/db.lck /var/cache/pacman/pkg/* ~/paru-git
 sudo pacman -Syy --noconfirm base-devel git
