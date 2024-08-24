@@ -19,7 +19,7 @@ sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
-sudo cat > /etc/pacman.conf > /dev/null << "XIT" 
+sudo cat  /etc/pacman.conf << "XIT" 
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
@@ -54,7 +54,6 @@ sudo nice -n -20 makepkg -si --noconfirm
 cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
-sudo cat /etc/systemd/timesyncd.conf << "XIT"
 sudo cat /etc/paru.conf << "XIT"
 [options]
 PgpFetch
