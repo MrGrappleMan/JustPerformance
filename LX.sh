@@ -55,6 +55,8 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist
 [gnome-unstable]
 Include = /etc/pacman.d/mirrorlist
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
@@ -62,35 +64,6 @@ sudo cat > etc/pacman.d/mirrorlist << "XIT"
 Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
-XIT
-sudo cat > /etc/pacman.conf << "XIT"
-[options]
-HoldPkg = pacman glibc paru-git
-CleanMethod = KeepInstalled
-Architecture = auto
-Color
-CheckSpace
-DisableDownloadTimeout
-VerbosePkgLists
-ParallelDownloads = 262144
-[core-testing]
-Include = /etc/pacman.d/mirrorlist
-[extra-testing]
-Include = /etc/pacman.d/mirrorlist
-[multilib-testing]
-Include = /etc/pacman.d/mirrorlist
-[core]
-Include = /etc/pacman.d/mirrorlist
-[extra]
-Include = /etc/pacman.d/mirrorlist
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-[kde-unstable]
-Include = /etc/pacman.d/mirrorlist
-[gnome-unstable]
-Include = /etc/pacman.d/mirrorlist
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/paru-git.git
