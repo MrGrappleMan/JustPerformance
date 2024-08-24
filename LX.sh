@@ -54,6 +54,7 @@ sudo nice -n -20 makepkg -si --noconfirm
 cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
+sudo cat /etc/systemd/timesyncd.conf << "XIT"
 sudo tee /etc/paru.conf > /dev/null > << "XIT"
 [options]
 PgpFetch
