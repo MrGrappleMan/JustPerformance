@@ -105,7 +105,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo cat /etc/pacman.d/mirrorlist << "XIT"
+sudo cat > etc/pacman.d/mirrorlist << "XIT"
 #
 # Arch Linux repository mirrorlist
 # Generated on 2024-08-14
@@ -138,7 +138,7 @@ fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
-sudo cat > /usr/bin/JPzram > /dev/null << "XIT" 
+sudo cat > /usr/bin/JPzram << "XIT" 
 #!/bin/sh
 swapoff -a
 rmmod zram
@@ -152,7 +152,7 @@ fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
 sudo chmod 777 /lib/systemd/system/JPzram.service
-sudo cat > /lib/systemd/system/JPzram.service > /dev/null << "XIT" 
+sudo cat > /lib/systemd/system/JPzram.service << "XIT" 
 [Unit]
 Description=
 Before=systemd-oomd.service
