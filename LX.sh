@@ -174,12 +174,12 @@ sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://fl
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo touch /etc/pihole/pihole-FTL.conf
 sudo chmod 777 /etc/pihole/pihole-FTL.conf
-sudo cat > /etc/pihole/pihole-FTL.conf > /dev/null << "XIT" 
+sudo cat > /etc/pihole/pihole-FTL.conf << "XIT" 
 RATE_LIMIT=0/0
 XIT
 sudo touch /etc/pihole/adlists.list
 sudo chmod 777 /etc/pihole/adlists.list
-sudo cat > /etc/pihole/adlists.list > /dev/null << "XIT" 
+sudo cat > /etc/pihole/adlists.list << "XIT" 
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
@@ -215,7 +215,7 @@ sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
 sudo touch /lib/systemd/system/snowflake-proxy.service
 sudo chmod 777 /lib/systemd/system/snowflake-proxy.service
-sudo cat > /lib/systemd/system/snowflake-proxy.service > /dev/null << "XIT" 
+sudo cat > /lib/systemd/system/snowflake-proxy.service << "XIT" 
 [Service]
 ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
 Restart=always
@@ -244,7 +244,7 @@ sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
 sudo touch /etc/tor/torrc
 sudo chmod 777 /etc/tor/torrc
-sudo cat > /etc/tor/torrc > /dev/null << "XIT" 
+sudo cat > /etc/tor/torrc << "XIT" 
 ORPort auto
 ExitRelay 0
 SocksPort 0
