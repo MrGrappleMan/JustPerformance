@@ -294,7 +294,7 @@ sudo systemctl enable --now tor
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 sudo touch /etc/systemd/system/fstrim.timer.d/override.conf
 sudo chmod 777 /etc/systemd/system/fstrim.timer.d/override.conf
-sudo cat > /etc/systemd/system/fstrim.timer.d/override.conf << "XIT" 
+sudo cat > /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
 [Timer]
 OnCalendar=
 OnCalendar=daily
@@ -302,7 +302,7 @@ XIT
 sudo systemctl enable --now fstrim.timer
 sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 777 /etc/systemd/timesyncd.conf
-sudo cat > /etc/systemd/timesyncd.conf << "XIT" 
+sudo cat > /etc/systemd/timesyncd.conf << "XIT"
 [Time]
 NTP=pool.ntp.org
 NTP=time.cloudflare.com
@@ -314,7 +314,7 @@ XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
 sudo chmod 777 /etc/sysctl.conf
-sudo cat > /etc/sysctl.conf << "XIT" 
+sudo cat > /etc/sysctl.conf << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
@@ -344,7 +344,7 @@ XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
-sudo cat > /etc/systemd/resolved.conf << "XIT" 
+sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
