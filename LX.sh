@@ -55,7 +55,7 @@ cd
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
 sudo cat /etc/systemd/timesyncd.conf << "XIT"
-sudo tee /etc/paru.conf > /dev/null > << "XIT"
+sudo cat /etc/paru.conf << "XIT"
 [options]
 PgpFetch
 Devel
@@ -104,7 +104,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo tee /etc/pacman.d/mirrorlist > /dev/null > << "XIT"
+sudo cat /etc/pacman.d/mirrorlist << "XIT"
 #
 # Arch Linux repository mirrorlist
 # Generated on 2024-08-14
