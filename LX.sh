@@ -52,6 +52,14 @@ Include = /etc/pacman.d/mirrorlist
 [gnome-unstable]
 Include = /etc/pacman.d/mirrorlist
 XIT
+sudo touch /etc/pacman.d/mirrorlist
+sudo chmod 777 /etc/pacman.d/mirrorlist
+sudo cat > etc/pacman.d/mirrorlist << "XIT"
+# Worldwide
+Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+XIT
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
