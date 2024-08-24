@@ -11,6 +11,7 @@ sudorefresh &
 SUDOREFRESHP=$!
 sudo swapoff -a
 sudo rmmod zram
+sudo rm -rf ~/swapfile
 sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap /swapfile
@@ -19,7 +20,7 @@ sudo sysctl vm.swappiness=1
 # PackageMgmt---------------------------------------------------------------------------------------------------- 
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
-sudo cat > /etc/pacman.conf << "XIT" 
+sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
