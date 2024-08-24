@@ -25,6 +25,7 @@ sudo pacman-key --populate archlinux
 sudo pacman -Sc
 sudo touch /etc/pacman.conf
 sudo chmod 777 /etc/pacman.conf
+
 sudo cat > /etc/pacman.conf << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
