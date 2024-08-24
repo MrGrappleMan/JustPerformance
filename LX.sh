@@ -108,18 +108,6 @@ SkipReview
 Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
-sudo touch /etc/pacman.d/mirrorlist
-sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo cat > etc/pacman.d/mirrorlist << "XIT"
-#
-# Arch Linux repository mirrorlist
-# Generated on 2024-08-14
-#
-# Worldwide
-Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
-XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
