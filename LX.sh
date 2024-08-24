@@ -12,6 +12,7 @@ SUDOREFRESHP=$!
 sudo swapoff -a
 sudo rmmod zram
 sudo rm -rf ~/swapfile
+sudo touch ~/swapfile
 sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
 sudo mkswap /swapfile
