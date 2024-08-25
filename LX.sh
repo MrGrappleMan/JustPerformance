@@ -66,12 +66,11 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
-echo Installing paru in 10sPress SPACE to interrupt.
+echo Installing paru in 10s. Press SPACE to interrupt.
 read -n1 -t 10 input
 if [[ $input == " " ]]; then
 else
-echo |
-
+echo Installing...
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
