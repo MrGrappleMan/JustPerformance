@@ -67,16 +67,16 @@ Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
 install_paru() {
-    echo "Installing paru..."
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si --noconfirm
+    
 }
 check_input() {
     read -n1 -t 10 input
-    if [[ $input = " " ]]; then
+    if [[ $input != " " ]]; then
     else
-        install_paru
+     echo "Installing paru..."
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si --noconfirm
     fi
 }
 
