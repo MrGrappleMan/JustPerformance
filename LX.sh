@@ -82,7 +82,7 @@ check_input() {
     fi
 }
 
-echo "Press Spacebar to skip paru installation. Waiting 10 seconds..."
+echo Installing paru in 10s. 
 
 check_input
 git clone https://aur.archlinux.org/paru-git.git
