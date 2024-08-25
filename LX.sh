@@ -95,23 +95,14 @@ Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
 # PkgServices
-sudo touch /usr/bin/JPupd
-sudo chmod 777 /usr/bin/JPupd
-sudo cat > /usr/bin/JPupd << "XIT"
-#!/bin/sh
-swapoff -a
-rmmod zram
-if [[ "$1" == "Y" ]]; then
-modprobe zram
-mem=$(((`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`)*1024))
-echo $mem > /sys/block/zram0/disksize
-mkswap /dev/zram0
-swapon -p 32765 /dev/zram0
-fi
+sudo touch /usr/bin/JPpkg
+sudo chmod 777 /usr/bin/JPpkg
+sudo cat > /usr/bin/JPpkg << "XIT"
+paru -Syu 
 XIT
-sudo touch /lib/systemd/system/JPzram.service
-sudo chmod 777 /lib/systemd/system/JPzram.service
-sudo cat > /lib/systemd/system/JPzram.service << "XIT"
+sudo touch /lib/systemd/system/JPpkg.service
+sudo chmod 777 /lib/systemd/system/JPpkg.service
+sudo cat > /lib/systemd/system/JPpkg.service << "XIT"
 [Unit]
 Description=
 Before=systemd-oomd.service
