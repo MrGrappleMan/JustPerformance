@@ -73,13 +73,13 @@ install_paru() {
 
 echo Installing paru in 10s....Press SPACE to interrupt.
 read -n1 -t 10 input
-if [[ $input != " " ]]; then
-    else
-     echo Installing paru...
-     git clone https://aur.archlinux.org/paru.git
-     cd paru
-     makepkg -si --noconfirm
-    fi
+if [[ $input == " " ]]; then
+else
+echo Installing paru...
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+fi
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $$
