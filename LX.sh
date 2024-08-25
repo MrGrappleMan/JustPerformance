@@ -82,8 +82,7 @@ check_input() {
     fi
 }
 
-echo Installing paru in 10s. 
-
+echo Installing paru in 10s....Press SPACE to interrupt.
 check_input
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
