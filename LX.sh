@@ -66,6 +66,29 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
+install_paru() {
+    echo "Installing paru..."
+  
+    sudo pacman -S --needed --noconfirm git base-devel
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si --noconfirm
+}
+
+# Function to check for spacebar press or timeout
+check_input() {
+    read -n1 -t 10 input
+    if [[ $input == " " ]]; then
+        echo "Skipping installation of paru."
+        exit 0
+    else
+        install_paru
+    fi
+}
+
+echo "Press Spacebar to skip paru installation. Waiting 10 seconds..."
+
+check_input
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $$
