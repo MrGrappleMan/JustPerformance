@@ -66,7 +66,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
-# Skip unnecessary pr
+# Skip unnecessary procedure for debugging
 echo Installing paru in 10s. Press SPACE to interrupt.
 read -n1 -t 10 input
 if [[ $input == " " ]]; then
