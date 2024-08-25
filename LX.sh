@@ -18,7 +18,7 @@ sudo chmod 777 ~/swapfile
 sudo mkswap /swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
-# PackageMgmt---------------------------------------------------------------------------------------------------- 
+# PkgConfigs---------------------------------------------------------------------------------------------------- 
 sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git
 sudo pacman -Sc --noconfirm
 sudo pacman-key --init
@@ -94,6 +94,7 @@ SkipReview
 Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
+# 
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
