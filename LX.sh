@@ -94,7 +94,37 @@ SkipReview
 Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
-# 
+# PkgServices
+sudo touch 
+sudo chmod 777 /usr/bin/JPzram
+sudo cat > /usr/bin/JPzram << "XIT"
+#!/bin/sh
+swapoff -a
+rmmod zram
+if [[ "$1" == "Y" ]]; then
+modprobe zram
+mem=$(((`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`)*1024))
+echo $mem > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon -p 32765 /dev/zram0
+fi
+XIT
+sudo touch /lib/systemd/system/JPzram.service
+sudo chmod 777 /lib/systemd/system/JPzram.service
+sudo cat > /lib/systemd/system/JPzram.service << "XIT"
+[Unit]
+Description=
+Before=systemd-oomd.service
+
+[Service]
+ExecStart=/usr/bin/JPzram Y
+ExecStop=/usr/bin/JPzram
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
