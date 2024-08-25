@@ -95,9 +95,9 @@ Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
 # PkgServices
-sudo touch /usr/
-sudo chmod 777 /usr/bin/JPzram
-sudo cat > /usr/bin/JPzram << "XIT"
+sudo touch /usr/bin/JPupd
+sudo chmod 777 /usr/bin/JPupd
+sudo cat > /usr/bin/JPupd << "XIT"
 #!/bin/sh
 swapoff -a
 rmmod zram
