@@ -73,7 +73,7 @@ check_input() {
     read -n1 -t 10 input
     if [[ $input != " " ]]; then
     else
-     echo "Installing paru..."
+     echo "Install paru..."
      git clone https://aur.archlinux.org/paru.git
      cd paru
      makepkg -si --noconfirm
