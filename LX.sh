@@ -70,11 +70,6 @@ echo Installing paru in 10s. Press SPACE to interrupt.
 read -n1 -t 10 input
 if [[ $input == " " ]]; then
 else
-echo Installing...
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si --noconfirm
-fi
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $$
@@ -82,6 +77,7 @@ makepkg -si --noconfirm
 sudo renice -n 0 -p $$
 sudo rm -rf ~/paru-git
 cd
+fi
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
 sudo cat > /etc/paru.conf << "XIT"
