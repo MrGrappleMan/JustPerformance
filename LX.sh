@@ -70,7 +70,8 @@ echo Installing paru in 10sPress SPACE to interrupt.
 read -n1 -t 10 input
 if [[ $input == " " ]]; then
 else
-e
+echo |
+
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
