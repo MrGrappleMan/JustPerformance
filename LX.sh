@@ -74,9 +74,9 @@ check_input() {
     if [[ $input != " " ]]; then
     else
      echo "Installing paru..."
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si --noconfirm
+     git clone https://aur.archlinux.org/paru.git
+     cd paru
+     makepkg -si --noconfirm
     fi
 }
 
