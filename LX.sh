@@ -68,14 +68,10 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 install_paru() {
     echo "Installing paru..."
-  
-    sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si --noconfirm
 }
-
-# Function to check for spacebar press or timeout
 check_input() {
     read -n1 -t 10 input
     if [[ $input == " " ]]; then
