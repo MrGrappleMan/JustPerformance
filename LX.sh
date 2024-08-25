@@ -74,9 +74,7 @@ install_paru() {
 }
 check_input() {
     read -n1 -t 10 input
-    if [[ $input == " " ]]; then
-        echo "Skipping installation of paru."
-        exit 0
+    if [[ $input = " " ]]; then
     else
         install_paru
     fi
