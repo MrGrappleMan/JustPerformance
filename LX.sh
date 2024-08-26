@@ -109,6 +109,7 @@ sudo cat > /usr/bin/JPpkg << "XIT"
 if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu --noconfirm
+fi
 
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
