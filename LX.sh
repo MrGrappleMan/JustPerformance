@@ -105,6 +105,7 @@ XIT
 sudo touch /usr/bin/JPpkg
 sudo chmod 777 /usr/bin/JPpkg
 sudo cat > /usr/bin/JPpkg << "XIT"
+sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
