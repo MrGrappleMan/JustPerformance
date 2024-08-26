@@ -119,7 +119,6 @@ Description=
 ExecStart=/usr/bin/JPpkg Y
 ExecStop=/usr/bin/JPpkg
 Type=oneshot
-RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
