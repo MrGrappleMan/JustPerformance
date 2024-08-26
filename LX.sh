@@ -144,6 +144,18 @@ Persistent=true
 WantedBy=timers.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
+
+read -n1 -t 10 inpoot
+if [[ $inpoot == " " ]]; then
+else
+git clone https://aur.archlinux.org/paru-git.git
+cd paru-git
+sudo renice -n -20 -p $$
+makepkg -si --noconfirm
+sudo renice -n 0 -p $$
+sudo rm -rf ~/paru-git
+cd
+fi
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
