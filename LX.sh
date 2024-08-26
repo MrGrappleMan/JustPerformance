@@ -112,7 +112,7 @@ paru -Syyu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
 sudo systemctl stop 
-sudo systemct
+sudo systemctl stop
 sudo pkill -f paru
 exit 0
 fi
