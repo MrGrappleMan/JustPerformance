@@ -2,7 +2,8 @@
 clear
 cd
 if [[ "$USER" == "root" ]]; then
-echo Run as
+echo Running as root is not allowed.
+echo There are 
 fi
 echo For the 
 sudorefresh() {
