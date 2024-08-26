@@ -107,12 +107,13 @@ sudo chmod 777 /usr/bin/JPpkg
 sudo cat > /usr/bin/JPpkg << "XIT"
 #!/bin/bash
 sudo systemctl enable JPpkg.timer
+sudo systemctl disable JPpkg.service
 if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
-sudo systemctl disable --now JPpkg.service
+sudo systemctl disable JPpkg.service
 sudo systemctl stop JPpkg.timer
 sudo pkill -f paru
 fi
