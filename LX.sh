@@ -1,7 +1,7 @@
 #!/bin/zsh
 clear
 cd
-echo 
+echo For the 
 sudorefresh() {
     while true; do
         sudo -v
