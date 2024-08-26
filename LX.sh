@@ -144,7 +144,7 @@ Persistent=true
 WantedBy=timers.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
-echo Press SPACE im 10s for CachyOS. Else, Xanmod
+echo Press SPACE in 10s for CachyOS. Else, use Xanmod.
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
 paru -Syyu --noconfirm linux-cachyos-rc linux-cachyos-rc-headers
