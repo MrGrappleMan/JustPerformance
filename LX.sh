@@ -113,7 +113,7 @@ sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirr
 paru -Syyu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
-sudo systemctl disable JPpkg.service
+sudo systemctl stop JPpkg.service
 sudo systemctl stop JPpkg.timer
 sudo pkill -f paru
 fi
