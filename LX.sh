@@ -101,7 +101,6 @@ SkipReview
 Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
 SudoFlags = -v
 XIT
-# PkgServices
 sudo touch /usr/bin/JPpkg
 sudo chmod 777 /usr/bin/JPpkg
 sudo cat > /usr/bin/JPpkg << "XIT"
