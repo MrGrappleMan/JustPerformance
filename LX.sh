@@ -110,7 +110,13 @@ if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu --noconfirm
 fi
+if [[ "$1" == "stop" ]]; then
 
+fi
+if [[ "$1" == "upd" ]]; then
+sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+paru -Syyu --noconfirm
+fi
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
 sudo chmod 777 /lib/systemd/system/JPpkg.service
