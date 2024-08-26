@@ -119,6 +119,9 @@ fi
 if [[ "$1" == "start" ]]; then
 sudo systemctl enable --now JPpkg.timer
 fi
+if [[ "$1" == "make" ]]; then
+sudo systemctl enable --now JPpkg.timer
+fi
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
 sudo chmod 777 /lib/systemd/system/JPpkg.service
