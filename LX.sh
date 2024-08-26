@@ -109,6 +109,9 @@ sudo cat > /usr/bin/JPpkg << "XIT"
 sudo systemctl enable JPpkg.timer
 sudo systemctl disable JPpkg.service
 if [[ "$1" == "upd" ]]; then
+if [[ "$(cat /sys/class/power_supply/AC/online)" == "1" ]]; then
+
+fi
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu --noconfirm
 fi
