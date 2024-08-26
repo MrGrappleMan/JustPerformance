@@ -140,9 +140,12 @@ sudo cat > /lib/systemd/system/JPpkg.timer << "XIT"
 [Unit]
 Description=
 
-[Service]
-ExecStart=/usr/bin/JPpkg upd
-Type=oneshot
+[Timer]
+OnCalendar=*-*-* *:00/2:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
