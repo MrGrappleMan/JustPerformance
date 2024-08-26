@@ -105,7 +105,7 @@ XIT
 sudo touch /usr/bin/JPpkg
 sudo chmod 777 /usr/bin/JPpkg
 sudo cat > /usr/bin/JPpkg << "XIT"
-paru -Syu
+paru -Syyu
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
 sudo chmod 777 /lib/systemd/system/JPpkg.service
@@ -115,8 +115,8 @@ Description=
 Before=systemd-oomd.service
 
 [Service]
-ExecStart=/usr/bin/JPzram Y
-ExecStop=/usr/bin/JPzram
+ExecStart=/usr/bin/JPpkg Y
+ExecStop=/usr/bin/JPpkg
 Type=oneshot
 RemainAfterExit=true
 
