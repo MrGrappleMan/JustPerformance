@@ -147,9 +147,9 @@ XIT
 
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
-paru -Syyu --noconfirm linux-xanmod-edge linux-xanmod-edge-header
+paru -Syyu --noconfirm linux-xanmod-edge linux-xanmod-edge-headers
 else
-
+paru -Syyu --noconfirm 
 fi
 for pakges in\
  ramroot-btrfs\
