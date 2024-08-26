@@ -2,7 +2,7 @@
 clear
 cd
 if [[ "$USER" == "root" ]]; then
-
+echo Run as
 fi
 echo For the 
 sudorefresh() {
