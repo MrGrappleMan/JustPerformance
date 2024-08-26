@@ -112,12 +112,12 @@ sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirr
 paru -Syyu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
-sudo systemctl stop --now JPpkg.service
+sudo systemctl disable --now JPpkg.service
 sudo systemctl stop JPpkg.timer
 sudo pkill -f paru
 fi
 if [[ "$1" == "start" ]]; then
-sudo systemctl enable --now 
+sudo systemctl enable
 sudo systemctl 
 fi
 if [[ "$1" == "upd" ]]; then
