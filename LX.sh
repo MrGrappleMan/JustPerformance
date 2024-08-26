@@ -1,6 +1,7 @@
 #!/bin/zsh
 clear
 cd
+echo 
 sudorefresh() {
     while true; do
         sudo -v
