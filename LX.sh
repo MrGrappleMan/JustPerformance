@@ -98,7 +98,7 @@ CompletionInterval = 0
 SudoLoop
 SkipReview
 [bin]
-Makepkg = /usr/bin/nice -n -20 /usr/bin/makepkg "$@"
+Makepkg = /usr/bin/JPpkg make
 SudoFlags = -v
 XIT
 sudo touch /usr/bin/JPpkg
