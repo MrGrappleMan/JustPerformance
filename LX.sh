@@ -144,9 +144,10 @@ Persistent=true
 WantedBy=timers.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
-
+echo Press SPACE im
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
+paru -Syyu --noconfirm linux-cachyos-rc linux-cachyos-rc-headers
 else
 paru -Syyu --noconfirm linux-xanmod-edge linux-xanmod-edge-headers
 fi
