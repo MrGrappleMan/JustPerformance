@@ -120,7 +120,9 @@ if [[ "$1" == "start" ]]; then
 sudo systemctl enable --now JPpkg.timer
 fi
 if [[ "$1" == "make" ]]; then
-sudo systemctl enable --now JPpkg.timer
+sudo renice -n -20 -p $$
+makepkg -si --noconfirm
+sudo renice -n 0 -p $$
 fi
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
