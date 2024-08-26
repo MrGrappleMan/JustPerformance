@@ -74,7 +74,7 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 # Skip unnecessary procedure for debugging
 echo Installing paru in 10s. Press SPACE to interrupt.
-echo Paru
+echo Paru configurations will be replaced regardless of it.
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
 else
@@ -105,7 +105,7 @@ XIT
 sudo touch /usr/bin/JPpkg
 sudo chmod 777 /usr/bin/JPpkg
 sudo cat > /usr/bin/JPpkg << "XIT"
-paru -Syu 
+paru -Syu
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
 sudo chmod 777 /lib/systemd/system/JPpkg.service
