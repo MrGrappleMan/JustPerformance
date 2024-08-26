@@ -112,9 +112,8 @@ paru -Syyu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
 sudo systemctl stop 
-sudo systemctl stop
+sudo systemctl stop 
 sudo pkill -f paru
-exit 0
 fi
 if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
