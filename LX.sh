@@ -118,9 +118,6 @@ Description=
 [Service]
 ExecStart=/usr/bin/JPpkg upd
 Type=oneshot
-
-[Install]
-WantedBy=multi-user.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
