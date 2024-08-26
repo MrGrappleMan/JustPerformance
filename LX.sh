@@ -116,8 +116,7 @@ sudo cat > /lib/systemd/system/JPpkg.service << "XIT"
 Description=
 
 [Service]
-ExecStart=/usr/bin/JPpkg Y
-ExecStop=/usr/bin/JPpkg
+ExecStart=/usr/bin/JPpkg
 Type=oneshot
 
 [Install]
