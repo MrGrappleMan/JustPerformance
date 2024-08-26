@@ -147,18 +147,12 @@ XIT
 
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
-paru -Syyu 
+paru -Syyu --noconfirm linux-xanmod-edge linux-xanmod-edge-header
 else
-git clone https://aur.archlinux.org/paru-git.git
-cd paru-git
-sudo renice -n -20 -p $$
-makepkg -si --noconfirm
-sudo renice -n 0 -p $$
-sudo rm -rf ~/paru-git
-cd
+
 fi
 for pakges in\
- linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
+ ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
  paru-git mc-git pi-hole-standalone snowflake-pt-proxy boinc-nox
 #  hyprland-git eww-git flatpak
