@@ -117,8 +117,7 @@ sudo systemctl stop JPpkg.timer
 sudo pkill -f paru
 fi
 if [[ "$1" == "start" ]]; then
-sudo systemctl enable
-sudo systemctl 
+sudo systemctl enable --now JPpkg.timer
 fi
 if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
