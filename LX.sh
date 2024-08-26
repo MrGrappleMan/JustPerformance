@@ -1,6 +1,9 @@
 #!/bin/zsh
 clear
 cd
+if [[ "$USER" == "root" ]]; then
+
+fi
 echo For the 
 sudorefresh() {
     while true; do
