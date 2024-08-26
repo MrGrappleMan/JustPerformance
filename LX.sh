@@ -115,6 +115,9 @@ sudo systemctl stop
 sudo systemctl stop 
 sudo pkill -f paru
 fi
+if [[ "$1" == "start" ]]; then
+sudo systemctl enable 
+fi
 if [[ "$1" == "upd" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 paru -Syyu --noconfirm
