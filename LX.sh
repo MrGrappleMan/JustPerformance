@@ -114,7 +114,6 @@ sudo chmod 777 /lib/systemd/system/JPpkg.service
 sudo cat > /lib/systemd/system/JPpkg.service << "XIT"
 [Unit]
 Description=
-Before=systemd-oomd.service
 
 [Service]
 ExecStart=/usr/bin/JPpkg Y
