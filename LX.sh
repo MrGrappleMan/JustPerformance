@@ -121,7 +121,7 @@ sudo systemctl enable --now JPpkg.timer
 fi
 if [[ "$1" == "make" ]]; then
 sudo renice -n -20 -p $$
-makepkg -si --noconfirm
+makepkg "$@"
 sudo renice -n 0 -p $$
 fi
 XIT
