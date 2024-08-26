@@ -10,7 +10,7 @@ fi
 sudorefresh() {
     while true; do
         sudo -v
-        sleep 60
+        sleep 150
     done
 }
 sudorefresh &
