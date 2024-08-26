@@ -74,8 +74,9 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 # Skip unnecessary procedure for debugging
 echo Installing paru in 10s. Press SPACE to interrupt.
-read -n1 -t 10 input
-if [[ $input == " " ]]; then
+echo Paru
+read -n1 -t 10 inpoot
+if [[ $inpoot == " " ]]; then
 else
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
