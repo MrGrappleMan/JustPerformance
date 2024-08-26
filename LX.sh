@@ -134,6 +134,16 @@ Description=
 ExecStart=/usr/bin/JPpkg upd
 Type=oneshot
 XIT
+sudo touch /lib/systemd/system/JPpkg.timer
+sudo chmod 777 /lib/systemd/system/JPpkg.timer
+sudo cat > /lib/systemd/system/JPpkg.timer << "XIT"
+[Unit]
+Description=
+
+[Service]
+ExecStart=/usr/bin/JPpkg upd
+Type=oneshot
+XIT
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
