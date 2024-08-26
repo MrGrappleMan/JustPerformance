@@ -147,7 +147,7 @@ XIT
 
 read -n1 -t 10 inpoot
 if [[ $inpoot == " " ]]; then
-paru 
+paru -Syyu 
 else
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
