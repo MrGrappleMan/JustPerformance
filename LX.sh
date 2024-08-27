@@ -149,17 +149,10 @@ Persistent=true
 WantedBy=timers.target
 XIT
 # PackageInst----------------------------------------------------------------------------------------------------
-echo Press SPACE in 10s for CachyOS. Else, use Xanmod.
-read -n1 -t 10 inpoot
-if [[ $inpoot == " " ]]; then
-paru -Syyu --noconfirm linux-cachyos-rc linux-cachyos-rc-headers
-else
-paru -Syyu --noconfirm linux-xanmod-edge linux-xanmod-edge-headers
-fi
 for pakges in\
- ramroot-btrfs\
+ linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
- paru-git mc-git pi-hole-standalone snowflake-pt-proxy boinc-nox
+ paru-git mc-git pi-hole-standalone snowflake-pt-proxy boinc-nox flatpak
 #  hyprland-git eww-git flatpak
 do paru -Syu --noconfirm $pakges
 done
