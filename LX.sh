@@ -152,7 +152,7 @@ XIT
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
  pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
- paru-git mc-git pi-hole-standalone snowflake-pt-proxy boinc-nox flatpak
+ paru-git mc-git pi-hole-standalone snowflake-pt-proxy flatpak
 #  hyprland-git eww-git flatpak
 do paru -Syu --noconfirm $pakges
 done
