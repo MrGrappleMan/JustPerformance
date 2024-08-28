@@ -374,12 +374,14 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 777 /etc/systemd/resolved.conf
 sudo cat > /etc/systemd/resolved.conf << "XIT"
 [Resolve]
+# AdBlocking
 DNS=noads.libredns.gr
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
 DNS=dns.adguard.com
+# regular
 DNS=one.one.one.one
 DNS=dns.quad9.net
 DNS=dns.google
