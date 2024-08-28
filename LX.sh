@@ -378,9 +378,9 @@ sudo cat > /etc/systemd/resolved.conf << "XIT"
 DNS=noads.libredns.gr
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
+DNS=dns.adguard.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
-DNS=dns.adguard.com
 # Regular
 
 DNS=one.one.one.one
