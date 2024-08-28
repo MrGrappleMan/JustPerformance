@@ -120,14 +120,14 @@ if [[ "$1" == "start" ]]; then
 sudo systemctl enable --now JPpkg.timer
 fi
 if [[ "$1" == "make" ]]; then
-found_parallel_flag=false
+foun=false
 for arg in "$@"; do
     if [[ "$arg" == -j* ]]; then
         found_parallel_flag=true
         break
     fi
 done
-if [ "$found_parallel_flag" = false ]; then
+if [ "$multicore" = false ]; then
     set -- "$@" "-j$(nproc)"  # Adjust the -j value as needed
 fi
 sudo renice -n -20 -p $$
