@@ -21,7 +21,7 @@ sudo rm -rf ~/swapfile
 sudo touch ~/swapfile
 sudo fallocate -l 8G ~/swapfile
 sudo chmod 777 ~/swapfile
-sudo mkswap /swapfile
+sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
@@ -66,7 +66,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 777 /etc/pacman.d/mirrorlist
-sudo cat > etc/pacman.d/mirrorlist << "XIT"
+sudo cat > /etc/pacman.d/mirrorlist << "XIT"
 Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
