@@ -131,7 +131,7 @@ if [ "$multicore" = false ]; then
     set -- "$@" "-j$(nproc)"
 fi
 sudo renice -n -20 -p $$
-makepkg "$@"
+exec makepkg "$@"
 sudo renice -n 0 -p $$
 fi
 XIT
