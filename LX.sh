@@ -381,10 +381,10 @@ DNS=dot-de.blahdns.com
 DNS=dns.adguard.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
+DNS=dns.decloudus.com
 # Regular
-
-DNS=one.one.one.one
 DNS=dns.quad9.net
+DNS=one.one.one.one
 DNS=dns.google
 DNSSEC=no
 DNSOverTLS=yes
