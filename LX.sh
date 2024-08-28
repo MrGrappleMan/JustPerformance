@@ -83,8 +83,8 @@ cd paru-git
 sudo renice -n -20 -p $$
 makepkg -si --noconfirm
 sudo renice -n 0 -p $$
-sudo rm -rf ~/paru-git
 cd
+sudo rm -rf ~/paru-git
 fi
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
