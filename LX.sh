@@ -381,7 +381,8 @@ DNS=dot-de.blahdns.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
 DNS=dns.adguard.com
-# regular
+# Regular
+
 DNS=one.one.one.one
 DNS=dns.quad9.net
 DNS=dns.google
