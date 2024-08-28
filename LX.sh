@@ -177,7 +177,7 @@ swapoff -a
 rmmod zram
 if [[ "$1" == "Y" ]]; then
 modprobe zram
-mem=$(((`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`)*1024))
+mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
 echo $mem > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon -p 32765 /dev/zram0
