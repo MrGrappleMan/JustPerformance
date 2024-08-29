@@ -193,11 +193,10 @@ mkswap /dev/zram0
 swapon -p 32765 /dev/zram0
 sudo rm -rf /swapfile
 sudo touch /swapfile
-sudo fallocate -l 8G /swapfile
+sudo fallocate -l  /swapfile
 sudo chmod 777 /swapfile
-sudo mkswap ~/swapfile
-sudo swapon -p 32765 ~/swapfile
-sudo sysctl vm.swappiness=1
+sudo mkswap /swapfile
+sudo swapon -p 512 /swapfile
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
