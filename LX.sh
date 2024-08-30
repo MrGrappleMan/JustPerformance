@@ -211,13 +211,10 @@ if [[ "$1" == "Y" ]]; then
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
             
             if (( mem_free <= mem_threshold_1 )); then
-                # Low memory, set lower compression level (zstd:5)
                 set_zram_compression 5
             elif (( mem_free <= mem_threshold_2 )); then
-                # Moderate memory, set medium compression level (zstd:10)
                 set_zram_compression 10
             else
-                # High memory, set higher compression level (zstd:15)
                 set_zram_compression 15
             fi
             
