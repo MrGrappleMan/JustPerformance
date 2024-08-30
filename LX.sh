@@ -208,7 +208,6 @@ if [[ "$1" == "Y" ]]; then
         mem_threshold_2=$(($mem_threshold_1 * 2))
         while true; do
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
-            
             if (( mem_free <= mem_threshold_1 )); then
                 set_zram_compression 5
             elif (( mem_free <= mem_threshold_2 )); then
