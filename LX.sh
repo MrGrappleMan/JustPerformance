@@ -206,7 +206,6 @@ if [[ "$1" == "Y" ]]; then
         mem_total=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
         mem_threshold_1=$(($mem_total / 3))
         mem_threshold_2=$(($mem_threshold_1 * 2))
-
         while true; do
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
             
@@ -217,12 +216,9 @@ if [[ "$1" == "Y" ]]; then
             else
                 set_zram_compression 15
             fi
-            
-            sleep 60 # Check memory every 60 seconds (adjust as needed)
+            sleep 60
         done
     }
-
-    # Start monitoring memory and adjusting compression
     monitor_memory &
 fi
 XIT
