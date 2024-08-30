@@ -1,6 +1,7 @@
 #!/bin/zsh
 clear
 cd
+pacman -S --noconfirm sudo systemd
 if [[ "$USER" == "root" ]]; then
 echo Running as root by default is not allowed.
 echo There are a few instances where you need to be a regular user.
