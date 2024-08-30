@@ -187,17 +187,55 @@ sudo cat > /usr/bin/JPzram << "XIT"
 swapoff -a
 rmmod zram
 if [[ "$1" == "Y" ]]; then
-modprobe zram
-mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
-echo $mem > /sys/block/zram0/disksize
-mkswap /dev/zram0
-swapon -p 32765 /dev/zram0
-sudo rm -rf /swapfile
-sudo touch /swapfile
-sudo fallocate -l 4G /swapfile
-sudo chmod 777 /swapfile
-sudo mkswap /swapfile
-sudo swapon -p 512 /swapfile
+    modprobe zram
+    mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
+    echo $mem > /sys/block/zram0/disksize
+    mkswap /dev/zram0
+    swapon -p 32765 /dev/zram0
+    
+    sudo rm -rf /swapfile
+    sudo touch /swapfile
+    sudo fallocate -l 4G /swapfile
+    sudo chmod 777 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon -p 512 /swapfile
+    
+    # Function to set zram compression level
+    set_zram_compression() {
+        local level=$1
+        echo "zstd:$level" > /sys/block/zram0/comp_algorithm
+    }
+
+    # Function to monitor memory pressure and adjust compression level
+    monitor_memory() {
+        # Get the total memory in KB
+        mem_total=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
+
+        # Calculate 1/3, 2/3, and 3/3 of total memory
+        mem_threshold_1=$(($mem_total / 3))
+        mem_threshold_2=$(($mem_threshold_1 * 2))
+
+        while true; do
+            # Check available memory
+            mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
+            
+            if (( mem_free <= mem_threshold_1 )); then
+                # Low memory, set lower compression level (zstd:5)
+                set_zram_compression 5
+            elif (( mem_free <= mem_threshold_2 )); then
+                # Moderate memory, set medium compression level (zstd:10)
+                set_zram_compression 10
+            else
+                # High memory, set higher compression level (zstd:15)
+                set_zram_compression 15
+            fi
+            
+            sleep 60 # Check memory every 60 seconds (adjust as needed)
+        done
+    }
+
+    # Start monitoring memory and adjusting compression
+    monitor_memory &
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
