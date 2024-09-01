@@ -74,7 +74,8 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 cd git-git
-make
+makepkg -s
+
 # Skip unnecessary procedure if preinstalled
 echo Installing paru in 10s. Press SPACE to interrupt.
 echo Paru configurations will be replaced regardless of it.
