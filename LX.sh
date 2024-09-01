@@ -78,12 +78,6 @@ makepkg -s --noconfirm
 sudo pacman -Rns git
 sudo pacman -U git-git-*.pkg.tar.zst
 cd
-# Skip unnecessary procedure if preinstalled
-echo Installing paru in 10s. Press SPACE to interrupt.
-echo Paru configurations will be replaced regardless of it.
-read -n1 -t 10 inpoot
-if [[ $inpoot == " " ]]; then
-else
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $$
@@ -91,7 +85,6 @@ makepkg -si --noconfirm
 sudo renice -n 0 -p $$
 cd
 sudo rm -rf ~/paru-git
-fi
 sudo touch /etc/paru.conf
 sudo chmod 777 /etc/paru.conf
 sudo cat > /etc/paru.conf << "XIT"
