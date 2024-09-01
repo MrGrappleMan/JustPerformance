@@ -181,41 +181,35 @@ fi
 sudo touch /usr/bin/JPzram
 sudo chmod 777 /usr/bin/JPzram
 sudo cat > /usr/bin/JPzram << "XIT"
-#!/bin/sh
+#!/bin/bash
 swapoff -a
 rmmod zram
+
 if [[ "$1" == "Y" ]]; then
     modprobe zram
-    mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
-    echo $mem > /sys/block/zram0/disksize
+    mem_total=$(( $(free | awk '/^Mem:/{print $2}') * 1024 ))
+    echo $mem_total > /sys/block/zram0/disksize
     mkswap /dev/zram0
     swapon -p 32765 /dev/zram0
     sudo rm -rf /swapfile
-    sudo touch /swapfile
     sudo fallocate -l 4G /swapfile
-    sudo chmod 777 /swapfile
+    sudo chmod 600 /swapfile
     sudo mkswap /swapfile
     sudo swapon -p 512 /swapfile
-    set_zram_compression() {
+    set_compression_level() {
         local level=$1
         echo "zstd:$level" > /sys/block/zram0/comp_algorithm
     }
     monitor_memory() {
-        mem_total=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
-        mem_threshold_1=$(($mem_total / 3))
-        mem_threshold_2=$(($mem_threshold_1 * 2))
+        local part_size=$(($mem_total / 22))
         while true; do
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
-            if (( mem_free <= mem_threshold_1 )); then
-                set_zram_compression 5
-            elif (( mem_free <= mem_threshold_2 )); then
-                set_zram_compression 10
-            else
-                set_zram_compression 15
-            fi
+            level=$((22 - mem_free / part_size))
+            set_compression_level $((level < 1 ? 1 : level > 22 ? 22 : level))
             sleep 60
         done
     }
+
     monitor_memory &
 fi
 XIT
