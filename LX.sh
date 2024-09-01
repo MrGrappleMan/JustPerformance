@@ -73,7 +73,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
-# Skip unnecessary procedure for debugging
+# Skip unnecessary procedure if preinstalled
 echo Installing paru in 10s. Press SPACE to interrupt.
 echo Paru configurations will be replaced regardless of it.
 read -n1 -t 10 inpoot
