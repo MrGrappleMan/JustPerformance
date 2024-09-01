@@ -213,7 +213,6 @@ if [[ "$1" == "Y" ]]; then
     monitor_memory &
 fi
 XIT
-sudo chmod 755 /lib/systemd/system/JPzram.service
 sudo tee /lib/systemd/system/JPzram.service > /dev/null << "XIT"
 [Unit]
 Description=
@@ -228,6 +227,7 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 XIT
+sudo chmod 755 /lib/systemd/system/JPzram.service
 sudo systemctl enable --now JPzram
 sudo ramroot -CEY
 # Flatpak----------------------------------------------------------------------------------------------------
