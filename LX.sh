@@ -25,7 +25,7 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
-sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git
+sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git
 sudo pacman -Sc --noconfirm
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
