@@ -196,27 +196,6 @@ if [[ "$1" == "Y" ]]; then
     sudo fallocate -l 4G /swapfile
     sudo chmod 777 /swapfile
     sudo mkswap /swapfile
-    sudo swapon -p 512 /swapfile
-    set_zram_compression() {
-        local level=$1
-    }
-    monitor_memory() {
-        mem_total=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
-        mem_threshold_1=$(($mem_total / 3))
-        mem_threshold_2=$(($mem_threshold_1 * 2))
-        while true; do
-            mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
-            if (( mem_free <= mem_threshold_1 )); then
-                set_zram_compression 5
-            elif (( mem_free <= mem_threshold_2 )); then
-                set_zram_compression 10
-            else
-                set_zram_compression 15
-            fi
-            sleep 60
-        done
-    }
-    monitor_memory &
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
