@@ -186,11 +186,11 @@ swapoff -a
 rmmod zram
 
 if [[ "$1" == "Y" ]]; then
-    modprobe zram
+    sudo modprobe zram
     mem_total=$(( $(free | awk '/^Mem:/{print $2}') * 1024 ))
-    echo $mem_total > /sys/block/zram0/disksize
-    mkswap /dev/zram0
-    swapon -p 32765 /dev/zram0
+    sudo echo $mem_total > /sys/block/zram0/disksize
+    sudo mkswap /dev/zram0
+    sudo swapon -p 32765 /dev/zram0
     sudo rm -rf /swapfile
     sudo fallocate -l 4G /swapfile
     sudo chmod 755 /swapfile
