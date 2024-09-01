@@ -1,7 +1,6 @@
 #!/bin/zsh
 clear
 cd
-pacman -S --noconfirm sudo sys
 if [[ "$USER" == "root" ]]; then
 echo Running as root by default is not allowed.
 echo There are a few instances where you need to be a regular user.
@@ -73,6 +72,9 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
+git clone https://aur.archlinux.org/git-git.git
+cd git-git
+make
 # Skip unnecessary procedure if preinstalled
 echo Installing paru in 10s. Press SPACE to interrupt.
 echo Paru configurations will be replaced regardless of it.
