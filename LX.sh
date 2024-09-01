@@ -191,11 +191,6 @@ if [[ "$1" == "Y" ]]; then
     sudo echo "zstd:21" > /sys/block/zram0/comp_algorithm
     sudo mkswap /dev/zram0
     sudo swapon -p 32765 /dev/zram0
-    sudo rm -rf /swapfile
-    sudo touch /swapfile
-    sudo fallocate -l 4G /swapfile
-    sudo chmod 777 /swapfile
-    sudo mkswap /swapfile
 fi
 XIT
 sudo touch /lib/systemd/system/JPzram.service
