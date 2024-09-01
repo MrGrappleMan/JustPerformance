@@ -185,12 +185,12 @@ sudo cat > /usr/bin/JPzram << "XIT"
 swapoff -a
 rmmod zram
 if [[ "$1" == "Y" ]]; then
-    modprobe zram
+    sudo modprobe zram
     mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
-    echo $mem > /sys/block/zram0/disksize
-    echo "zstd:21" > /sys/block/zram0/comp_algorithm
-    mkswap /dev/zram0
-    swapon -p 32765 /dev/zram0
+    sudo echo $mem > /sys/block/zram0/disksize
+    sudo echo "zstd:21" > /sys/block/zram0/comp_algorithm
+    sudo mkswap /dev/zram0
+    sudo swapon -p 32765 /dev/zram0
     sudo rm -rf /swapfile
     sudo touch /swapfile
     sudo fallocate -l 4G /swapfile
