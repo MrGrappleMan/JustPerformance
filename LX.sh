@@ -193,7 +193,7 @@ if [[ "$1" == "Y" ]]; then
     swapon -p 32765 /dev/zram0
     sudo rm -rf /swapfile
     sudo fallocate -l 4G /swapfile
-    sudo chmod 600 /swapfile
+    sudo chmod 700 /swapfile
     sudo mkswap /swapfile
     sudo swapon -p 512 /swapfile
     set_compression_level() {
