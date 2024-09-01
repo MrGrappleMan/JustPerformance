@@ -35,7 +35,7 @@ sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-ke
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
-sudo tee /etc/pacman.conf << "XIT"
+sudo tee /etc/pacman.conf > /dev/null << "XIT"
 [options]
 HoldPkg = pacman glibc paru-git
 CleanMethod = KeepInstalled
@@ -66,7 +66,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 XIT
 sudo touch /etc/pacman.d/mirrorlist
 sudo chmod 755 /etc/pacman.d/mirrorlist
-sudo tee /etc/pacman.d/mirrorlist << "XIT"
+sudo tee /etc/pacman.d/mirrorlist > /dev/null << "XIT"
 Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
@@ -87,7 +87,7 @@ cd
 sudo rm -rf ~/paru-git
 sudo touch /etc/paru.conf
 sudo chmod 755 /etc/paru.conf
-sudo tee /etc/paru.conf << "XIT"
+sudo tee /etc/paru.conf > /dev/null << "XIT"
 [options]
 PgpFetch
 Devel
@@ -102,7 +102,7 @@ SudoFlags = -v
 XIT
 sudo touch /usr/bin/JPpkg
 sudo chmod 755 /usr/bin/JPpkg
-sudo tee /usr/bin/JPpkg << "XIT"
+sudo tee /usr/bin/JPpkg > /dev/null << "XIT"
 #!/bin/bash
 sudo systemctl enable JPpkg.timer
 sudo systemctl disable JPpkg.service
@@ -136,7 +136,7 @@ fi
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
 sudo chmod 755 /lib/systemd/system/JPpkg.service
-sudo tee /lib/systemd/system/JPpkg.service << "XIT"
+sudo tee /lib/systemd/system/JPpkg.service > /dev/null << "XIT"
 [Unit]
 Description=
 
@@ -146,7 +146,7 @@ Type=oneshot
 XIT
 sudo touch /lib/systemd/system/JPpkg.timer
 sudo chmod 755 /lib/systemd/system/JPpkg.timer
-sudo tee /lib/systemd/system/JPpkg.timer << "XIT"
+sudo tee /lib/systemd/system/JPpkg.timer > /dev/null << "XIT"
 [Unit]
 Description=
 
@@ -180,7 +180,7 @@ fi
 # ZRAMnRamRoot----------------------------------------------------------------------------------------------------
 sudo touch /usr/bin/JPzram
 sudo chmod 755 /usr/bin/JPzram
-sudo tee /usr/bin/JPzram << "XIT"
+sudo tee /usr/bin/JPzram > /dev/null << "XIT"
 #!/bin/bash
 swapoff -a
 rmmod zram
@@ -213,22 +213,8 @@ if [[ "$1" == "Y" ]]; then
     monitor_memory &
 fi
 XIT
-sudo tee /lib/systemd/system/JPzram.service > /dev/null << "XIT"
-[Unit]
-Description=JPzram Service
-Before=systemd-oomd.service
-
-[Service]
-ExecStart=/usr/bin/JPzram Y
-ExecStop=/usr/bin/JPzram
-Type=oneshot
-RemainAfterExit=true
-
-[Install]
-WantedBy=multi-user.target
-XIT
 sudo chmod 755 /lib/systemd/system/JPzram.service
-sudo tee /lib/systemd/system/JPzram.service << "XIT"
+sudo tee /lib/systemd/system/JPzram.service > /dev/null << "XIT"
 [Unit]
 Description=
 Before=systemd-oomd.service
@@ -250,12 +236,12 @@ sudo flatpak remote-add --if-not-exists --noninteractive flathub-beta https://fl
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo touch /etc/pihole/pihole-FTL.conf
 sudo chmod 755 /etc/pihole/pihole-FTL.conf
-sudo tee /etc/pihole/pihole-FTL.conf << "XIT"
+sudo tee /etc/pihole/pihole-FTL.conf > /dev/null << "XIT"
 RATE_LIMIT=0/0
 XIT
 sudo touch /etc/pihole/adlists.list
 sudo chmod 755 /etc/pihole/adlists.list
-sudo tee /etc/pihole/adlists.list << "XIT"
+sudo tee /etc/pihole/adlists.list > /dev/null << "XIT"
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
@@ -291,7 +277,7 @@ sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
 sudo touch /lib/systemd/system/snowflake-proxy.service
 sudo chmod 755 /lib/systemd/system/snowflake-proxy.service
-sudo tee /lib/systemd/system/snowflake-proxy.service << "XIT"
+sudo tee /lib/systemd/system/snowflake-proxy.service > /dev/null << "XIT"
 [Service]
 ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
 Restart=always
@@ -320,7 +306,7 @@ sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
 sudo touch /etc/tor/torrc
 sudo chmod 755 /etc/tor/torrc
-sudo tee /etc/tor/torrc << "XIT"
+sudo tee /etc/tor/torrc > /dev/null << "XIT"
 ORPort auto
 ExitRelay 0
 SocksPort 0
@@ -365,7 +351,7 @@ sudo systemctl enable --now tor
 sudo mkdir -p /etc/systemd/system/fstrim.timer.d/
 sudo touch /etc/systemd/system/fstrim.timer.d/override.conf
 sudo chmod 755 /etc/systemd/system/fstrim.timer.d/override.conf
-sudo tee /etc/systemd/system/fstrim.timer.d/override.conf << "XIT"
+sudo tee /etc/systemd/system/fstrim.timer.d/override.conf > /dev/null << "XIT"
 [Timer]
 OnCalendar=
 OnCalendar=daily
@@ -373,7 +359,7 @@ XIT
 sudo systemctl enable --now fstrim.timer
 sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 755 /etc/systemd/timesyncd.conf
-sudo tee /etc/systemd/timesyncd.conf << "XIT"
+sudo tee /etc/systemd/timesyncd.conf > /dev/null << "XIT"
 [Time]
 NTP=pool.ntp.org
 NTP=time.cloudflare.com
@@ -385,7 +371,7 @@ XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
 sudo chmod 755 /etc/sysctl.conf
-sudo tee /etc/sysctl.conf << "XIT"
+sudo tee /etc/sysctl.conf > /dev/null << "XIT"
 vm.vfs_cache_pressure = 50
 vm.dirty_background_ratio = 1
 vm.dirty_ratio = 1
@@ -415,7 +401,7 @@ XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo touch /etc/systemd/resolved.conf
 sudo chmod 755 /etc/systemd/resolved.conf
-sudo tee /etc/systemd/resolved.conf << "XIT"
+sudo tee /etc/systemd/resolved.conf > /dev/null << "XIT"
 [Resolve]
 # AdBlocking
 DNS=noads.libredns.gr
