@@ -188,6 +188,7 @@ if [[ "$1" == "Y" ]]; then
     modprobe zram
     mem=$(( $(free | grep -e "^Mem:" | awk '{print $2}') * 1024 ))
     echo $mem > /sys/block/zram0/disksize
+    echo "zstd:21" > /sys/block/zram0/comp_algorithm
     mkswap /dev/zram0
     swapon -p 32765 /dev/zram0
     sudo rm -rf /swapfile
@@ -198,7 +199,6 @@ if [[ "$1" == "Y" ]]; then
     sudo swapon -p 512 /swapfile
     set_zram_compression() {
         local level=$1
-        echo "zstd:$level" > /sys/block/zram0/comp_algorithm
     }
     monitor_memory() {
         mem_total=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
