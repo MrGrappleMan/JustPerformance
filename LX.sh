@@ -191,11 +191,6 @@ if [[ "$1" == "Y" ]]; then
     sudo echo $mem_total > /sys/block/zram0/disksize
     sudo mkswap /dev/zram0
     sudo swapon -p 32765 /dev/zram0
-    sudo rm -rf /swapfile
-    sudo fallocate -l 4G /swapfile
-    sudo chmod 755 /swapfile
-    sudo mkswap /swapfile
-    sudo swapon -p 512 /swapfile
     set_compression_level() {
         local level=$1
         echo "zstd:$level" > /sys/block/zram0/comp_algorithm
