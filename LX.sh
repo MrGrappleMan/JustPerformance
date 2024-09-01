@@ -213,7 +213,20 @@ if [[ "$1" == "Y" ]]; then
     monitor_memory &
 fi
 XIT
-sudo touch /lib/systemd/system/JPzram.service
+sudo tee /lib/systemd/system/JPzram.service > /dev/null << "XIT"
+[Unit]
+Description=JPzram Service
+Before=systemd-oomd.service
+
+[Service]
+ExecStart=/usr/bin/JPzram Y
+ExecStop=/usr/bin/JPzram
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+XIT
 sudo chmod 755 /lib/systemd/system/JPzram.service
 sudo cat > /lib/systemd/system/JPzram.service << "XIT"
 [Unit]
