@@ -85,8 +85,8 @@ cd paru-git
 sudo renice -n -20 -p $$
 makepkg -si --noconfirm
 sudo renice -n 0 -p $$
-cd
 sudo rm -rf ~/paru-git
+cd
 sudo touch /etc/paru.conf
 sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
