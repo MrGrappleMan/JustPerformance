@@ -153,7 +153,7 @@ sudo tee /lib/systemd/system/JPpkg.timer > /dev/null << "XIT"
 Description=
 
 [Timer]
-OnCalendar=*-*-* *:00/2:00
+OnCalendar=*-*-* *:00/1:00
 Persistent=true
 
 [Install]
