@@ -74,7 +74,9 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 cd git-git
-makepkg -s --noconfirm
+sudo renice -n -20 -p $$
+makepkg -si --noconfirm
+sudo renice -n 0 -p $$
 sudo pacman -Rns --noconfirm git
 sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
