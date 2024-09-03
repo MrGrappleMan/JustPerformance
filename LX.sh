@@ -75,8 +75,8 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 cd git-git
 makepkg -s --noconfirm
-sudo pacman -Rns git
-sudo pacman -U git-git-*.pkg.tar.zst
+sudo pacman -Rns --noconfirm git
+sudo pacman -U --noconfirmgit-git-*.pkg.tar.zst
 cd
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
