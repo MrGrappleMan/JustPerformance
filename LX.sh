@@ -76,7 +76,7 @@ git clone https://aur.archlinux.org/git-git.git
 cd git-git
 makepkg -s --noconfirm
 sudo pacman -Rns --noconfirm git
-sudo pacman -U --noconfirmgit-git-*.pkg.tar.zst
+sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
