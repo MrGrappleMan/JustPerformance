@@ -73,22 +73,8 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 }
-parurcf() {
-sudo touch /etc/paru.conf
-sudo chmod 755 /etc/paru.conf
-sudo tee /etc/paru.conf > /dev/null << "XIT"
-[options]
-PgpFetch
-Devel
-Provides
-DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-CompletionInterval = 0
-SudoLoop
-SkipReview
-[bin]
-Makepkg = /usr/bin/JPpkg make
-SudoFlags = -v
-XIT
+parurcf() 
+jppkgrcf(
 sudo touch /usr/bin/JPpkg
 sudo chmod 755 /usr/bin/JPpkg
 sudo tee /usr/bin/JPpkg > /dev/null << "XIT"
