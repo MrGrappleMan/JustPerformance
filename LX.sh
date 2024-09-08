@@ -74,17 +74,17 @@ XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 cd git-git
-sudo renice -n -20 -p $$
+sudo renice -n -20 -p $BASHPID
 makepkg -s --noconfirm
-sudo renice -n 0 -p $$
+sudo renice -n 0 -p $BASHPID
 sudo pacman -Rns --noconfirm git
 sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
-sudo renice -n -20 -p $$
+sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
-sudo renice -n 0 -p $$
+sudo renice -n 0 -p $BASHPID
 sudo rm -rf ~/paru-git
 cd
 sudo touch /etc/paru.conf
@@ -132,9 +132,9 @@ done
 if [ "$multicore" = false ]; then
     set -- "$@" "-j$(nproc)"
 fi
-sudo renice -n -20 -p $$
+sudo renice -n -20 -p $BASHPID
 exec makepkg "$@"
-sudo renice -n 0 -p $$
+sudo renice -n 0 -p $BASHPID
 fi
 XIT
 sudo touch /lib/systemd/system/JPpkg.service
