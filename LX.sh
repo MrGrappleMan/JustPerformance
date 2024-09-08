@@ -100,7 +100,6 @@ CompletionInterval = 0
 SudoLoop
 SkipReview
 [bin]
-PacmanBin = powerpill
 Makepkg = /usr/bin/JPpkg make
 SudoFlags = -v
 XIT
