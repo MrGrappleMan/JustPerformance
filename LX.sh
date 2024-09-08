@@ -73,11 +73,11 @@ Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
+sudo pacman -Rns --noconfirm git
 cd git-git
 sudo renice -n -20 -p $BASHPID
 makepkg -s --noconfirm
 sudo renice -n 0 -p $BASHPID
-sudo pacman -Rns --noconfirm git
 sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
 sudo rm -rf ~/git-git
