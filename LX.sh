@@ -73,7 +73,9 @@ Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
-sudo pacman -Rns --noconfirm git
+git clone https://aur.archlinux.org/paru-git.git
+git clone https://aur.archlinux.org/pacman-git.git
+sudo pacman -Rns --noconfirm git paru pacn
 cd git-git
 sudo renice -n -20 -p $BASHPID
 makepkg -s --noconfirm
