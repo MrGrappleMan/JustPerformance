@@ -25,7 +25,7 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
-
+pkgreconf() {
 sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git ~/pacman-git
 sudo pacman -Sc --noconfirm
 sudo pacman-key --init
@@ -142,6 +142,7 @@ Persistent=true
 [Install]
 WantedBy=timers.target
 XIT
+}
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
