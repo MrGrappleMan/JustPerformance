@@ -80,13 +80,14 @@ sudo renice -n 0 -p $BASHPID
 sudo pacman -Rns --noconfirm git
 sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
+sudo rm -rf ~/git-git
 git clone https://aur.archlinux.org/paru-git.git
 cd paru-git
 sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
-sudo rm -rf ~/paru-git
 cd
+sudo rm -rf ~/paru-git
 sudo touch /etc/paru.conf
 sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
