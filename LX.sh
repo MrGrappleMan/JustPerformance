@@ -90,7 +90,7 @@ Makepkg = /usr/bin/JPpkg make
 SudoFlags = -v
 XIT
 }
-jppkgrcf() 
+jppkgrcf() {
 sudo touch /usr/bin/JPpkg
 sudo chmod 755 /usr/bin/JPpkg
 sudo tee /usr/bin/JPpkg > /dev/null << "XIT"
@@ -149,7 +149,7 @@ Persistent=true
 WantedBy=timers.target
 XIT
 }
-pkgreconf
+pacmanrcf
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
