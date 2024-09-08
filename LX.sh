@@ -72,6 +72,8 @@ Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
+sudo touch /etc/paru.conf
+sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
 [options]
 PgpFetch
@@ -167,7 +169,7 @@ sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
 cd
-sudo rm -rf ~/paru-git
+sudo rm -rf ~
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
