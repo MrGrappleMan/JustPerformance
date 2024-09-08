@@ -25,7 +25,8 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
-sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git ~/pacman
+
+sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git ~/pacman-git
 sudo pacman -Sc --noconfirm
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
@@ -71,27 +72,6 @@ Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
-sudo pacman -Syy --noconfirm base-devel git
-git clone https://aur.archlinux.org/git-git.git
-git clone https://aur.archlinux.org/paru-git.git
-git clone https://aur.archlinux.org/pacman-git.git
-sudo pacman -Rns --noconfirm git paru pacman
-cd git-git
-sudo renice -n -20 -p $BASHPID
-makepkg -s --noconfirm
-sudo renice -n 0 -p $BASHPID
-sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
-cd
-sudo rm -rf ~/git-git
-git clone https://aur.archlinux.org/paru-git.git
-cd paru-git
-sudo renice -n -20 -p $BASHPID
-makepkg -si --noconfirm
-sudo renice -n 0 -p $BASHPID
-cd
-sudo rm -rf ~/paru-git
-sudo touch /etc/paru.conf
-sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
 [options]
 PgpFetch
@@ -162,6 +142,28 @@ Persistent=true
 [Install]
 WantedBy=timers.target
 XIT
+sudo pacman -Syy --noconfirm base-devel git
+git clone https://aur.archlinux.org/git-git.git
+git clone https://aur.archlinux.org/paru-git.git
+git clone https://aur.archlinux.org/pacman-git.git
+sudo pacman -Rns --noconfirm git paru pacman
+cd git-git
+sudo renice -n -20 -p $BASHPID
+makepkg -s --noconfirm
+sudo renice -n 0 -p $BASHPID
+sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
+cd
+sudo rm -rf ~/git-git
+git clone https://aur.archlinux.org/paru-git.git
+cd paru-git
+sudo renice -n -20 -p $BASHPID
+makepkg -si --noconfirm
+sudo renice -n 0 -p $BASHPID
+cd
+sudo rm -rf ~/paru-git
+sudo touch /etc/paru.conf
+sudo chmod 755 /etc/paru.conf
+
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
