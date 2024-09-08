@@ -1,4 +1,4 @@
-# Bruh, dont forgor to 
+# Bruh, dont forgor 💀 to mount yo disk 
 pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
