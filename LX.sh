@@ -148,10 +148,11 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
-sudo pacman -Rns --noconfirm git paru pacman
+sudo pacman -Rns --noconfirm git pacman
+
 cd git-git
 sudo renice -n -20 -p $BASHPID
-makepkg -s --noconfirm
+makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
 sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
