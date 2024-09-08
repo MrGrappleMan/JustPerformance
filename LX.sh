@@ -38,7 +38,7 @@ sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
 sudo tee /etc/pacman.conf > /dev/null << "XIT"
 [options]
-HoldPkg = pacman glibc paru-git git-git
+HoldPkg = 
 CleanMethod = KeepInstalled
 Architecture = auto
 Color
