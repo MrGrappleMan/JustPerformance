@@ -143,6 +143,7 @@ Persistent=true
 WantedBy=timers.target
 XIT
 }
+pkgreconf
 sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
