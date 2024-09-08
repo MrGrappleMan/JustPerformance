@@ -148,7 +148,6 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
-sudo pacman -Rns --noconfirm git pacman
 sudo pacman -Rns --noconfirm git paru pacman
 cd git-git
 sudo renice -n -20 -p $BASHPID
