@@ -1,1 +1,1 @@
-pacman -Syu --noconfirm 
+pacstrap /mnt base linux linux-firmware git
