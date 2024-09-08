@@ -153,14 +153,12 @@ cd pacman-git
 sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
-sudo pacman -U --noconfirm pacman-git-*.pkg.tar.zst
 cd
 sudo rm -rf ~/pacman-git
 cd git-git
 sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
-sudo pacman -U --noconfirm git-git-*.pkg.tar.zst
 cd
 sudo rm -rf ~/git-git
 git clone https://aur.archlinux.org/paru-git.git
@@ -170,9 +168,6 @@ makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
 cd
 sudo rm -rf ~/paru-git
-sudo touch /etc/paru.conf
-sudo chmod 755 /etc/paru.conf
-
 # PackageInst----------------------------------------------------------------------------------------------------
 for pakges in\
  linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
