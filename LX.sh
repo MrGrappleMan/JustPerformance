@@ -25,7 +25,7 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
-sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git
+sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/paru-git ~/git-git ~/pacman
 sudo pacman -Sc --noconfirm
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
@@ -75,7 +75,7 @@ sudo pacman -Syy --noconfirm base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
-sudo pacman -Rns --noconfirm git paru pacn
+sudo pacman -Rns --noconfirm git paru pacman
 cd git-git
 sudo renice -n -20 -p $BASHPID
 makepkg -s --noconfirm
