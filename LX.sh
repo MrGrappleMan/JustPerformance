@@ -149,7 +149,7 @@ WantedBy=timers.target
 XIT
 }
 pacmanrcf
-sudo pacman -Syy --noconfirm base-devel git
+sudo pacman -Syy --noconfirm base-devel base git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
