@@ -23,7 +23,7 @@ sudo chmod 755 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
-
+sudo pacman -Sy vase bas
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
