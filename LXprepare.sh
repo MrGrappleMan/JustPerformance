@@ -29,6 +29,7 @@ sudo pacman -Syy base base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
+sudo pacman -Rddns --noconfirm pacman
 
 kill $SUDOREFRESHP
 kill $NETRFP
