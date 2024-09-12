@@ -29,7 +29,7 @@ sudo pacman -Syy base base-devel git
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
-sudo pacman -Rddns --noconfirm pacman
+sudo pacman -Rddns --noconfirm pacman git
 cd pacman-git
 sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
@@ -48,7 +48,7 @@ sudo renice -n -20 -p $BASHPID
 makepkg -si --noconfirm
 sudo renice -n 0 -p $BASHPID
 cd
-sudo rm -rf ~/paru-
+sudo rm -rf ~/paru-git
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
