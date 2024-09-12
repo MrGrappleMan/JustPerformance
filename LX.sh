@@ -7,14 +7,14 @@ echo There are a few instances where you need to be a regular user...
 sleep 5
 exit
 fi
-sudorefresh() {
+netrf() {
     while true; do
         sudo -v
         sleep 240
     done
 }
-netrfresh &
-SUDOREFRESHP=$!
+netrf &
+NETRP=$!
 sudo swapoff -a
 sudorefresh() {
     while true; do
