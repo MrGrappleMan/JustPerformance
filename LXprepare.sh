@@ -6,7 +6,7 @@ netrf() {
     done
 }
 netrf &
-NETRP=$!
+NETRFP=$!
 sudo swapoff -a
 sudorefresh() {
     while true; do
