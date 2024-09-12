@@ -1,7 +1,8 @@
 #!/bin/zsh
 netrf() {
     while true; do
-        sudo -v
+        sudo nmcli device wifi rescan
+		sudo nmcli connection up "$(nmcli -t -f NAME connection show --active | head -n 1)"
         sleep 240
     done
 }
@@ -10,8 +11,7 @@ NETRFP=$!
 sudo swapoff -a
 sudorefresh() {
 	while true; do
-		sudo nmcli device wifi rescan
-		sudo nmcli connection up "$(nmcli -t -f NAME connection show --active | head -n 1)"
+		sudo -v
 		sleep 240
 	done
 }
