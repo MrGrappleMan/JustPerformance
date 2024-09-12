@@ -74,7 +74,6 @@ Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 XIT
 }
 parurcf() {
-sudo touch /etc/paru.conf
 sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
 [options]
