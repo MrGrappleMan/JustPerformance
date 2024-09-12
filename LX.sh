@@ -13,6 +13,15 @@ sudorefresh() {
         sleep 240
     done
 }
+netrfresh &
+SUDOREFRESHP=$!
+sudo swapoff -a
+sudorefresh() {
+    while true; do
+        sudo -v
+        sleep 240
+    done
+}
 sudorefresh &
 SUDOREFRESHP=$!
 sudo swapoff -a
