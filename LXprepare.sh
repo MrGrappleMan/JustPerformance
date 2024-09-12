@@ -9,11 +9,9 @@ netrf &
 NETRFP=$!
 sudo swapoff -a
 sudorefresh() {
-    while true; do
-	sudo nmcli device wifi rescan
+	while true; do
+		sudo nmcli device wifi rescan
 		sudo nmcli connection up "$(nmcli -t -f NAME connection show --active | head -n 1)"
-
-    # Check if connected to any network (Wi-Fi, Ethernet, etc.)
     if ping -c 3 8.8.8.8 > /dev/null 2>&1; then
         echo "Connected to the internet."
     else
