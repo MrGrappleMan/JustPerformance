@@ -3,7 +3,7 @@ clear
 cd
 if [[ "$USER" == "root" ]]; then
 echo Running as root by default is not allowed.
-echo There are a few instances where you need to be a regular user.
+echo There are a few instances where you need to be a regular user...
 sleep 5
 exit
 fi
