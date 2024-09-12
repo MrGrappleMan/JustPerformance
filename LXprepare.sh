@@ -26,7 +26,7 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 sudo pacman -Sy base base-devel git
-
+git clone 
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
