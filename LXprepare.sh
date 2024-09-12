@@ -1,4 +1,6 @@
 #!/bin/zsh
+clear
+cd
 netrf() {
     while true; do
         sudo nmcli device wifi rescan
@@ -24,6 +26,7 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 sudo pacman -Sy base base-devel git
+
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
