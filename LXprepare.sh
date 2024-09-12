@@ -3,7 +3,7 @@ netrf() {
     while true; do
         sudo nmcli device wifi rescan
 		sudo nmcli connection up "$(nmcli -t -f NAME connection show --active | head -n 1)"
-        sleep 240
+        sleep 600
     done
 }
 netrf &
@@ -23,6 +23,7 @@ sudo chmod 755 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
+
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
