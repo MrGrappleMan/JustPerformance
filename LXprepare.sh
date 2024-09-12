@@ -25,8 +25,11 @@ sudo chmod 755 ~/swapfile
 sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
-sudo pacman -Sy base base-devel git
-git clone 
+sudo pacman -Syy base base-devel git
+git clone https://aur.archlinux.org/git-git.git
+git clone https://aur.archlinux.org/paru-git.git
+git clone https://aur.archlinux.org/pacman-git.git
+
 kill $SUDOREFRESHP
 kill $NETRFP
 exit
