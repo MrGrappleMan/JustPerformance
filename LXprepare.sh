@@ -23,5 +23,5 @@ sudo mkswap ~/swapfile
 sudo swapon -p 32765 ~/swapfile
 sudo sysctl vm.swappiness=1
 kill $SUDOREFRESHP
-kill $P
+kill $NETRFP
 exit
