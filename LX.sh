@@ -382,7 +382,8 @@ sudo chmod 755 /etc/systemd/timesyncd.conf
 sudo tee /etc/systemd/timesyncd.conf > /dev/null << "XIT"
 [Time]
 NTP=pool.ntp.org
-NTP=t
+NTP=time.nist.gov
+NTP=time.nist.gov
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
