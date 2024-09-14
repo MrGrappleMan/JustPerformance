@@ -423,7 +423,7 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 755 /etc/systemd/resolved.conf
 sudo tee /etc/systemd/resolved.conf > /dev/null << "XIT"
 [Resolve]
-# Non-Profit ONLY
+# Non-Profit and AdBlocking ONLY
 
 # AdBlocking
 DNS=noads.libredns.gr
@@ -433,10 +433,6 @@ DNS=dns.adguard.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
 DNS=dns.decloudus.com
-# Regular
-DNS=dns.quad9.net
-DNS=one.one.one.one
-DNS=dns.google
 DNSSEC=no
 DNSOverTLS=yes
 Domains=~.
