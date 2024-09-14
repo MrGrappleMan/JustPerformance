@@ -377,16 +377,12 @@ OnCalendar=
 OnCalendar=daily
 XIT
 sudo systemctl enable --now fstrim.timer
-sudo touch /etc/systemd/timesyncd.conf
 sudo chmod 755 /etc/systemd/timesyncd.conf
+# Non-Profit and AdBlocking ONLY
 sudo tee /etc/systemd/timesyncd.conf > /dev/null << "XIT"
 [Time]
 NTP=pool.ntp.org
 NTP=time.cloudflare.com
-NTP=time.google.com
-NTP=time.windows.com
-NTP=time.facebook.com
-NTP=time.apple.com
 XIT
 # sysctl.conf----------------------------------------------------------------------------------------------------
 sudo touch /etc/sysctl.conf
