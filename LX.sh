@@ -420,7 +420,7 @@ sudo touch /etc/systemd/resolved.conf
 sudo chmod 755 /etc/systemd/resolved.conf
 sudo tee /etc/systemd/resolved.conf > /dev/null << "XIT"
 [Resolve]
-# Non-Profit and AdBlocking ONLY
+# Non-Profit and Ad/Malware/Filter Blocking preferred
 
 DNS=noads.libredns.gr
 DNS=dot-sg.blahdns.com
