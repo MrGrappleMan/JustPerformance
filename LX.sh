@@ -425,6 +425,7 @@ sudo tee /etc/systemd/resolved.conf > /dev/null << "XIT"
 DNS=noads.libredns.gr
 DNS=dot-sg.blahdns.com
 DNS=dot-de.blahdns.com
+DNS=
 DNS=dns.adguard.com
 DNS=p2.freedns.controld.com
 DNS=base.dns.mullvad.net
