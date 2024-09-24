@@ -47,6 +47,7 @@ sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
 
 sudo chmod 755 /etc/pacman.d/mirrorlist
+}
 parurcf() {
 sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
