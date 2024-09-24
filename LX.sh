@@ -48,22 +48,7 @@ sudo chmod 755 /etc/pacman.conf
 
 sudo chmod 755 /etc/pacman.d/mirrorlist
 }
-parurcf() {
-sudo chmod 755 /etc/paru.conf
-sudo tee /etc/paru.conf > /dev/null << "XIT"
-[options]
-PgpFetch
-Devel
-Provides
-DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg -fossil
-CompletionInterval = 0
-SudoLoop
-SkipReview
-[bin]
-Makepkg = /usr/bin/JPpkg make
-SudoFlags = -v
-XIT
-}
+
 jppkgrcf() {
 sudo touch /usr/bin/JPpkg
 sudo chmod 755 /usr/bin/JPpkg
