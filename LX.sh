@@ -45,43 +45,8 @@ sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-ke
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 sudo touch /etc/pacman.conf
 sudo chmod 755 /etc/pacman.conf
-sudo tee /etc/pacman.conf > /dev/null << "XIT"
-[options]
-HoldPkg = 
-CleanMethod = KeepInstalled
-Architecture = auto
-Color
-CheckSpace
-DisableDownloadTimeout
-VerbosePkgLists
-ParallelDownloads = 262144
-[core-testing]
-Include = /etc/pacman.d/mirrorlist
-[extra-testing]
-Include = /etc/pacman.d/mirrorlist
-[multilib-testing]
-Include = /etc/pacman.d/mirrorlist
-[core]
-Include = /etc/pacman.d/mirrorlist
-[extra]
-Include = /etc/pacman.d/mirrorlist
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-[kde-unstable]
-Include = /etc/pacman.d/mirrorlist
-[gnome-unstable]
-Include = /etc/pacman.d/mirrorlist
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-XIT
-sudo touch /etc/pacman.d/mirrorlist
+
 sudo chmod 755 /etc/pacman.d/mirrorlist
-sudo tee /etc/pacman.d/mirrorlist > /dev/null << "XIT"
-Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
-XIT
-}
 parurcf() {
 sudo chmod 755 /etc/paru.conf
 sudo tee /etc/paru.conf > /dev/null << "XIT"
