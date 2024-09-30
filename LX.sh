@@ -246,68 +246,8 @@ XIT
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
 # Snowflake----------------------------------------------------------------------------------------------------
-sudo touch /lib/systemd/system/snowflake-proxy.service
-sudo chmod 755 /lib/systemd/system/snowflake-proxy.service
-sudo tee /lib/systemd/system/snowflake-proxy.service > /dev/null << "XIT"
-[Service]
-ExecStart=/usr/bin/snowflake-proxy -capacity 0 -allow-non-tls-relay
-Restart=always
-RestartSec=5
-DynamicUser=true
-NoNewPrivileges=true
-PrivateTmp=true
-PrivateDevices=true
-PrivateMounts=true
-PrivateIPC=true
-ProtectHome=true
-ProtectControlGroups=true
-ProtectKernelModules=true
-ProtectKernelTunables=true
-ProtectKernelLogs=true
-ProtectProc=invisible
-ProtectHostname=true
-ProtectClock=true
-ProtectSystem=strict
-MemoryDenyWriteExecute=true
-RestrictRealtime=true
-[Install]
-WantedBy=multi-user.target
-XIT
 sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
-sudo touch /etc/tor/torrc
-sudo chmod 755 /etc/tor/torrc
-sudo tee /etc/tor/torrc > /dev/null << "XIT"
-ORPort auto
-ExitRelay 0
-SocksPort 0
-BridgeRelay 1
-ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
-ServerTransportListenAddr obfs4 0.0.0.0:9001
-ExtORPort auto
-AvoidDiskWrites 0
-BandwidthBurst 16 TBytes
-BandwidthRate 16 TBytes
-ConnLimit 2048
-DisableOOSCheck 0
-DisableDebuggerAttachment 1
-DisableAllSwap 0
-DisableNetwork 0
-ExtendByEd25519ID 1
-FetchDirInfoEarly 1
-FetchHidServDescriptors 1
-FetchServerDescriptors 1
-FetchUselessDescriptors 0
-HardwareAccel 1
-KeepBindCapabilities 1
-NoExec 0
-ClientPreferIPv6DirPort 1
-ClientPreferIPv6ORPort 1
-ClientUseIPv6 1
-DownloadExtraInfo 1
-IPv6Exit 1
-DirCache 1
-XIT
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
 sudo mkdir tor@.service.d
@@ -336,55 +276,7 @@ NTP=pool.ntp.org
 NTP=time.nist.gov
 NTP=time.nist.gov
 XIT
-# sysctl.conf----------------------------------------------------------------------------------------------------
-sudo touch /etc/sysctl.conf
-sudo chmod 755 /etc/sysctl.conf
-sudo tee /etc/sysctl.conf > /dev/null << "XIT"
-vm.vfs_cache_pressure = 50
-vm.dirty_background_ratio = 1
-vm.dirty_ratio = 1
-vm.dirty_writeback_centisecs = 100
-vm.dirty_expire_centisecs = 100
-zswap.enabled = 0
-vm.swappiness = 200
-vm.max_map_count = 2147483647
-fs.file-max = 9223372036800000000
-net.core.wmem_default = 31457280
-net.core.rmem_default = 31457280
-net.core.wmem_max = 999999999
-net.core.rmem_max = 999999999
-net.core.somaxconn = 2147483647
-net.core.netdev_max_backlog = 999999999
-net.core.optmem_max = 999999999
-net.ipv4.tcp_mem = 65536 9999999999999999999 9999999999999999999
-net.ipv4.udp_mem = 65536 9999999999999999999 9999999999999999999
-net.ipv4.tcp_rmem = 16384 1999999999 1999999999
-net.ipv4.tcp_wmem = 16384 1999999999 1999999999
-net.ipv4.udp_rmem_min = 16384
-net.ipv4.udp_wmem_min = 16384
-net.ipv4.tcp_max_tw_buckets = 2000000
-net.ipv4.tcp_low_latency = 1
-kernel.sched_migration_cost_ns = 5000000
-XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
-sudo touch /etc/systemd/resolved.conf
-sudo chmod 755 /etc/systemd/resolved.conf
-sudo tee /etc/systemd/resolved.conf > /dev/null << "XIT"
-[Resolve]
-# Non-Profit and Ad/Malware/Filter Blocking preferred
-
-DNS=noads.libredns.gr
-DNS=dot-sg.blahdns.com
-DNS=dot-de.blahdns.com
-DNS=dns11.quad9.net
-DNS=dns.adguard.com
-DNS=p2.freedns.controld.com
-DNS=base.dns.mullvad.net
-DNS=dns.decloudus.com
-DNSSEC=no
-DNSOverTLS=yes
-Domains=~.
-XIT
 sudo systemctl enable --now systemd-resolved
 sudo systemctl enable --now systemd-networkd
 # End----------------------------------------------------------------------------------------------------
