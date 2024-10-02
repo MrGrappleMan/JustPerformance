@@ -163,29 +163,47 @@ rmmod zram
 
 if [[ "$1" == "Y" ]]; then
     sudo modprobe zram
-    mem_total=$(( $(free | awk '/^Mem:/{print $2}') * 1024 ))
-    sudo echo $mem_total > /sys/block/zram0/disksize
+    mem_total=$(free | awk '/^Mem:/{print $2}')
+    mem_total_bytes=$((mem_total * 1024))
+    
+    echo $mem_total_bytes | sudo tee /sys/block/zram0/disksize > /dev/null
     sudo mkswap /dev/zram0
     sudo swapon -p 32765 /dev/zram0
 
     set_compression_level() {
         local level=$1
-        echo "zstd:$level" > /sys/block/zram0/comp_algorithm
+        echo "zstd:$level" | sudo tee /sys/block/zram0/comp_algorithm > /dev/null
     }
 
     set_swappiness() {
         local swappiness=$1
-        sysctl -w vm.swappiness=$swappiness
+        sudo sysctl -w vm.swappiness=$swappiness > /dev/null
+    }
+
+    set_dirty_values() {
+        local dirty_ratio=$1
+        local dirty_background_ratio=$2
+        sudo sysctl -w vm.dirty_ratio=$dirty_ratio > /dev/null
+        sudo sysctl -w vm.dirty_background_ratio=$dirty_background_ratio > /dev/null
     }
 
     monitor_memory() {
-        local part_size=$(($mem_total / 22))
+        local part_size=$((mem_total / 22))
         while true; do
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
             level=$((22 - mem_free / part_size))
             set_compression_level $((level < 1 ? 1 : level > 22 ? 22 : level))
+
+            # Adjust swappiness: higher swappiness as memory usage increases
             swappiness=$((200 - (mem_free * 200 / mem_total)))
             set_swappiness $((swappiness < 0 ? 0 : swappiness > 200 ? 200 : swappiness))
+
+            # Adjust dirty values: more aggressive writeback when memory is low
+            dirty_ratio=$((30 - (mem_free * 30 / mem_total)))
+            dirty_background_ratio=$((15 - (mem_free * 15 / mem_total)))
+            set_dirty_values $((dirty_ratio < 5 ? 5 : dirty_ratio > 30 ? 30 : dirty_ratio)) \
+                             $((dirty_background_ratio < 1 ? 1 : dirty_background_ratio > 15 ? 15 : dirty_background_ratio))
+
             sleep 60
         done
     }
