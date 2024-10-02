@@ -161,6 +161,20 @@ sudo tee /usr/bin/JPzram > /dev/null << "XIT"
 swapoff -a
 rmmod zram
 
+get_battery_status() {
+    if [[ -f /sys/class/power_supply/BAT0/capacity ]]; then
+        battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+    else
+        battery_capacity=100
+    fi
+
+    if [[ -f /sys/class/power_supply/AC/online ]]; then
+        power_status=$(cat /sys/class/power_supply/AC/online)
+    else
+        power_status=0
+    fi
+}
+
 if [[ "$1" == "Y" ]]; then
     sudo modprobe zram
     mem_total=$(free | awk '/^Mem:/{print $2}')
@@ -187,17 +201,21 @@ if [[ "$1" == "Y" ]]; then
         sudo sysctl -w vm.dirty_background_ratio=$dirty_background_ratio > /dev/null
     }
 
-    get_battery_status() {
-        # Check if battery is present
-        if [ -d /sys/class/power_supply/BAT0 ]; then
-            # Get battery capacity
-            battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
-            # Get power supply status
-            power_status=$(cat /sys/class/power_supply/AC/online)
-        else
-            battery_capacity=100  # Assume fully charged if no battery
-            power_status=1  # Assume AC connected
-        fi
+    set_min_free_kbytes() {
+        local min_free_kbytes=$1
+        sudo sysctl -w vm.min_free_kbytes=$min_free_kbytes > /dev/null
+    }
+
+    set_vfs_cache_pressure() {
+        local pressure=$1
+        sudo sysctl -w vm.vfs_cache_pressure=$pressure > /dev/null
+    }
+
+    set_net_buffer_sizes() {
+        local rmem_max=$1
+        local wmem_max=$2
+        sudo sysctl -w net.core.rmem_max=$rmem_max > /dev/null
+        sudo sysctl -w net.core.wmem_max=$wmem_max > /dev/null
     }
 
     monitor_memory() {
@@ -208,26 +226,27 @@ if [[ "$1" == "Y" ]]; then
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
             level=$((22 - mem_free / part_size))
 
-            # Adjust compression level based on available memory
             set_compression_level $((level < 1 ? 1 : level > 22 ? 22 : level))
 
             # Adjust swappiness
             if [[ "$power_status" -eq 1 && "$battery_capacity" -eq 100 ]]; then
-                # Maximum performance: swappiness based on memory
                 swappiness=$((200 - (mem_free * 200 / mem_total)))
+                set_min_free_kbytes 65536  # Minimum free memory when on AC
+                set_vfs_cache_pressure 50   # Less pressure for caching when on AC
+                set_net_buffer_sizes 16777216  # Maximum TCP buffer sizes for performance
             else
-                # Energy efficient: lower swappiness
                 swappiness=$((100 - (battery_capacity * 100 / 100)))
+                set_min_free_kbytes 32768  # Lower minimum free memory for battery
+                set_vfs_cache_pressure 100   # More pressure for caching to save memory
+                set_net_buffer_sizes 8388608  # Reduced TCP buffer sizes for battery saving
             fi
             set_swappiness $((swappiness < 0 ? 0 : swappiness > 200 ? 200 : swappiness))
 
             # Adjust dirty values
             if [[ "$power_status" -eq 1 && "$battery_capacity" -eq 100 ]]; then
-                # Higher dirty ratios when fully charged and plugged in
                 dirty_ratio=30
                 dirty_background_ratio=15
             else
-                # Lower dirty ratios for energy efficiency
                 dirty_ratio=$((15 + (battery_capacity * 15 / 100)))
                 dirty_background_ratio=$((7 + (battery_capacity * 7 / 100)))
             fi
