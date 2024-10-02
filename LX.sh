@@ -186,7 +186,6 @@ if [[ "$1" == "Y" ]]; then
             set_compression_level $((level < 1 ? 1 : level > 22 ? 22 : level))
             swappiness=$((200 - (mem_free * 200 / mem_total)))
             set_swappiness $((swappiness < 0 ? 0 : swappiness > 200 ? 200 : swappiness))
-
             sleep 60
         done
     }
