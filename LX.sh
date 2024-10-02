@@ -218,6 +218,13 @@ if [[ "$1" == "Y" ]]; then
         sudo sysctl -w net.core.wmem_max=$wmem_max > /dev/null
     }
 
+    set_net_params() {
+        local max_syn_backlog=$1
+        local tcp_fin_timeout=$2
+        sudo sysctl -w net.ipv4.tcp_max_syn_backlog=$max_syn_backlog > /dev/null
+        sudo sysctl -w net.ipv4.tcp_fin_timeout=$tcp_fin_timeout > /dev/null
+    }
+
     monitor_memory() {
         local part_size=$((mem_total / 22))
         while true; do
@@ -233,12 +240,14 @@ if [[ "$1" == "Y" ]]; then
                 swappiness=$((200 - (mem_free * 200 / mem_total)))
                 set_min_free_kbytes 65536  # Minimum free memory when on AC
                 set_vfs_cache_pressure 50   # Less pressure for caching when on AC
-                set_net_buffer_sizes 16777216  # Maximum TCP buffer sizes for performance
+                set_net_buffer_sizes 16777216  # Max TCP buffer sizes for performance
+                set_net_params 256  # Max SYN backlog for performance
             else
                 swappiness=$((100 - (battery_capacity * 100 / 100)))
                 set_min_free_kbytes 32768  # Lower minimum free memory for battery
                 set_vfs_cache_pressure 100   # More pressure for caching to save memory
                 set_net_buffer_sizes 8388608  # Reduced TCP buffer sizes for battery saving
+                set_net_params 128  # Lower max SYN backlog for battery
             fi
             set_swappiness $((swappiness < 0 ? 0 : swappiness > 200 ? 200 : swappiness))
 
