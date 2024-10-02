@@ -187,20 +187,50 @@ if [[ "$1" == "Y" ]]; then
         sudo sysctl -w vm.dirty_background_ratio=$dirty_background_ratio > /dev/null
     }
 
+    get_battery_status() {
+        # Check if battery is present
+        if [ -d /sys/class/power_supply/BAT0 ]; then
+            # Get battery capacity
+            battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+            # Get power supply status
+            power_status=$(cat /sys/class/power_supply/AC/online)
+        else
+            battery_capacity=100  # Assume fully charged if no battery
+            power_status=1  # Assume AC connected
+        fi
+    }
+
     monitor_memory() {
         local part_size=$((mem_total / 22))
         while true; do
+            get_battery_status
+
             mem_free=$(awk '/MemAvailable/ {print $2}' /proc/meminfo)
             level=$((22 - mem_free / part_size))
+
+            # Adjust compression level based on available memory
             set_compression_level $((level < 1 ? 1 : level > 22 ? 22 : level))
 
-            # Adjust swappiness: higher swappiness as memory usage increases
-            swappiness=$((200 - (mem_free * 200 / mem_total)))
+            # Adjust swappiness
+            if [[ "$power_status" -eq 1 && "$battery_capacity" -eq 100 ]]; then
+                # Maximum performance: swappiness based on memory
+                swappiness=$((200 - (mem_free * 200 / mem_total)))
+            else
+                # Energy efficient: lower swappiness
+                swappiness=$((100 - (battery_capacity * 100 / 100)))
+            fi
             set_swappiness $((swappiness < 0 ? 0 : swappiness > 200 ? 200 : swappiness))
 
-            # Adjust dirty values: more aggressive writeback when memory is low
-            dirty_ratio=$((30 - (mem_free * 30 / mem_total)))
-            dirty_background_ratio=$((15 - (mem_free * 15 / mem_total)))
+            # Adjust dirty values
+            if [[ "$power_status" -eq 1 && "$battery_capacity" -eq 100 ]]; then
+                # Higher dirty ratios when fully charged and plugged in
+                dirty_ratio=30
+                dirty_background_ratio=15
+            else
+                # Lower dirty ratios for energy efficiency
+                dirty_ratio=$((15 + (battery_capacity * 15 / 100)))
+                dirty_background_ratio=$((7 + (battery_capacity * 7 / 100)))
+            fi
             set_dirty_values $((dirty_ratio < 5 ? 5 : dirty_ratio > 30 ? 30 : dirty_ratio)) \
                              $((dirty_background_ratio < 1 ? 1 : dirty_background_ratio > 15 ? 15 : dirty_background_ratio))
 
