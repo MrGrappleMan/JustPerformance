@@ -19,7 +19,7 @@ powercfg -h on
 ::If you doubt the line below this, reddit.com/r/computers/s/Pa11pjBory
 sc start "SysMain">nul & sc config "SysMain" start=auto>nul
 sc stop "WSearch">nul & sc config "WSearch" start=disabled>nul
-powercfg.exe -import "!cd!\JPNormal.pow">nul
+powercfg.exe -import "!cd!\JustPerformance.pow">nul
 w32tm /config /syncfromflags:manual /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com time.facebook.com time.apple.com" /reliable:YES /update & net stop w32time & net start w32time & w32tm /resync /force
 regedit /s jp.reg
 :home
