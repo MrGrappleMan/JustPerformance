@@ -223,13 +223,6 @@ OnCalendar=daily
 XIT
 sudo systemctl enable --now fstrim.timer
 sudo chmod 755 /etc/systemd/timesyncd.conf
-# Non-Profit ONLY
-sudo tee /etc/systemd/timesyncd.conf > /dev/null << "XIT"
-[Time]
-NTP=pool.ntp.org
-NTP=time.nist.gov
-NTP=time.nist.gov
-XIT
 # DNS Setup----------------------------------------------------------------------------------------------------
 sudo systemctl enable --now systemd-resolved
 sudo systemctl enable --now systemd-networkd
