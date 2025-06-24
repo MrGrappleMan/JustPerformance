@@ -1,9 +1,6 @@
 # Quick access to here: bit.ly/LXsetup
-# Sections are divided by blank lines 
+# Sections are divided by blank lines
 # For sections with empty variables, paste them in a text editior for editing the parameters
-# Windows users, in the >>terminal<<:
-# To COPY use Ctrl+Shift+C
-# To PASTE use Ctrl+Shift+V
 
 # Network Drivers(if the adaptor is not detected):
 # Install your network drivers before the main script
@@ -49,56 +46,6 @@ sudo systemctl enable --now boinc-client
 sudo usermod -aG boinc $USER
 boinccmd --join_acct_mgr https://scienceunited.org/ $EMAIL $PASSWORD
 cd /etc/boinc-client/
-sudo chmod 777 /etc/boinc-client/cc_config.xml >/dev/null 2>&1
-sudo cat > cc_config.xml << 'EOL'
-<?xml version="1.0" encoding="UTF-8" ?>
-<cc_config>
-    <log_flags>
-		<task>0</task>
-		<file_xfer>0</file_xfer>
-    	<sched_ops>0</sched_ops>
-    </log_flags>
-    <options>
-	<abort_jobs_on_exit>1</abort_jobs_on_exit>
-	<allow_multiple_clients>0</allow_multiple_clients>
-	<allow_remote_gui_rpc>0</allow_remote_gui_rpc>
-	<disallow_attach>0</disallow_attach>
-	<dont_check_file_sizes>0</dont_check_file_sizes>
-	<dont_contact_ref_site>0</dont_contact_ref_site>
-	<dont_suspend_nci>0</dont_suspend_nci>
-	<dont_use_vbox>0</dont_use_vbox>
-	<exit_before_start>0</exit_before_start>
-	<exit_when_idle>0</exit_when_idle>
-	<fetch_minimal_work>0</fetch_minimal_work>
-	<fetch_on_update>1</fetch_on_update>
-	<lower_client_priority>0</lower_client_priority>
-	<max_event_log_lines>1</max_event_log_lines>
-	<max_file_xfers>262144</max_file_xfers>
-	<max_file_xfers_per_project>262144</max_file_xfers_per_project>
-	<max_tasks_reported>262144</max_tasks_reported>
-	<no_alt_platform>0</no_alt_platform>
-	<no_gpus>0</no_gpus>
-	<no_info_fetch>0</no_info_fetch>
-	<no_opencl>0</no_opencl>
-	<no_priority_change>0</no_priority_change>
-	<no_rdp_check>1</no_rdp_check>
-	<os_random_only>0</os_random_only>
-	<process_priority>4</process_priority>
-	<process_priority_special>4</process_priority_special>
-	<rec_half_life_days>30</rec_half_life_days>
-	<report_results_immediately>1</report_results_immediately>
-	<run_apps_manually>0</run_apps_manually>
-	<save_stats_days>0</save_stats_days>
-	<simple_gui_only>0</simple_gui_only>
-	<skip_cpu_benchmarks>0</skip_cpu_benchmarks>
-	<suppress_net_info>0</suppress_net_info>
-	<use_all_gpus>1</use_all_gpus>
-	<use_certs>1</use_certs>
-	<use_certs_only>0</use_certs_only>
-	<vbox_window>0</vbox_window>
-    </options>
-</cc_config>
-EOL
 
 # Docker
 # !`Setup----------
@@ -136,7 +83,3 @@ sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.soc
 sudo docker update --restart=always --memory-swap=-1 --cpus=0.000 --cpu-quota=0 --pids-limit=-1 --cpu-rt-period=2000000 $(sudo docker ps -q -a)
 # !`Remove all(For emergencies)----------
 sudo docker rm $(sudo docker ps -q -a) -f
-
-
-https://drive.google.com/file/d/10JJtkH8WPArPjiePDvn6OARiidOBCwgT/view?usp=drivesdk
-https://drive.google.com/file/d/1j5nQgBVblWTFoyq8T91YSASEfXwFfLm4/view?usp=drivesdk
